@@ -71,6 +71,7 @@ export interface Config {
     users: User;
     media: Media;
     pages: Page;
+    'ita-checklist': ItaChecklist;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -82,6 +83,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    'ita-checklist': ItaChecklistSelect<false> | ItaChecklistSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -380,6 +382,58 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Ítems de auditoría Resolución MinTIC 1519
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ita-checklist".
+ */
+export interface ItaChecklist {
+  id: number;
+  /**
+   * Número oficial del ítem en la resolución
+   */
+  idPregunta: number;
+  categoria:
+    | '1-accesibilidad'
+    | '2-identidad-visual'
+    | '3-informacion-entidad'
+    | '4-normativa'
+    | '5-contratacion'
+    | '6-planeacion'
+    | '7-tramites'
+    | '8-participa'
+    | '9-datos-abiertos'
+    | '10-grupos-interes'
+    | '11-reporte'
+    | '12-tributaria'
+    | '13-atencion-servicios'
+    | '14-noticias'
+    | '15-condiciones-tecnicas';
+  subcategoria?: string | null;
+  pregunta: string;
+  /**
+   * Instrucciones oficiales del MinTIC para cumplir este ítem
+   */
+  explicacion?: string | null;
+  cumplimiento: 'si' | 'no' | 'na' | 'pendiente';
+  /**
+   * Justificación del estado o descripción de la evidencia
+   */
+  observacion?: string | null;
+  /**
+   * Enlace donde se puede verificar el cumplimiento
+   */
+  urlEvidencia?: string | null;
+  fechaVerificacion?: string | null;
+  /**
+   * Página del sitio donde se implementa este requisito
+   */
+  paginaRelacionada?: (number | null) | Page;
+  tenant: number | Tenant;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -418,6 +472,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'ita-checklist';
+        value: number | ItaChecklist;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -648,6 +706,25 @@ export interface PagesSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ita-checklist_select".
+ */
+export interface ItaChecklistSelect<T extends boolean = true> {
+  idPregunta?: T;
+  categoria?: T;
+  subcategoria?: T;
+  pregunta?: T;
+  explicacion?: T;
+  cumplimiento?: T;
+  observacion?: T;
+  urlEvidencia?: T;
+  fechaVerificacion?: T;
+  paginaRelacionada?: T;
+  tenant?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

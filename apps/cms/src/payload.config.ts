@@ -9,6 +9,7 @@ import { Tenants } from './collections/Tenants'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
+import { ITAChecklist } from './collections/ITAChecklist'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -30,6 +31,7 @@ export default buildConfig({
     Users,
     Media,
     Pages,
+    ITAChecklist,
   ],
 
   editor: lexicalEditor(),
