@@ -8,6 +8,7 @@ import sharp from 'sharp'
 import { Tenants } from './collections/Tenants'
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,6 +29,7 @@ export default buildConfig({
     Tenants,
     Users,
     Media,
+    Pages,
   ],
 
   editor: lexicalEditor(),

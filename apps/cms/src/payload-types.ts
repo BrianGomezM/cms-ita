@@ -70,6 +70,7 @@ export interface Config {
     tenants: Tenant;
     users: User;
     media: Media;
+    pages: Page;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +81,7 @@ export interface Config {
     tenants: TenantsSelect<false> | TenantsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -244,6 +246,140 @@ export interface User {
   collection: 'users';
 }
 /**
+ * Páginas del sitio web institucional
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: number;
+  titulo: string;
+  /**
+   * Ej: inicio, nosotros, contratacion. Sin "/" ni espacios.
+   */
+  slug: string;
+  /**
+   * Máximo 160 caracteres. Se usa en motores de búsqueda.
+   */
+  descripcion?: string | null;
+  /**
+   * Entidad a la que pertenece esta página
+   */
+  tenant: number | Tenant;
+  estado: 'borrador' | 'revision' | 'publicado' | 'archivado';
+  /**
+   * Imagen que aparece al compartir en redes. 1200x630px recomendado.
+   */
+  imagenSeo?: (number | null) | Media;
+  /**
+   * Arrastra y ordena los bloques para construir la página
+   */
+  layout?:
+    | (
+        | {
+            titulo: string;
+            subtitulo?: string | null;
+            imagen?: (number | null) | Media;
+            alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+            boton?: {
+              texto?: string | null;
+              url?: string | null;
+              estilo?: ('primario' | 'secundario' | 'outline') | null;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'hero';
+          }
+        | {
+            contenido: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            ancho?: ('normal' | 'amplio' | 'completo') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'rich-text';
+          }
+        | {
+            titulo?: string | null;
+            columnas?: ('2' | '3' | '4') | null;
+            items?:
+              | {
+                  titulo: string;
+                  descripcion?: string | null;
+                  imagen?: (number | null) | Media;
+                  enlace?: string | null;
+                  /**
+                   * Ej: 📋 o fa-file-alt
+                   */
+                  icono?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cards';
+          }
+        | {
+            titulo?: string | null;
+            tipo?: ('grid' | 'carrusel' | 'masonry') | null;
+            imagenes?:
+              | {
+                  imagen: number | Media;
+                  caption?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'galeria';
+          }
+        | {
+            titulo?: string | null;
+            /**
+             * Ej: https://www.datos.gov.co/api/... o https://secop.gov.co/api/...
+             */
+            endpoint: string;
+            tipoVisualizacion?: ('tabla' | 'cards' | 'lista' | 'grafica') | null;
+            /**
+             * Separados por coma. Ej: nombre,valor,fecha
+             */
+            camposVisibles?: string | null;
+            limiteRegistros?: number | null;
+            /**
+             * JSON con headers adicionales. Ej: {"Authorization": "Bearer token"}
+             */
+            encabezados?:
+              | {
+                  [k: string]: unknown;
+                }
+              | unknown[]
+              | string
+              | number
+              | boolean
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'api-externa';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -278,6 +414,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -419,6 +559,95 @@ export interface MediaSelect<T extends boolean = true> {
               filename?: T;
             };
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  titulo?: T;
+  slug?: T;
+  descripcion?: T;
+  tenant?: T;
+  estado?: T;
+  imagenSeo?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              titulo?: T;
+              subtitulo?: T;
+              imagen?: T;
+              alineacion?: T;
+              boton?:
+                | T
+                | {
+                    texto?: T;
+                    url?: T;
+                    estilo?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'rich-text'?:
+          | T
+          | {
+              contenido?: T;
+              ancho?: T;
+              id?: T;
+              blockName?: T;
+            };
+        cards?:
+          | T
+          | {
+              titulo?: T;
+              columnas?: T;
+              items?:
+                | T
+                | {
+                    titulo?: T;
+                    descripcion?: T;
+                    imagen?: T;
+                    enlace?: T;
+                    icono?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        galeria?:
+          | T
+          | {
+              titulo?: T;
+              tipo?: T;
+              imagenes?:
+                | T
+                | {
+                    imagen?: T;
+                    caption?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'api-externa'?:
+          | T
+          | {
+              titulo?: T;
+              endpoint?: T;
+              tipoVisualizacion?: T;
+              camposVisibles?: T;
+              limiteRegistros?: T;
+              encabezados?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
