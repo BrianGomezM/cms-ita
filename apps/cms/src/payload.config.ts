@@ -12,8 +12,8 @@ import { Pages } from './collections/Pages'
 import { ITAChecklist } from './collections/ITAChecklist'
 
 // Importar componentes del admin directamente
-import DashboardITA from './views/DashboardITA/index'
-import NavLinkITA from './components/NavLinkITA'
+import DashboardITA from './app/(payload)/views/DashboardITA/index'
+import NavLinkITA from './app/(payload)/components/NavLinkITA'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -28,16 +28,16 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     components: {
-      views: {
-        dashboardITA: {
-          Component: '/src/views/DashboardITA/index#default',
-          path: '/dashboard-ita',
-        },
-      },
-      afterNavLinks: [
-        '/src/components/NavLinkITA#default',
-      ],
+  views: {
+    dashboardITA: {
+      Component: '/src/app/(payload)/views/DashboardITA/index#default',
+      path: '/dashboard-ita',
     },
+  },
+  afterNavLinks: [
+    '/src/app/(payload)/components/NavLinkITA#default',
+  ],
+},
   },
 
   collections: [

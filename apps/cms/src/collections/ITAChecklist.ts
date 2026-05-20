@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { leerPropiaTenant, editorOSuperior } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
+import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
 
 
 // Categorías reales de la Resolución MinTIC 1519
@@ -35,9 +36,11 @@ export const ITAChecklist: CollectionConfig = {
     defaultColumns: ['idPregunta', 'categoria', 'cumplimiento', 'tenant', 'fechaVerificacion'],
     description: 'Ítems de auditoría Resolución MinTIC 1519',
   },
-   hooks: {
+  hooks: {
     beforeOperation: [injectTenantContext],
     beforeChange: [autoAssignTenant],
+    afterChange: [auditAfterChange],   // ← agregar
+    afterDelete: [auditAfterDelete],   // ← agregar
   },
   access: {
     read: leerPropiaTenant,

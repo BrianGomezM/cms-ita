@@ -7,6 +7,7 @@ import { GaleriaBlock } from '../blocks/Galeria'
 import { ApiExternaBlock } from '../blocks/ApiExterna'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
+import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -30,7 +31,9 @@ export const Pages: CollectionConfig = {
   },
   hooks: {
     beforeOperation: [injectTenantContext],
-    beforeChange: [autoAssignTenant],  
+    beforeChange: [autoAssignTenant],
+    afterChange: [auditAfterChange],   // ← agregar
+    afterDelete: [auditAfterDelete],   // ← agregar
   },
   access: {
     // Páginas publicadas son públicas — cualquiera puede leerlas

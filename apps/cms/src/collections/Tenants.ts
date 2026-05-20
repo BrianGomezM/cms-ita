@@ -1,5 +1,8 @@
 import type { CollectionConfig } from 'payload'
 import { soloSuperAdmin } from '../access'
+import { injectTenantContext } from '../hooks/tenantContext'
+import { autoAssignTenant } from '../hooks/autoAssignTenant'
+import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
 
 export const Tenants: CollectionConfig = {
   slug: 'tenants',
@@ -12,6 +15,12 @@ export const Tenants: CollectionConfig = {
     group: 'Administración',
     defaultColumns: ['nombre', 'nit', 'slug', 'activo'],
     description: 'Entidades públicas cliente del CMS',
+  },
+  hooks: {
+    beforeOperation: [injectTenantContext],
+    beforeChange: [autoAssignTenant],
+    afterChange: [auditAfterChange],   // ← agregar
+    afterDelete: [auditAfterDelete],   // ← agregar
   },
   // Solo superadmin gestiona tenants
   access: {

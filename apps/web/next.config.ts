@@ -1,8 +1,17 @@
 import type { NextConfig } from 'next'
+import { securityHeaders } from '../cms/src/middleware/securityHeaders'
 
 const nextConfig: NextConfig = {
   turbopack: {
     root: '../../',
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
   },
   images: {
     remotePatterns: [

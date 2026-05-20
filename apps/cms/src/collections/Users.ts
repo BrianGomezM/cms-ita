@@ -2,7 +2,7 @@ import type { CollectionConfig, Where } from 'payload'
 import { soloSuperAdmin, soloSuperAdminCampo } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
-
+import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
 
 const getTenantId = (user: any): number | null => {
   if (!user?.tenant) return null
@@ -29,9 +29,11 @@ export const Users: CollectionConfig = {
     defaultColumns: ['email', 'nombre', 'rol', 'tenant'],
     description: 'Usuarios del panel administrativo',
   },
-   hooks: {
+  hooks: {
     beforeOperation: [injectTenantContext],
     beforeChange: [autoAssignTenant],
+    afterChange: [auditAfterChange],   // ← agregar
+    afterDelete: [auditAfterDelete],   // ← agregar
   },
   access: {
     read: ({ req: { user } }): boolean | Where => {

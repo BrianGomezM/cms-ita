@@ -3,7 +3,7 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { ResumenGeneral } from './components/ResumenGeneral'
 import { CategoriaCard } from './components/CategoriaCard'
-import { CATEGORIAS_ITA } from '../../collections/ITAChecklist'
+import { CATEGORIAS_ITA } from '../../../../collections/ITAChecklist'
 
 export default async function DashboardITAView({ initPageResult }: AdminViewProps) {
   const payload = await getPayload({ config })
