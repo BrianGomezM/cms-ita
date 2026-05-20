@@ -5,6 +5,8 @@ import { RichTextBlock } from '../blocks/RichText'
 import { CardsBlock } from '../blocks/Cards'
 import { GaleriaBlock } from '../blocks/Galeria'
 import { ApiExternaBlock } from '../blocks/ApiExterna'
+import { injectTenantContext } from '../hooks/tenantContext'
+import { autoAssignTenant } from '../hooks/autoAssignTenant'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -12,6 +14,7 @@ export const Pages: CollectionConfig = {
     singular: 'Página',
     plural: 'Páginas',
   },
+
   admin: {
     useAsTitle: 'titulo',
     group: 'Contenido',
@@ -24,6 +27,10 @@ export const Pages: CollectionConfig = {
   },
   versions: {
     drafts: true, // Borradores y publicación
+  },
+  hooks: {
+    beforeOperation: [injectTenantContext],
+    beforeChange: [autoAssignTenant],  
   },
   access: {
     // Páginas publicadas son públicas — cualquiera puede leerlas

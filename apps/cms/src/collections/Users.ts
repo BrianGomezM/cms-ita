@@ -1,5 +1,8 @@
 import type { CollectionConfig, Where } from 'payload'
 import { soloSuperAdmin, soloSuperAdminCampo } from '../access'
+import { injectTenantContext } from '../hooks/tenantContext'
+import { autoAssignTenant } from '../hooks/autoAssignTenant'
+
 
 const getTenantId = (user: any): number | null => {
   if (!user?.tenant) return null
@@ -25,6 +28,10 @@ export const Users: CollectionConfig = {
     group: 'Administración',
     defaultColumns: ['email', 'nombre', 'rol', 'tenant'],
     description: 'Usuarios del panel administrativo',
+  },
+   hooks: {
+    beforeOperation: [injectTenantContext],
+    beforeChange: [autoAssignTenant],
   },
   access: {
     read: ({ req: { user } }): boolean | Where => {

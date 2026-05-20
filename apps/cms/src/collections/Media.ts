@@ -1,5 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import { leerPropiaTenant } from '../access'
+import { injectTenantContext } from '../hooks/tenantContext'
+import { autoAssignTenant } from '../hooks/autoAssignTenant'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -10,6 +12,10 @@ export const Media: CollectionConfig = {
   admin: {
     group: 'Contenido',
     description: 'Imágenes, documentos y archivos subidos al CMS',
+  },
+   hooks: {
+    beforeOperation: [injectTenantContext],
+    beforeChange: [autoAssignTenant],
   },
   access: {
     read: () => true, // Los medios son públicos (logos, imágenes de páginas)
