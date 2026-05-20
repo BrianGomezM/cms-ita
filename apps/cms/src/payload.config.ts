@@ -25,7 +25,6 @@ export default buildConfig({
     },
   },
 
-  // Colecciones registradas
   collections: [
     Tenants,
     Users,
@@ -48,10 +47,20 @@ export default buildConfig({
     },
   }),
 
-  // i18n del panel en español
   i18n: {
     fallbackLanguage: 'es',
   },
+
+  // Permitir peticiones desde el frontend
+  cors: [
+    'http://localhost:3001',
+    process.env.NEXT_PUBLIC_SERVER_URL || '',
+  ],
+
+  csrf: [
+    'http://localhost:3001',
+    process.env.NEXT_PUBLIC_SERVER_URL || '',
+  ],
 
   sharp,
   plugins: [],

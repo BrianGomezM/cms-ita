@@ -26,7 +26,12 @@ export const Pages: CollectionConfig = {
     drafts: true, // Borradores y publicación
   },
   access: {
-    read: leerPropiaTenant,
+    // Páginas publicadas son públicas — cualquiera puede leerlas
+    read: ({ req: { user } }) => {
+      if (user) return true // usuarios autenticados ven todo
+      // Visitantes anónimos solo ven publicadas
+      return { estado: { equals: 'publicado' } }
+    },
     create: editorOSuperior,
     update: editorOSuperior,
     delete: editorOSuperior,
