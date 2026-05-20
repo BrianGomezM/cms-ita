@@ -11,6 +11,10 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { ITAChecklist } from './collections/ITAChecklist'
 
+// Importar componentes del admin directamente
+import DashboardITA from './views/DashboardITA/index'
+import NavLinkITA from './components/NavLinkITA'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
@@ -23,6 +27,15 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    components: {
+      views: {
+        dashboardITA: {
+          Component: DashboardITA,
+          path: '/dashboard-ita',
+        },
+      },
+      afterNavLinks: [NavLinkITA],
+    },
   },
 
   collections: [
@@ -34,34 +47,26 @@ export default buildConfig({
   ],
 
   editor: lexicalEditor(),
-
   secret: process.env.PAYLOAD_SECRET || '',
-
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-
   db: postgresAdapter({
     pool: {
       connectionString: process.env.DATABASE_URI || '',
     },
   }),
-
   i18n: {
     fallbackLanguage: 'es',
   },
-
-  // Permitir peticiones desde el frontend
   cors: [
     'http://localhost:3001',
     process.env.NEXT_PUBLIC_SERVER_URL || '',
   ],
-
   csrf: [
     'http://localhost:3001',
     process.env.NEXT_PUBLIC_SERVER_URL || '',
   ],
-
   sharp,
   plugins: [],
 })
