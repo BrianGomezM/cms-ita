@@ -11,14 +11,12 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { ITAChecklist } from './collections/ITAChecklist'
 
-// Importar componentes del admin directamente
-import DashboardITA from './app/(payload)/views/DashboardITA/index'
-import NavLinkITA from './app/(payload)/components/NavLinkITA'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000',
   admin: {
     user: Users.slug,
     meta: {
@@ -62,13 +60,15 @@ export default buildConfig({
     fallbackLanguage: 'es',
   },
   cors: [
+    'http://localhost:3000',
     'http://localhost:3001',
     process.env.NEXT_PUBLIC_SERVER_URL || '',
-  ],
+  ].filter(Boolean),
   csrf: [
+    'http://localhost:3000',
     'http://localhost:3001',
     process.env.NEXT_PUBLIC_SERVER_URL || '',
-  ],
+  ].filter(Boolean),
   sharp,
   plugins: [],
 })

@@ -35,10 +35,9 @@ export const HeroBlock: Block = {
       name: 'servicios',
       type: 'array',
       label: 'Tarjetas de servicios',
-      minRows: 4,
       maxRows: 8,
       admin: {
-        description: 'Grid 4x2 de servicios',
+        description: 'Grid de servicios (máximo 8)',
       },
       fields: [
         {
@@ -78,7 +77,6 @@ export const HeroBlock: Block = {
       name: 'banners',
       type: 'array',
       label: 'Banners de noticias/videos',
-      minRows: 1,
       maxRows: 3,
       fields: [
         {

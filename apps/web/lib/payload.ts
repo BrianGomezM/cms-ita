@@ -1,12 +1,13 @@
 // Cliente para consumir la API REST de Payload CMS
 const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
+const isDev = process.env.NODE_ENV === 'development'
 
 // Obtiene una página por su slug (solo publicadas)
 export async function getPageBySlug(slug: string) {
   try {
     const res = await fetch(
       `${CMS_URL}/api/pages?where[slug][equals]=${slug}&where[estado][equals]=publicado&depth=2`,
-      { next: { revalidate: 60 } } // ISR: revalida cada 60 segundos
+      isDev ? { cache: 'no-store' } : { next: { revalidate: 60 } }
     )
     if (!res.ok) return null
     const data = await res.json()
@@ -21,7 +22,7 @@ export async function getAllPages() {
   try {
     const res = await fetch(
       `${CMS_URL}/api/pages?where[estado][equals]=publicado&limit=100&depth=0`,
-      { next: { revalidate: 300 } }
+      isDev ? { cache: 'no-store' } : { next: { revalidate: 300 } }
     )
     if (!res.ok) return []
     const data = await res.json()
@@ -36,7 +37,7 @@ export async function getTenantBySlug(slug: string) {
   try {
     const res = await fetch(
       `${CMS_URL}/api/tenants?where[slug][equals]=${slug}&depth=1`,
-      { next: { revalidate: 300 } }
+      isDev ? { cache: 'no-store' } : { next: { revalidate: 300 } }
     )
     if (!res.ok) return null
     const data = await res.json()

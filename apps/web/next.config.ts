@@ -1,9 +1,12 @@
 import type { NextConfig } from 'next'
+import path from 'path'
 import { securityHeaders } from '../cms/src/middleware/securityHeaders'
+
+const isDev = process.env.NODE_ENV === 'development'
 
 const nextConfig: NextConfig = {
   turbopack: {
-    root: '../../',
+    root: path.resolve(__dirname, '../..'),
   },
   async headers() {
     return [
@@ -14,6 +17,9 @@ const nextConfig: NextConfig = {
     ]
   },
   images: {
+    // En dev: sin optimización para evitar el bloqueo SSRF de Next.js con localhost
+    // En prod: optimización normal (el CMS estará en un dominio real, no localhost)
+    unoptimized: isDev,
     remotePatterns: [
       { protocol: 'http',  hostname: 'localhost',                       port: '3000' },
       { protocol: 'http',  hostname: 'localhost',                       port: '9000' },

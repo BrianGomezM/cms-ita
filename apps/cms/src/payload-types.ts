@@ -286,7 +286,7 @@ export interface Page {
              */
             imagenPrincipal?: (number | null) | Media;
             /**
-             * Grid 4x2 de servicios
+             * Grid de servicios (máximo 8)
              */
             servicios?:
               | {

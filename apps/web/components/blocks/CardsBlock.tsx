@@ -9,29 +9,26 @@ const columnasClases = {
 }
 
 export default function CardsBlock({ titulo, columnas, items }: CardsBlockType) {
+  if (!items?.length) return null
+
   return (
-    <section id="servicios" className="py-20 bg-gray-50">
+    <section className="py-20 bg-gray-50">
       <div className="container-institucional">
 
         {titulo && (
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-blue-50 text-[#003366] text-sm font-medium px-4 py-1.5 rounded-full mb-4">
-              <span className="w-1.5 h-1.5 bg-[#003366] rounded-full" />
-              Nuestros servicios
-            </div>
             <h2 className="section-title">{titulo}</h2>
-            <div className="w-16 h-1 bg-[#e8a020] mx-auto mt-4" />
+            <div className="w-16 h-1 bg-secondary mx-auto mt-4" />
           </div>
         )}
 
         <div className={`grid gap-6 ${columnasClases[columnas]}`}>
-          {items?.map((item, index) => (
+          {items.map((item) => (
             <div
               key={item.id}
               className="card group p-0 overflow-hidden flex flex-col"
             >
-              {/* Imagen o color de fondo */}
-              {item.imagen?.url ? (
+              {item.imagen?.url && (
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src={item.imagen.url}
@@ -40,26 +37,14 @@ export default function CardsBlock({ titulo, columnas, items }: CardsBlockType) 
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-              ) : (
-                <div
-                  className="h-2"
-                  style={{
-                    background: index % 3 === 0
-                      ? '#003366'
-                      : index % 3 === 1
-                      ? '#0066cc'
-                      : '#e8a020',
-                  }}
-                />
               )}
 
               <div className="p-6 flex flex-col flex-1">
-                {/* Ícono */}
                 {item.icono && !item.imagen && (
                   <div className="text-4xl mb-4">{item.icono}</div>
                 )}
 
-                <h3 className="text-lg font-bold text-[#003366] mb-2 group-hover:text-[#0066cc] transition-colors">
+                <h3 className="text-lg font-bold text-primary mb-2 group-hover:text-secondary transition-colors">
                   {item.titulo}
                 </h3>
 
@@ -72,7 +57,7 @@ export default function CardsBlock({ titulo, columnas, items }: CardsBlockType) 
                 {item.enlace && (
                   <a
                     href={item.enlace}
-                    className="inline-flex items-center gap-2 text-[#0066cc] font-medium text-sm hover:text-[#003366] transition-colors mt-auto group/link"
+                    className="inline-flex items-center gap-2 text-secondary font-medium text-sm hover:text-primary transition-colors mt-auto group/link"
                   >
                     Ver más
                     <ArrowRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
@@ -81,14 +66,6 @@ export default function CardsBlock({ titulo, columnas, items }: CardsBlockType) 
               </div>
             </div>
           ))}
-        </div>
-
-        {/* CTA al final */}
-        <div className="text-center mt-12">
-          <a href="/servicios" className="btn-outline">
-            Ver todos los servicios
-            <ArrowRight size={16} />
-          </a>
         </div>
       </div>
     </section>

@@ -25,6 +25,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: 'media',
+    adminThumbnail: 'thumbnail',
     mimeTypes: [
       'image/jpeg',
       'image/png',
@@ -35,8 +36,8 @@ export const Media: CollectionConfig = {
     ],
     imageSizes: [
       { name: 'thumbnail', width: 300, height: 200, position: 'centre' },
-      { name: 'card', width: 768, height: 512, position: 'centre' },
-      { name: 'hero', width: 1920, height: undefined, position: 'centre' },
+      { name: 'card',      width: 768, height: 512, position: 'centre' },
+      { name: 'hero',      width: 1920,             position: 'centre' },
     ],
   },
   fields: [

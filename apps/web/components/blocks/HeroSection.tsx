@@ -2,7 +2,7 @@
 
 import {
   RefreshCw, Monitor, Download, Lightbulb,
-  User, Megaphone, Search, Award,
+  User, Megaphone, Search, Award, ClipboardList, BarChart,
   type LucideIcon,
 } from "lucide-react"
 import Link from "next/link"
@@ -10,7 +10,7 @@ import Image from "next/image"
 
 const ICON_MAP: Record<string, LucideIcon> = {
   RefreshCw, Monitor, Download, Lightbulb,
-  User, Megaphone, Search, Award,
+  User, Megaphone, Search, Award, ClipboardList, BarChart,
 }
 
 interface ServiceItem {
@@ -32,23 +32,6 @@ interface HeroSectionProps {
   services?: ServiceItem[]
   news?: NewsItem[]
 }
-
-const defaultServices: ServiceItem[] = [
-  { iconName: "RefreshCw", label: "Renuévate aquí", href: "/renovacion" },
-  { iconName: "Monitor", label: "Trámites Virtuales de los Registros", href: "/tramites" },
-  { iconName: "Download", label: "Certificados", href: "/certificados" },
-  { iconName: "Lightbulb", label: "Programa Ingenia", href: "/ingenia" },
-  { iconName: "User", label: "Servicios", href: "/servicios" },
-  { iconName: "Megaphone", label: "Convocatorias", href: "/convocatorias" },
-  { iconName: "Search", label: "Matricúlate", href: "/matricula" },
-  { iconName: "Award", label: "Aliado Plus", href: "/aliado-plus" },
-]
-
-const defaultNews: NewsItem[] = [
-  { image: "/img-project/Capacitaciones.jpg", title: "Capacitaciones y eventos", href: "/noticias" },
-  { image: "/img-project/Empresarios.jpg", title: "Conoce tus Beneficios y Renueva", href: "/noticias" },
-  { image: "/img-project/Noticias.jpg", title: "Noticias", href: "/noticias" },
-]
 
 function ServiceCard({ service }: { service: ServiceItem }) {
   const Icon = ICON_MAP[service.iconName] ?? User
@@ -81,51 +64,63 @@ function NewsCard({ item }: { item: NewsItem }) {
 }
 
 export default function HeroSection({
-  imagenPrincipal = "/img-project/Empresarios.jpg",
-  titulo = "¡Bienvenido!",
-  subtitulo = "¿Qué trámite deseas realizar?",
-  services = defaultServices,
-  news = defaultNews,
+  imagenPrincipal,
+  titulo,
+  subtitulo,
+  services = [],
+  news = [],
 }: HeroSectionProps) {
+  const hasContent = titulo || subtitulo || services.length > 0 || news.length > 0 || imagenPrincipal
+
+  if (!hasContent) return null
+
   return (
     <section className="relative min-h-175 w-full overflow-hidden bg-linear-to-br from-[#e8f0fe] to-[#dce8ff]">
 
-      {/* ── Imagen de fondo absoluta — cubre todo el hero ── */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={imagenPrincipal}
-          alt="Imagen principal"
-          fill
-          className="object-cover object-[center_40%] opacity-90"
-          priority
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-[#dce8ff]/15 via-[#dce8ff]/10 to-transparent" />
-      </div>
+      {imagenPrincipal && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={imagenPrincipal}
+            alt="Imagen principal"
+            fill
+            className="object-cover object-[center_40%] opacity-90"
+            priority
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-[#dce8ff]/15 via-[#dce8ff]/10 to-transparent" />
+        </div>
+      )}
 
-      {/* ── Contenido encima de la imagen ── */}
       <div className="relative z-10 container mx-auto grid min-h-175 grid-cols-1 gap-8 px-4 py-12 lg:grid-cols-12 lg:gap-12">
 
-        {/* Columna izquierda — vacía en desktop, empuja el contenido a la derecha */}
         <div className="hidden lg:block lg:col-span-5" />
 
-        {/* Columna derecha — texto, tarjetas y noticias */}
         <div className="flex flex-col justify-center lg:col-span-7">
-          <div className="mb-8">
-            <h1 className="mb-2 text-4xl font-bold text-primary lg:text-5xl">{titulo}</h1>
-            <p className="text-xl text-secondary lg:text-2xl">{subtitulo}</p>
-          </div>
+          {(titulo || subtitulo) && (
+            <div className="mb-8">
+              {titulo && (
+                <h1 className="mb-2 text-4xl font-bold text-primary lg:text-5xl">{titulo}</h1>
+              )}
+              {subtitulo && (
+                <p className="text-xl text-secondary lg:text-2xl">{subtitulo}</p>
+              )}
+            </div>
+          )}
 
-          <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {services.map((service, index) => (
-              <ServiceCard key={index} service={service} />
-            ))}
-          </div>
+          {services.length > 0 && (
+            <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              {services.map((service, index) => (
+                <ServiceCard key={index} service={service} />
+              ))}
+            </div>
+          )}
 
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {news.map((item, index) => (
-              <NewsCard key={index} item={item} />
-            ))}
-          </div>
+          {news.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+              {news.map((item, index) => (
+                <NewsCard key={index} item={item} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
