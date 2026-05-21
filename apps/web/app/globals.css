@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Paleta institucional CCC Cauca */
+  --color-primary: #003366;
+  --color-primary-dark: #002244;
+  --color-primary-light: #0044aa;
+  --color-secondary: #0066cc;
+  --color-secondary-light: #3388dd;
+  --color-accent: #e8a020;
+  --color-gov: #3366cc;
+
+  /* Grises */
+  --color-gray-50: #f8fafc;
+  --color-gray-100: #f1f5f9;
+  --color-gray-200: #e2e8f0;
+  --color-gray-600: #475569;
+  --color-gray-700: #334155;
+  --color-gray-800: #1e293b;
+  --color-gray-900: #0f172a;
+
+  /* Tipografía */
+  --font-sans: 'Roboto', system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    @apply bg-white text-gray-800 antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold leading-tight;
+  }
+
+  a {
+    @apply transition-colors duration-200;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .container-institucional {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-[#003366] text-white font-semibold rounded-lg hover:bg-[#002244] transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-[#0066cc] text-white font-semibold rounded-lg hover:bg-[#0044aa] transition-colors;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-[#003366] text-[#003366] font-semibold rounded-lg hover:bg-[#003366] hover:text-white transition-colors;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow;
+  }
+
+  .section-title {
+    @apply text-3xl font-bold text-[#003366] mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-gray-600 text-lg mb-10;
+  }
 }

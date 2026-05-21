@@ -15,8 +15,9 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns: [
-      { protocol: 'http', hostname: 'localhost', port: '3000' },
-      { protocol: 'http', hostname: 'localhost', port: '9000' },
+      { protocol: 'http',  hostname: 'localhost',                       port: '3000' },
+      { protocol: 'http',  hostname: 'localhost',                       port: '9000' },
+      { protocol: 'https', hostname: '*.public.blob.vercel-storage.com'             },
     ],
   },
 }

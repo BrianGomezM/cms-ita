@@ -281,6 +281,42 @@ export interface Page {
         | {
             titulo: string;
             subtitulo?: string | null;
+            /**
+             * Imagen grande lado izquierdo. Recomendado: 500x550px PNG fondo transparente.
+             */
+            imagenPrincipal?: (number | null) | Media;
+            /**
+             * Grid 4x2 de servicios
+             */
+            servicios?:
+              | {
+                  icono:
+                    | 'RefreshCw'
+                    | 'Monitor'
+                    | 'Download'
+                    | 'Lightbulb'
+                    | 'User'
+                    | 'Megaphone'
+                    | 'Search'
+                    | 'Award'
+                    | 'ClipboardList'
+                    | 'BarChart';
+                  label: string;
+                  href: string;
+                  id?: string | null;
+                }[]
+              | null;
+            banners?:
+              | {
+                  imagen: number | Media;
+                  titulo: string;
+                  href: string;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Campo anterior — usar "Imagen principal" para el nuevo diseño
+             */
             imagen?: (number | null) | Media;
             alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
             boton?: {
@@ -637,6 +673,23 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               titulo?: T;
               subtitulo?: T;
+              imagenPrincipal?: T;
+              servicios?:
+                | T
+                | {
+                    icono?: T;
+                    label?: T;
+                    href?: T;
+                    id?: T;
+                  };
+              banners?:
+                | T
+                | {
+                    imagen?: T;
+                    titulo?: T;
+                    href?: T;
+                    id?: T;
+                  };
               imagen?: T;
               alineacion?: T;
               boton?:

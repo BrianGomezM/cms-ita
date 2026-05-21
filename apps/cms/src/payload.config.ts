@@ -30,12 +30,12 @@ export default buildConfig({
     components: {
   views: {
     dashboardITA: {
-      Component: '/src/app/(payload)/views/DashboardITA/index#default',
+      Component: '/app/(payload)/views/DashboardITA/index#default',
       path: '/dashboard-ita',
     },
   },
   afterNavLinks: [
-    '/src/app/(payload)/components/NavLinkITA#default',
+    '/app/(payload)/components/NavLinkITA#default',
   ],
 },
   },

@@ -1,48 +1,144 @@
-import Image from 'next/image'
 import type { Tenant } from '@/lib/types'
+import { Phone, Mail, MapPin, AlertTriangle, ExternalLink } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Footer({ tenant }: { tenant?: Tenant }) {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="bg-gray-900 text-gray-300 mt-auto">
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-        {/* Columna 1 — Entidad */}
-        <div>
-          <h3 className="text-white font-bold mb-3">
-            {tenant?.nombre ?? 'Portal Institucional'}
-          </h3>
-          <p className="text-sm leading-relaxed text-gray-400">
-            Entidad pública comprometida con la transparencia y el servicio al ciudadano.
-          </p>
-        </div>
+    <footer className="bg-[#001a33] text-gray-300">
+      {/* Franja dorada superior */}
+      <div className="h-1 bg-[#e8a020]" />
 
-        {/* Columna 2 — Contacto */}
-        <div>
-          <h3 className="text-white font-bold mb-3">Contacto</h3>
-          <ul className="text-sm space-y-2 text-gray-400">
-            <li>📞 Línea de atención: 018000 xxx xxx</li>
-            <li>✉️ notificaciones@entidad.gov.co</li>
-            <li>📍 Dirección, Municipio, Departamento</li>
-            <li>🚨 Línea anticorrupción: 195</li>
-          </ul>
-        </div>
+      {/* Contenido principal */}
+      <div className="container-institucional py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-        {/* Columna 3 — Enlaces */}
-        <div>
-          <h3 className="text-white font-bold mb-3">Enlaces</h3>
-          <ul className="text-sm space-y-2">
-            <li><a href="/politicas" className="text-gray-400 hover:text-white">Políticas de privacidad</a></li>
-            <li><a href="/mapa-sitio" className="text-gray-400 hover:text-white">Mapa del sitio</a></li>
-            <li><a href="https://www.gov.co" className="text-gray-400 hover:text-white" target="_blank" rel="noopener noreferrer">GOV.CO</a></li>
-          </ul>
+          {/* Col 1 — Entidad */}
+          <div className="lg:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-[#0066cc] rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                CC
+              </div>
+              <div>
+                <div className="font-bold text-white text-sm leading-tight">
+                  {tenant?.nombre ?? 'Portal Institucional'}
+                </div>
+                <div className="text-xs text-gray-400">Entidad pública</div>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed text-gray-400 mb-4">
+              Impulsamos el desarrollo empresarial del Cauca, promoviendo la competitividad y la transparencia.
+            </p>
+            {/* Redes sociales */}
+            <div className="flex gap-3">
+              {['FB', 'TW', 'IG', 'YT'].map((red) => (
+                <a
+                  key={red}
+                  href="#"
+                  className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-xs text-gray-300 hover:bg-[#0066cc] hover:text-white transition-colors"
+                >
+                  {red}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Col 2 — Servicios */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+              Servicios
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {[
+                { label: 'Registro Mercantil', href: '/registro-mercantil' },
+                { label: 'Certificados', href: '/certificados' },
+                { label: 'Formación Empresarial', href: '/formacion' },
+                { label: 'Trámites en línea', href: '/tramites' },
+                { label: 'Contratación', href: '/contratacion' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span className="text-[#e8a020]">›</span> {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3 — Transparencia */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+              Transparencia
+            </h3>
+            <ul className="space-y-2 text-sm">
+              {[
+                { label: 'Información de la entidad', href: '/nosotros' },
+                { label: 'Normativa', href: '/normativa' },
+                { label: 'Planeación', href: '/planeacion' },
+                { label: 'Datos abiertos', href: '/datos-abiertos' },
+                { label: 'Participa', href: '/participa' },
+                { label: 'Mapa del sitio', href: '/mapa-sitio' },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                    <span className="text-[#e8a020]">›</span> {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4 — Contacto */}
+          <div>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+              Contacto
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-2 text-gray-400">
+                <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                <span>Conmutador: (602) xxx xxxx</span>
+              </li>
+              <li className="flex items-start gap-2 text-gray-400">
+                <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                <span>Línea gratuita: 018000 xxx xxx</span>
+              </li>
+              <li className="flex items-start gap-2 text-gray-400">
+                <Mail size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                <span>notificaciones@cccauca.org.co</span>
+              </li>
+              <li className="flex items-start gap-2 text-gray-400">
+                <MapPin size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                <span>Popayán, Cauca, Colombia</span>
+              </li>
+              <li className="flex items-start gap-2 text-red-400">
+                <AlertTriangle size={14} className="mt-0.5 shrink-0" />
+                <span>Anticorrupción: <strong className="text-red-300">195</strong></span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Barra inferior GOV.CO */}
-      <div className="border-t border-gray-700 py-4 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-          <span>© {new Date().getFullYear()} {tenant?.nombre}. Todos los derechos reservados.</span>
+      {/* Barra inferior */}
+      <div className="border-t border-white/10">
+        <div className="container-institucional py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+          <span>© {year} {tenant?.nombre ?? 'Portal Institucional'}. Todos los derechos reservados.</span>
           <div className="flex items-center gap-4">
-            <Image src="https://www.gov.co/logo-govco.svg" alt="GOV.CO" width={64} height={24} className="h-6 w-auto opacity-60" />
+            <Link href="/politicas" className="hover:text-gray-300 transition-colors">
+              Política de privacidad
+            </Link>
+            <Link href="/terminos" className="hover:text-gray-300 transition-colors">
+              Términos de uso
+            </Link>
+            <a
+              href="https://www.gov.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 hover:text-gray-300 transition-colors"
+            >
+              GOV.CO <ExternalLink size={10} />
+            </a>
           </div>
         </div>
       </div>

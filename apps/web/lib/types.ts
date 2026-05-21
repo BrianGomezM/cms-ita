@@ -21,20 +21,6 @@ export type Media = {
   height?: number
 }
 
-// Bloques
-export type HeroBlockType = {
-  blockType: 'hero'
-  titulo: string
-  subtitulo?: string
-  imagen?: Media
-  alineacion: 'izquierda' | 'centro' | 'derecha'
-  boton?: {
-    texto?: string
-    url?: string
-    estilo: 'primario' | 'secundario' | 'outline'
-  }
-}
-
 export type RichTextBlockType = {
   blockType: 'rich-text'
   contenido: unknown
@@ -73,13 +59,6 @@ export type ApiExternaBlockType = {
   limiteRegistros: number
 }
 
-export type Block =
-  | HeroBlockType
-  | RichTextBlockType
-  | CardsBlockType
-  | GaleriaBlockType
-  | ApiExternaBlockType
-
 export type Page = {
   id: number
   titulo: string
@@ -90,3 +69,40 @@ export type Page = {
   tenant: Tenant
   imagenSeo?: Media
 }
+
+
+export type HeroServicio = {
+  icono: string
+  label: string
+  href: string
+}
+
+export type HeroBanner = {
+  imagen: Media  // objeto Media del CMS
+  titulo: string
+  href: string
+}
+
+export type HeroBlockType = {
+  blockType: 'hero'
+  titulo: string
+  subtitulo?: string
+  imagenPrincipal?: Media        // ← objeto Media, no string
+  servicios?: HeroServicio[]
+  banners?: HeroBanner[]
+  // campos legacy
+  imagen?: Media
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  boton?: {
+    texto?: string
+    url?: string
+    estilo: 'primario' | 'secundario' | 'outline'
+  }
+}
+
+export type Block =
+  | HeroBlockType
+  | RichTextBlockType
+  | CardsBlockType
+  | GaleriaBlockType
+  | ApiExternaBlockType
