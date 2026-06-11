@@ -153,6 +153,69 @@ export interface Tenant {
     colorSecundario?: string | null;
     fuente?: ('inter' | 'roboto' | 'open-sans') | null;
   };
+  /**
+   * Enlaces que aparecen en el menú principal del sitio web. Arrastra para cambiar el orden.
+   */
+  menuPrincipal?:
+    | {
+        /**
+         * Ej: Servicios
+         */
+        etiqueta: string;
+        /**
+         * Ej: /servicios o https://www.otrosito.com
+         */
+        enlace: string;
+        /**
+         * Enlaces que se despliegan al pasar el mouse sobre este ítem del menú
+         */
+        submenu?:
+          | {
+              etiqueta: string;
+              /**
+               * Ej: /servicios/registro-mercantil
+               */
+              enlace: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  footer?: {
+    direccion?: string | null;
+    telefonoConmutador?: string | null;
+    lineaGratuita?: string | null;
+    lineaAnticorrupcion?: string | null;
+    correoNotificaciones?: string | null;
+    /**
+     * Ej: Lunes a viernes de 8:00 a.m. a 5:00 p.m.
+     */
+    horarioAtencion?: string | null;
+    redesSociales?:
+      | {
+          red: 'facebook' | 'x' | 'instagram' | 'youtube' | 'linkedin' | 'tiktok' | 'whatsapp';
+          /**
+           * Ej: https://www.facebook.com/tuentidad
+           */
+          url: string;
+          id?: string | null;
+        }[]
+      | null;
+    /**
+     * Ej: Política de privacidad, Términos y condiciones, Mapa del sitio
+     */
+    enlacesLegales?:
+      | {
+          etiqueta: string;
+          /**
+           * Ej: /politica-privacidad
+           */
+          enlace: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
   activo?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -411,6 +474,211 @@ export interface Page {
             blockName?: string | null;
             blockType: 'api-externa';
           }
+        | {
+            /**
+             * Ej: Preguntas frecuentes
+             */
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  pregunta: string;
+                  /**
+                   * Texto de la respuesta. Se mostrará al hacer clic en la pregunta.
+                   */
+                  respuesta: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'accordion-faq';
+          }
+        | {
+            /**
+             * El porcentaje de cumplimiento se calcula automáticamente, no se edita aquí.
+             */
+            titulo?: string | null;
+            descripcion?: string | null;
+            /**
+             * Página a donde lleva el botón "Ver más"
+             */
+            enlace?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ita-banner';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: Suministro de equipos de cómputo
+                   */
+                  nombre: string;
+                  modalidad?:
+                    | ('licitacion' | 'directa' | 'minima-cuantia' | 'seleccion-abreviada' | 'concurso-meritos')
+                    | null;
+                  estado: 'abierto' | 'evaluacion' | 'adjudicado' | 'cerrado';
+                  fechaPublicacion?: string | null;
+                  /**
+                   * Ej: $ 50.000.000
+                   */
+                  valor?: string | null;
+                  /**
+                   * URL del proceso en SECOP I o SECOP II
+                   */
+                  enlaceSecop?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contrata';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: Renovación del registro mercantil
+                   */
+                  nombre: string;
+                  descripcion?: string | null;
+                  tipo?: ('virtual' | 'presencial' | 'mixto') | null;
+                  /**
+                   * Ej: 5 días hábiles
+                   */
+                  tiempoRespuesta?: string | null;
+                  /**
+                   * Ej: Gratuito o $ 50.000
+                   */
+                  costo?: string | null;
+                  enlace?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tramite';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: Encuesta de percepción ciudadana
+                   */
+                  titulo: string;
+                  descripcion?: string | null;
+                  tipoMecanismo?: ('pqrsd' | 'encuesta' | 'rendicion-cuentas' | 'consulta' | 'foro') | null;
+                  enlace: string;
+                  fechaLimite?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'participa';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: Empresas registradas por sector 2025
+                   */
+                  nombre: string;
+                  descripcion?: string | null;
+                  formato?: ('csv' | 'xlsx' | 'json' | 'xml' | 'pdf') | null;
+                  fechaActualizacion?: string | null;
+                  enlaceDescarga: string;
+                  enlaceCatalogo?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'datos-abiertos';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: Resolución 1519 de 2020
+                   */
+                  nombre: string;
+                  descripcion?: string | null;
+                  /**
+                   * Ej: Normativa, Informes, Manuales
+                   */
+                  categoria?: string | null;
+                  archivo: number | Media;
+                  fecha?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'document-list';
+          }
+        | {
+            /**
+             * Ej: Nuestra historia, Hitos del plan de desarrollo
+             */
+            titulo?: string | null;
+            descripcion?: string | null;
+            items?:
+              | {
+                  /**
+                   * Ej: 2024 o Marzo de 2025
+                   */
+                  fecha: string;
+                  titulo: string;
+                  descripcion?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'timeline';
+          }
+        | {
+            /**
+             * Ej: Presupuesto por vigencia, Indicadores de gestión
+             */
+            titulo?: string | null;
+            descripcion?: string | null;
+            columnas?:
+              | {
+                  etiqueta: string;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * Agrega una celda por cada columna definida arriba, en el mismo orden.
+             */
+            filas?:
+              | {
+                  celdas?:
+                    | {
+                        valor?: string | null;
+                        id?: string | null;
+                      }[]
+                    | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'data-table';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -571,6 +839,44 @@ export interface TenantsSelect<T extends boolean = true> {
         colorPrimario?: T;
         colorSecundario?: T;
         fuente?: T;
+      };
+  menuPrincipal?:
+    | T
+    | {
+        etiqueta?: T;
+        enlace?: T;
+        submenu?:
+          | T
+          | {
+              etiqueta?: T;
+              enlace?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  footer?:
+    | T
+    | {
+        direccion?: T;
+        telefonoConmutador?: T;
+        lineaGratuita?: T;
+        lineaAnticorrupcion?: T;
+        correoNotificaciones?: T;
+        horarioAtencion?: T;
+        redesSociales?:
+          | T
+          | {
+              red?: T;
+              url?: T;
+              id?: T;
+            };
+        enlacesLegales?:
+          | T
+          | {
+              etiqueta?: T;
+              enlace?: T;
+              id?: T;
+            };
       };
   activo?: T;
   updatedAt?: T;
@@ -752,6 +1058,164 @@ export interface PagesSelect<T extends boolean = true> {
               camposVisibles?: T;
               limiteRegistros?: T;
               encabezados?: T;
+              id?: T;
+              blockName?: T;
+            };
+        'accordion-faq'?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    pregunta?: T;
+                    respuesta?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'ita-banner'?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              enlace?: T;
+              id?: T;
+              blockName?: T;
+            };
+        contrata?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    nombre?: T;
+                    modalidad?: T;
+                    estado?: T;
+                    fechaPublicacion?: T;
+                    valor?: T;
+                    enlaceSecop?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tramite?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    nombre?: T;
+                    descripcion?: T;
+                    tipo?: T;
+                    tiempoRespuesta?: T;
+                    costo?: T;
+                    enlace?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        participa?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    titulo?: T;
+                    descripcion?: T;
+                    tipoMecanismo?: T;
+                    enlace?: T;
+                    fechaLimite?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'datos-abiertos'?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    nombre?: T;
+                    descripcion?: T;
+                    formato?: T;
+                    fechaActualizacion?: T;
+                    enlaceDescarga?: T;
+                    enlaceCatalogo?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'document-list'?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    nombre?: T;
+                    descripcion?: T;
+                    categoria?: T;
+                    archivo?: T;
+                    fecha?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        timeline?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              items?:
+                | T
+                | {
+                    fecha?: T;
+                    titulo?: T;
+                    descripcion?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        'data-table'?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              columnas?:
+                | T
+                | {
+                    etiqueta?: T;
+                    id?: T;
+                  };
+              filas?:
+                | T
+                | {
+                    celdas?:
+                      | T
+                      | {
+                          valor?: T;
+                          id?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

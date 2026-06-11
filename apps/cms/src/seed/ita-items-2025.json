@@ -1,0 +1,2662 @@
+[
+  {
+    "idPregunta": 2620,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "a. ¿Los elementos no textuales (p. ej. imágenes, diagramas, mapas, sonidos, vibraciones, etc.) que aparecen en el sitio web tienen texto alternativo?",
+    "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/accesibilidad-web/"
+  },
+  {
+    "idPregunta": 2621,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "b. ¿Los videos o elementos multimedia tienen subtítulos y audio descripción (cuando no tiene audio original), como también su respectivo guion en texto? (en los siguientes casos también deben tener lenguaje de señas: para las alocuciones presidenciales, información sobre desastres y emergencias, información sobre seguridad ciudadana, rendición de cuentas anual de los entes centrales de cada sector del Gobierno Nacional).",
+    "explicacion": "Proporcione los enlaces o URL donde estén ubicados los videos o elementos multimedia del sitio web, y donde se evidencie que estos tienen subtítulos, audio descripción (cuando no tienen audio original) y su respectivo guion de texto.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/category/noticias/"
+  },
+  {
+    "idPregunta": 2622,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "c. ¿El texto usado en el sitio web es de mínimo 12 puntos, con contraste de color que permita su visualización, y con posibilidad de ampliación hasta el 200% sin desconfiguración del contenido?",
+    "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2623,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "d. ¿El código de programación y el contenido del sitio web está ordenado, con lenguaje de marcado bien utilizado y comprensible sin tener en cuenta el aspecto visual del sitio web, con una estructura organizada, identificación coherente y unificada de los enlaces (vínculos/botones), y con la posibilidad de una navegación lineal y continua con esos enlaces, incluyendo un buscador?",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2624,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "e. ¿Los formularios o casillas de información tienen advertencias e instrucciones claras con varios canales sensoriales (p. ej. Campos con asterisco obligatorios, colores, ayuda sonora, mayúscula sostenida)?",
+    "explicacion": "Proporcione los enlaces o URL donde estén ubicados los formularios o casillas de información para que se verifique si tienen advertencias bien ubicadas y señaladas, que se puedan leer adecuadamente con un software o aplicativo de accesibilidad, y en colores diferentes.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2625,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "f. ¿Al navegar el sitio web con tabulación se hace en orden adecuada y resaltando la información seleccionada?",
+    "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co"
+  },
+  {
+    "idPregunta": 2626,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "g. ¿Se permite control de contenidos con movimientos y parpadeo y de eventos temporizados?",
+    "explicacion": "Proporcione un enlace o URL donde se puede visualizar un certificado emitido por el representante legal de la entidad/empresa, o de cualquiera de sus funcionarios o empleados responsables del cumplimiento regulatorio que tenga capacidad para emitirlo, en el que se acredite el cumplimiento de este criterio.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/accesibilidad-web/"
+  },
+  {
+    "idPregunta": 2627,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "h. ¿El lenguaje de los títulos, páginas, sección, enlaces, mensajes de error, campos de formularios, es en español claro y comprensible (siguiendo la guía de lenguaje claro del DAFP, en el caso de las entidades públicas, disponible en: https://www.portaltributariodecolombia.com/wp-content/uploads/2015/07/portaltributariodecolombia_guia-de-lenguaje-claro-para-servidores-publicos.pdf ).",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2628,
+    "categoria": "1-accesibilidad",
+    "subcategoria": "1.1. Directrices de Accesibilidad Web",
+    "pregunta": "i. ¿Los documentos (Word, Excel, PDF, PowerPoint, etc.) cumplen con los criterios de accesibilidad establecidos en el Anexo 1 de la Resolución 1519 de 2020 para ser consultados fácilmente por cualquier persona?",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/documentos-de-interes/"
+  },
+  {
+    "idPregunta": 2629,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.1. Top Bar(GOV.CO)",
+    "pregunta": "a. Top Bar o barra en la parte superior del sitio web, que redireccione al Portal Único del Estado Colombiano GOV.CO.",
+    "explicacion": "Para entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y descentralizado por servicios o territorialmente (numeral 2.1.1 de la Resolución 1519 de 2020) : Deberán acondicionar una barra superior completa con acceso al Portal Único del Estado colombiano - GOV.CO, que estará ubicada en la parte superior, la cual deberá aparecer en todas sus páginas y vistas. La barra de GOV.CO contendrá su respectivo logotipo el cual deberá dirigir al sitio web https://www.gov.co y demás referencias que sean adoptadas en el lineamiento gráfico que expida el MinTIC.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2712,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "Los sujetos obligados deberán incluir un footer o pie de página que contenga los siguientes ítems:",
+    "explicacion": "\"Para las  entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente deberán cumplir con la totalidad de ítems de este subnivel.   Para todos los demás sujetos obligados:  sólo deberá cumplirse con los literales b, c, y d correspondientes a este subnivel, pudiendo adoptar autónomamente el diseño referido en los lineamientos para acondicionamiento gráfico de sitios web a GOV.CO.\" ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2713,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "a. Imagen del Portal Único del Estado Colombiano y el logo de la marca paísCO - Colombia.",
+    "explicacion": "\"Para las  entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente: su publicación es obligatoria. De igual modo, para las entidades territoriales la paleta de colores podrá variar, conforme con los colores institucionales del respectivo sujeto obligado.   Para todos los demás sujetos obligados:  este ítem no es obligatorio\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2714,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "b .Nombre de la entidad.",
+    "explicacion": "Como mínimo, una dirección incluyendo del departamento (si aplica) y municipio o distrito.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2715,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "c. vínculo a redes sociales, para ser redireccionado en los botones respectivos.",
+    "explicacion": "Para las  entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente: La autoridad deberá, en virtud del artículo 16 del Decreto 2106 de 2019, y del capítulo V del Decreto Nacional 1080 de 2014, y demás normas expedidas por el Archivo General de la Nación relacionadas, disponer de lo necesario para que la emisión, recepción y gestión de comunicaciones oficiales, a través de los diversos canales electrónicos, asegure un adecuado tratamiento archivístico y estar debidamente alineado con la gestión documental electrónica y de archivo digital.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/"
+  },
+  {
+    "idPregunta": 2716,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "DATOS DE CONTACTO:",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2717,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "a. Teléfono conmutador.",
+    "explicacion": "Todas las líneas telefónicas deberán incluir el prefijo de país +57, y el número significativo nacional (indicativo nacional) que determine la Comisión de Regulación de Comunicaciones.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2718,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "b.Línea gratuita o línea de servicio a la ciudadanía/usuario.",
+    "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2719,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "c. Línea anticorrupción.",
+    "explicacion": "\"Para las entidades de la rama ejecutiva de los niveles nacional y territorial del sector central y las descentralizadas por servicios o territorialmente:  la publicación es obligatoria.  Para los demás sujetos obligados:  solo debe hacerse si cuenta con la misma.  Todas las líneas telefónicas deberán incluir el prefijo de país +57, y el número significativo nacional (indicativo nacional) que determine la Comisión de Regulación de Comunicaciones.\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2720,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "d.  Canales físicos y electrónicos para atención al público.",
+    "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2721,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "e.  Correo de notificaciones judiciales.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2722,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "f. Enlace para el mapa del sitio.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/mapa-de-procesos/"
+  },
+  {
+    "idPregunta": 2723,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.2. Footer o pie de página",
+    "pregunta": "g. Enlace para vincular a las políticas que hace referencia en el numeral 2.3 ( Términos y condiciones, Política de privacidad y tratamiento de datos personales, Política de derechos de autor y/o autorización de uso sobre los  contenidos y otras políticas que correspondan conforme con la normatividad vigente).",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas_/"
+  },
+  {
+    "idPregunta": 2792,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.3. Requisitos mínimos de políticas y cumplimiento legal",
+    "pregunta": "a. Términos y condiciones.",
+    "explicacion": "Todos los sujetos obligados deberán publicar los términos y condiciones para el uso de todos sus sitios web, plataformas, aplicaciones, trámites y servicios, servicios de pasarela de pago, consulta de acceso a información pública, otros procedimientos administrativos, entre otros. Como mínimo deberán incluir lo siguiente: condiciones, alcances y límites en el uso; derechos y deberes de los usuarios; alcance y límites de la responsabilidad de los sujetos obligados; contacto para asuntos relacionados con los términos y condiciones; referencia a la política de privacidad y tratamiento de datos personales; referencia a la política de derechos de autor.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas_/"
+  },
+  {
+    "idPregunta": 2793,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.3. Requisitos mínimos de políticas y cumplimiento legal",
+    "pregunta": "b. Política de privacidad y tratamiento de datos personales.",
+    "explicacion": "Todos los sujetos obligados deberán publicar su política de privacidad y tratamiento de datos personales, conforme las disposiciones de la Ley 1581 del 2012, y demás instrucciones o disposiciones relacionadas, o aquellas que las modifiquen, adicionen o deroguen.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas_/"
+  },
+  {
+    "idPregunta": 2794,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.3. Requisitos mínimos de políticas y cumplimiento legal",
+    "pregunta": "c. Política de derechos de autor y/o autorización de uso sobre los  contenidos.",
+    "explicacion": "Los sujetos obligados deberán publicar su política de derechos de autor y/o autorización de uso de los datos y contenidos, en la cual, deberán incluir el alcance y limitaciones relacionados con el uso de datos, información, contenidos y códigos fuente producidos por los sujetos obligados.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas_/"
+  },
+  {
+    "idPregunta": 2795,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.3. Requisitos mínimos de políticas y cumplimiento legal",
+    "pregunta": "d. Otras políticas que correspondan conforme con la normativa vigente.",
+    "explicacion": "Anexo Técnico 2 de la Resolución 1519 de 2020 ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas_/"
+  },
+  {
+    "idPregunta": 2816,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.4. Requisitos mínimos en menú destacado",
+    "pregunta": "a. Menú de Transparencia y Acceso a la Información Publica.",
+    "explicacion": "Los sujetos obligados tendrán que habilitar como mínimo tres menús destacados en el header o encabezado del sitio web (parte superior del sitio web), y en todo caso, en la parte inferior de la barra superior (top bar, o menú de opciones principal superior), incluyendo los ítems de: 1. Transparencia y Acceso a la Información Publica, 2. Atención y Servicios  la Ciudadanía y 3. Participa.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2817,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.4. Requisitos mínimos en menú destacado",
+    "pregunta": "b. Menú de Atención y servicios a la Ciudadanía.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/protocolo-de-atencion-al-ciudadano/"
+  },
+  {
+    "idPregunta": 2818,
+    "categoria": "2-identidad-visual",
+    "subcategoria": "2.4. Requisitos mínimos en menú destacado",
+    "pregunta": "c. Menú   \"Participa\".",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2630,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.1. Misión, visión, funciones y deberes",
+    "pregunta": "a. Misión y visión.",
+    "explicacion": "De acuerdo con la normativa que le aplique y las definiciones internas, incluyendo norma de creación y sus modificaciones.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/quienes-somos/"
+  },
+  {
+    "idPregunta": 2631,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.1. Misión, visión, funciones y deberes",
+    "pregunta": "b. Funciones y deberes.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/funciones-y-deberes/"
+  },
+  {
+    "idPregunta": 2724,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.2. Estructura orgánica - organigrama",
+    "pregunta": "a. Organigrama ",
+    "explicacion": "Incluirá, de manera legible, la descripción de la estructura orgánica, y la información de las divisiones o dependencias, extensiones y al menos un correo electrónico de los mismos, informando los nombres, apellido y cargo de la persona que sea responsable de la respectiva área.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/estructura-organizacional/"
+  },
+  {
+    "idPregunta": 2796,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.3. Mapas y cartas descriptivas de los procesos",
+    "pregunta": "a. Mapas y cartas descriptivas de los procesos.",
+    "explicacion": "Se deberán informar los procesos y procedimientos aplicables para la toma de decisiones conforme con sus competencias. Los mapas y cartas descriptivos pueden entenderse de igual modo como mapas de caracterización o flujogramas relacionados con los procesos propios de la gestión del sujeto obligado.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-estrategicos/"
+  },
+  {
+    "idPregunta": 2819,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias",
+    "pregunta": "a. Información de contacto.",
+    "explicacion": "Se cumple con el requisito publicando la misma información de datos de contacto  especificada en el numeral 2. 2. 1 , numeral 4 del Anexo 2 -Footer o pie de página-:a. Teléfono conmutador, b.Línea gratuita o línea de servicio a la ciudadanía/usuario, c. Línea anticorrupción (según la naturaleza del sujeto obligado), d. Canales físicos y electrónicos para atención al público, e. Correo de notificaciones judiciales, f. Enlace para el mapa del sitio, g. Enlace para vincular a las políticas que hace referencia en el numeral 2.3 ( Términos y condiciones, Política de privacidad y tratamiento de datos personales, Política de derechos de autor y/o autorización de uso sobre los  contenidos y otras políticas que correspondan conforme con la normatividad vigente).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-corporativo/"
+  },
+  {
+    "idPregunta": 2820,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias",
+    "pregunta": "b. Ubicación física (nombre de la sede si aplica).",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2015.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-corporativo/"
+  },
+  {
+    "idPregunta": 2821,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias",
+    "pregunta": "c. Dirección  (incluyendo el departamento si aplica) y municipio o distrito (en caso que aplique, se deberá indicar el nombre del corregimiento).",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2016.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-corporativo/"
+  },
+  {
+    "idPregunta": 2822,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias",
+    "pregunta": "d. Horarios y días de atención al público.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2017.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-corporativo/"
+  },
+  {
+    "idPregunta": 2823,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.4. Directorio Institucional incluyendo sedes, oficinas, sucursales, o regionales, y dependencias",
+    "pregunta": "e. Datos de contacto específicos de las áreas de contacto o dependencias (en caso de que aplique).",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15, Dirección de la sede principal, Art. 9, lit a) Ley 1712 de 2018.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-corporativo/"
+  },
+  {
+    "idPregunta": 2826,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "a. Nombres y apellidos completos.",
+    "explicacion": "Directorio de servidores públicos, empleados o contratistas. El directorio deberá estar vinculado con la información del SIGEP conforme con los lineamientos y definiciones del Departamento Administrativo de la Función Pública. Esta información deberá estar actualizada cada vez que ingrese o se desvincule un servidor público, empleado o contratista. Este requisito se entenderá cumplido a través de un enlace a la publicación de la información que contiene el directorio en el Sistema de Información de Empleo Público – SIGEP.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2827,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "b. País, Departamento y Ciudad de nacimiento.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2828,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "c. Formación académica.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2829,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "d. Experiencia laboral y profesional.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2830,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "e. Empleo, cargo o actividad que desempeña.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2831,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "f. Dependencia en la que presta sus servicios en la entidad o institución.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2832,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "g. Dirección de correo electrónico institucional.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2833,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "h. Teléfono Institucional.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2834,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "i. Escala salarial según las categorías para servidores públicos y/o empleados del sector privado.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2835,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.5. Directorio de servidores públicos, empleados o contratistas",
+    "pregunta": "j. Objeto, valor total de los honorarios, fecha de inicio y de terminación, cuando se trate contratos de prestación de servicios.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2838,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.6. Directorio de entidades",
+    "pregunta": "a. Listado de entidades que integran el sector/rama/organismo, con enlace al sitio Web de cada una de éstas, en el caso de existir.",
+    "explicacion": "Para partidos o movimientos políticos:  se cumple con este ítem con la  publicación del enlace web de  las entidades que están directamente relacionadas con estas organizaciones, a saber: Consejo Nacional Electoral, Ministerio del Interior, Registraduría,  etc.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-entidades/"
+  },
+  {
+    "idPregunta": 2840,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.7. Directorio de agremiaciones, asociaciones y otros grupos de interés",
+    "pregunta": "a. Directorio de agremiaciones, asociaciones y otros grupos de interés.",
+    "explicacion": "El sujeto obligado deberá informar los gremios o asociaciones en las que participe como asociado, para lo cual, deberá publicar el enlace al sitio web.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/directorio-de-agremiaciones-o-asociaciones/"
+  },
+  {
+    "idPregunta": 2849,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.8. Servicio al público, normas, formularios y protocolos de atención",
+    "pregunta": "a. Servicio al público, normas, formularios y protocolos de atención.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15 ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-de-soporte/"
+  },
+  {
+    "idPregunta": 2850,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.8. Servicio al público, normas, formularios y protocolos de atención",
+    "pregunta": "b. Normas.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 15.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-de-soporte/"
+  },
+  {
+    "idPregunta": 2851,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.8. Servicio al público, normas, formularios y protocolos de atención",
+    "pregunta": "c. Formularios.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-de-soporte/"
+  },
+  {
+    "idPregunta": 2852,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.8. Servicio al público, normas, formularios y protocolos de atención",
+    "pregunta": "d. Protocolos de Atención.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-de-soporte/"
+  },
+  {
+    "idPregunta": 2855,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.9. Procedimientos que se siguen para tomar decisiones en las diferentes áreas",
+    "pregunta": "a. Procedimientos que se siguen para tomar decisiones en las diferentes áreas",
+    "explicacion": "El sujeto obligado debe publicar la descripción de los procesos y procedimientos para la toma de decisiones en las diferentes áreas.  Para las entidades de naturaleza pública, se entenderá como cumplido el requisito con la publicación de los actos administrativos relacionados con la toma de decisiones en la entidad.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/mecanismos-para-presentar-quejas-y-reclamos/"
+  },
+  {
+    "idPregunta": 2857,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.10. Mecanismo de presentación directa de solicitudes, quejas y reclamos a disposición del público en relación con acciones u omisiones del sujeto obligado",
+    "pregunta": "a. Mecanismo de presentación directa de solicitudes, quejas y reclamos.",
+    "explicacion": "Para las entidades de naturaleza pública, se entenderá como cumplido este ítem con la publicación correspondiente de su canal de PQRSD.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/mecanismos-para-presentar-quejas-y-reclamos/"
+  },
+  {
+    "idPregunta": 2867,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.11. Calendario de actividades",
+    "pregunta": "a. Calendario de actividades.",
+    "explicacion": "El sujeto obligado habilita un calendario de eventos y fechas clave relacionadas con sus procesos misionales.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/events/"
+  },
+  {
+    "idPregunta": 2868,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.12. Información sobre decisiones que pueden afectar al público",
+    "pregunta": "a.  Información sobre decisiones que puede afectar al público.",
+    "explicacion": "Publicar el contenido de toda decisión y/o política que haya adoptado y afecte al público, junto con sus fundamentos e interpretación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/noticias/"
+  },
+  {
+    "idPregunta": 2869,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "a. Nombre de la entidad.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 16.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2870,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "b. Dirección.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2871,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "c. Teléfono.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2872,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "d. E-mail.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2873,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "e. Enlace al sitio web del ente o autoridad.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2874,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "f. Informar el tipo de control  (fiscal, social, político, regulatorio, etc.).",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2875,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.13. Entes y autoridades que lo vigilan",
+    "pregunta": "g. Mecanismos internos de supervisión, notificación y vigilancia pertinente del sujeto obligado.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-externo/"
+  },
+  {
+    "idPregunta": 2876,
+    "categoria": "3-informacion-entidad",
+    "subcategoria": "3.14. Publicación de hojas de vida",
+    "pregunta": "a. Publicación de hojas de vida.",
+    "explicacion": "Publicar la hoja de vida de aspirantes, junto con el email para presentar comentarios por parte de la ciudadanía. Para el caso de las entidades de orden nacional, el requisito se cumple mediante link al Portal de Aspirantes de la Presidencia de la República, disponible en: https://aspirantes.presidencia.gov.co.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/listado-contratistas/"
+  },
+  {
+    "idPregunta": 2632,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Leyes.",
+    "explicacion": "De acuerdo con las leyes que le apliquen.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1fSGErCiGlsksXoDqv1syaLlcxGCC2zmA/view"
+  },
+  {
+    "idPregunta": 2633,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Decreto Único Reglamentario.",
+    "explicacion": "De acuerdo con el decreto único reglamentario (si aplica).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1fSGErCiGlsksXoDqv1syaLlcxGCC2zmA/view"
+  },
+  {
+    "idPregunta": 2634,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Normativa aplicable.",
+    "explicacion": "Decretos, resoluciones, circulares, directivas presidenciales, actos  administrativos, autos o fallos judiciales que le apliquen (siempre que sea obligación su publicación) y que no se encuentren compilados, y demás normativa, incluyendo para entes territoriales las ordenanzas y los acuerdos municipales o distritales.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2635,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Vínculo al Diario o Gaceta Oficial.",
+    "explicacion": "Todas las entidades de los niveles nacional, territorial y autónomos, deberán incluir el vínculo al Diario Oficial, y para el caso de entidades territoriales, se deberá incluir un link para consultar las gacetas oficiales que les aplique. hipervínculos que direccionen a estas normas específicas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2636,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Políticas, lineamientos y manuales.",
+    "explicacion": "Cada sujeto obligado deberá publicar sus políticas, lineamientos y manuales, , según le aplique.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2637,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "a. Políticas y lineamientos sectoriales.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2638,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "b. Manuales.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2639,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "c. Otros lineamientos y manuales que le aplique.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2640,
+    "categoria": "4-normativa",
+    "subcategoria": "4.1. Normativa de la entidad o autoridad",
+    "pregunta": "Agenda Regulatoria.",
+    "explicacion": "Incluir en orden cronológico la agenda regulatoria, identificando claramente si ha sido adicionada o modificada. De conformidad con lo establecido por el Decreto 1273 de 2020, la obligación de cumplir con la Agenda Regulatoria es exclusiva para los Ministerios y Departamentos Administrativos de la Rama Ejecutiva del Poder Público.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica debido a la naturaleza de la entidad"
+  },
+  {
+    "idPregunta": 2725,
+    "categoria": "4-normativa",
+    "subcategoria": "4.2. Búsqueda de normas",
+    "pregunta": "a.  Sistema Único de Información Normativa – SUIN.",
+    "explicacion": "Deberá habilitarse la funcionalidad de consulta localizada y el vínculo para acceder al SUIN del Ministerio de Justicia y del Derecho.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/transparencia/"
+  },
+  {
+    "idPregunta": 2726,
+    "categoria": "4-normativa",
+    "subcategoria": "4.2. Búsqueda de normas",
+    "pregunta": "b. Sistema de búsquedas de normas, propio de la entidad.",
+    "explicacion": "El sujeto obligado podrá publicar su propio mecanismo de búsqueda de normas para las normas que expida, sancione o revise en el marco de sus competencias.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1fSGErCiGlsksXoDqv1syaLlcxGCC2zmA/view"
+  },
+  {
+    "idPregunta": 2797,
+    "categoria": "4-normativa",
+    "subcategoria": "4.3. Proyectos de normas para comentarios",
+    "pregunta": "a. Proyectos normativos.",
+    "explicacion": "Publicar los proyectos normativos para comentarios, indicando los datos de contacto y plazo para que los interesados se pronuncien.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica debido a la naturaleza de la entidad"
+  },
+  {
+    "idPregunta": 2798,
+    "categoria": "4-normativa",
+    "subcategoria": "4.3. Proyectos de normas para comentarios",
+    "pregunta": "b. Comentarios y documento de respuesta a comentarios.",
+    "explicacion": "En cada proyecto normativo se deberá publicar copia de los comentarios allegados (protegiendo la información personal o sensible según disposiciones de ley, email y demás datos de contacto, información de carácter reservado allegada); así mismo, se publicará el documento de respuesta a los comentarios. Esta obligación podrá cumplirse a través del SUCOP, una vez entre en vigencia.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica debido a la naturaleza de la entidad"
+  },
+  {
+    "idPregunta": 2799,
+    "categoria": "4-normativa",
+    "subcategoria": "4.3. Proyectos de normas para comentarios",
+    "pregunta": "c. Participación ciudadana en la expedición de normas a través el SUCOP.",
+    "explicacion": "Conforme los lineamientos que expida el Departamento Nacional de Planeación, las autoridades deberán publicar sus proyectos normativos.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica debido a la naturaleza de la entidad"
+  },
+  {
+    "idPregunta": 2641,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.1. Plan Anual de Adquisiciones",
+    "pregunta": "Plan anual de adquisiciones de la entidad, junto con las  modificaciones que se realicen.",
+    "explicacion": "\"Plan anual de adquisiciones de la entidad, junto con las  modificaciones que se realicen, para lo cual, deberá  informar que la versión del documento ha sido  ajustada, e indicar la fecha de la actualización. La  publicación se puede surtir con el link que  direccione a la información en el SECOP.\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-anual-de-adquisiciones/"
+  },
+  {
+    "idPregunta": 2727,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.2. Publicación de la información contractual",
+    "pregunta": "Información de gestión contractual en el SECOP.",
+    "explicacion": "Los sujetos obligados que contratan con cargo a recursos públicos o recursos públicos y privados, deben publicar la información de su gestión contractual en el SECOP, conforme lo disponen la Ley 1150 del 2007, y el Decreto Único Reglamentario 1082 del 2015. En la página web del sujeto obligado debe indicarse en link para redireccionar a las búsquedas de procesos contractuales en el SECOP I y SECOP II (según aplique).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/ejecucion-presupuestal/"
+  },
+  {
+    "idPregunta": 2800,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "Publicar el estado de la ejecución de los contratos, indicando: ",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2801,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "a. Fecha de inicio y finalización.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2802,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "b. Valor del contrato.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2803,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "c. Porcentaje de ejecución.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2804,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "d. Recursos totales desembolsados o pagados.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2805,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "e. Recursos pendientes de ejecutar.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2806,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.3. Publicación de la ejecución de los contratos",
+    "pregunta": "f. Cantidad de otrosíes y adiciones realizadas  (y sus montos).",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/publicacion-de-la-ejecucion-de-contratos/"
+  },
+  {
+    "idPregunta": 2824,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.4. Manual de contratación, adquisición y/o compras",
+    "pregunta": "Manual de contratación, que contiene los procedimientos, lineamientos y políticas en materia de adquisición y compras.",
+    "explicacion": "Art.11, Lit g), Ley 1712 de 2014 Art .9, Dec. 103 de 2015.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/18FY644oJ3b4-5JwZzoctVjLUlY3FG-Z1/view"
+  },
+  {
+    "idPregunta": 2836,
+    "categoria": "5-contratacion",
+    "subcategoria": "5.5. Formatos o modelos de contratos o pliegos tipo",
+    "pregunta": "Publicar los formatos o modelos de contrato y pliegos tipo, en caso de que aplique.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Pagina 19.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/18FY644oJ3b4-5JwZzoctVjLUlY3FG-Z1/view"
+  },
+  {
+    "idPregunta": 2642,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.1. Presupuesto general de ingresos, gastos e inversión",
+    "pregunta": "Publicar el presupuesto general de ingresos, gastos e inversión de cada año fiscal, incluyendo sus modificaciones.",
+    "explicacion": "Para el efecto, deberá indicar que la versión del documento ha sido  ajustada e indicar la fecha de la actualización. Se deberá incluir un anexo que indique las rentas o ingresos, tasas y frecuencias de cobro en formato abierto para consulta de los interesados.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/presupuesto-general-asignado/"
+  },
+  {
+    "idPregunta": 2728,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.2. Ejecución presupuestal",
+    "pregunta": "Publicar la información de la ejecución presupuestal aprobada y ejecutada de ingresos y gastos anuales.",
+    "explicacion": "Publicar la información de la ejecución presupuestal aprobada y ejecutada de ingresos y gastos anuales.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/ejecucion-presupuestal/"
+  },
+  {
+    "idPregunta": 2807,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "PLAN DE ACCIÓN: ",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2808,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "a. Objetivos.",
+    "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, los planes a que hace referencia el artículo 74 de la Ley 1474 del 2011 y el Decreto 612 del 2018 de acuerdo con las orientaciones del Manual Operativo del Modelo Integrado de Planeación y Gestión (MIPG). Conforme lo dispone el parágrafo del artículo 74 de la Ley 1474  del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.  Los sujetos deberán, cada tres (3) meses, publicar la información relacionada con la ejecución de metas, objetivos, indicadores de gestión y/o desempeño, de conformidad con sus programas operativos y los demás planes exigidos por la normativa vigente.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2809,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "b. Estrategias.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2810,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "c. Proyectos.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2811,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "d. Metas.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2812,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "e. Responsables.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2813,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "f. Planes generales de compras.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2814,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "g. Distribución presupuestal de proyectos de inversión junto a los indicadores de gestión.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2815,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.3. Plan de Acción",
+    "pregunta": "h. Presupuesto desagregado con modificaciones.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/plan-de-accion-de-emcaservicios/"
+  },
+  {
+    "idPregunta": 2825,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.4. Proyectos de Inversión",
+    "pregunta": "Publicar cada proyecto de inversión, según la fecha de inscripción en el respectivo Banco de Programas y Proyectos de Inversión.",
+    "explicacion": "Publicar cada proyecto de inversión, según la fecha de inscripción en el respectivo Banco de Programas y Proyectos de Inversión, conforme lo dispone el artículo 77 de la Ley 1474 del 2011, así como cada tres (3) meses el avance de ejecución de dichos proyectos. Para el caso de las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2837,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.5. Informes de empalme",
+    "pregunta": "Informe de empalme del representante legal y los ordenadores del gasto, cuando haya un cambio del o de los mismos.",
+    "explicacion": "Publicar el informe de empalme del representante legal, y los ordenadores del gasto, cuando se den cambios de los mismos.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informe-de-empalme/"
+  },
+  {
+    "idPregunta": 2839,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.6. Información pública y/o relevante",
+    "pregunta": "Divulgar los informes o comunicados de información relevante.",
+    "explicacion": "Divulgar los informes o comunicados de información relevante que publiquen ante la Superintendencia Financiera, y/o la Superintendencia de Sociedades, cuando sea obligación de las empresas industriales y comerciales del Estado, o Sociedad de Economía Mixta.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2841,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "Informe de Gestión.",
+    "explicacion": "Publicar anualmente, antes del 31 de enero de cada año, el informe de gestión a que hace referencia el artículo 74 de la Ley 1474 del 2011.  Conforme lo dispone el parágrafo del artículo 74 de  la Ley 1474 del 2011 las “empresas industriales y comerciales del Estado y las Sociedades de Economía Mixta estarán exentas de publicar la información relacionada con sus proyectos de inversión”.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informes-de-gestion-evaluacion-y-auditoria-3/"
+  },
+  {
+    "idPregunta": 2842,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "Informe de rendición de cuentas ante la Contraloría General de la República, o a los organismos de Contraloría o Control territoriales.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informes-de-gestion-evaluacion-y-auditoria-3/"
+  },
+  {
+    "idPregunta": 2843,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "Informe de rendición de cuentas a la ciudadanía.",
+    "explicacion": "Publicar los informes de rendición de cuenta sobre resultados, avances de la gestión y garantía de derecho de rendición de cuentas, incluyendo un informe de respuesta a las solicitudes o inquietudes presentadas por los interesados (antes, durante y después del ejercicio de la rendición). En esta sección se debe incluir los informes de rendición de cuentas relacionados con la implementación del proceso de paz, y los demás que apliquen conforme con la normativa vigente, directrices presidenciales o conforme con los lineamientos de la Política de Gobierno Digital.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informes-de-gestion-evaluacion-y-auditoria-3/"
+  },
+  {
+    "idPregunta": 2844,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "Informes a organismos de inspección, vigilancia y control (si le aplica).",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informes-de-gestion-evaluacion-y-auditoria-3/"
+  },
+  {
+    "idPregunta": 2845,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "Planes de mejoramiento:",
+    "explicacion": "Publicar los Planes de Mejoramiento vigentes exigidos por los entes de control o auditoría externos o internos. De acuerdo con los hallazgos realizados por el respectivo organismo de control, los planes de mejoramiento se deben publicar de acuerdo con la periodicidad establecida por éste. Así mismo, el sujeto obligado debe contar con un enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado. De igual forma debe publicar los planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2846,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "a. Publicar los Planes de Mejoramiento vigentes exigidos por los entes de control o auditoría externos o internos.",
+    "explicacion": " De acuerdo con los hallazgos realizados por el respectivo organismo de control, los planes de mejoramiento se deben publicar de acuerdo con la periodicidad establecida por éste.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2847,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "b. Enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado.",
+    "explicacion": "Enlace al organismo de control donde se encuentren los informes que éste ha elaborado en relación con el sujeto obligado.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/entes-de-control-que-vigilan-la-entidad-y-mecanismos-de-supervision/"
+  },
+  {
+    "idPregunta": 2848,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.7. Informes de gestión, evaluación y auditoría",
+    "pregunta": "c. Planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+    "explicacion": "Planes de mejoramiento derivados de los ejercicios de rendición de cuentas ante la ciudadanía y grupos de valor.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2853,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.8. Informes de la Oficina de Control Interno",
+    "pregunta": "a. Informe pormenorizado.",
+    "explicacion": "Publicar el informe relacionado con el mecanismo de seguimiento al cumplimiento de las orientaciones y obligaciones contenidas en el Plan Anticorrupción y de Atención al Ciudadano, según los lineamientos del Departamento Administrativo de la Función Pública y demás autoridades competentes, al que hace referencia el artículo 9 de la Ley 1474 del 2011, y el artículo 5 del decreto reglamentario 2641 del 2012.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/reporte-de-control-interno/"
+  },
+  {
+    "idPregunta": 2854,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.8. Informes de la Oficina de Control Interno",
+    "pregunta": "b. Otros informes y/o consultas a bases de datos o sistemas de información, conforme le aplique.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/reporte-de-control-interno/"
+  },
+  {
+    "idPregunta": 2856,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.9. Informe sobre Defensa Pública y Prevención del Daño Antijurídico",
+    "pregunta": "Informe sobre Defensa Pública y Prevención del  Daño Antijurídico.",
+    "explicacion": "El requisito se entenderá como cumplido con el  redireccionamiento al sistema eKOGUI de la Agencia de  Defensa Jurídica de la Nación, y sólo será de obligatorio cumplimiento para las entidades de naturaleza pública.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/defensa-judicial/"
+  },
+  {
+    "idPregunta": 2858,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "Informe, en materia de seguimiento sobre las quejas y  reclamos.",
+    "explicacion": "Conforme con lo establecido en el artículo 54 de la Ley 190 de 1995 y el decreto reglamentario 2641 del 2012.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informes-de-gestion-evaluacion-y-auditoria-3/"
+  },
+  {
+    "idPregunta": 2859,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "Informe sobre solicitudes de acceso a la  información, el cual debe contener lo siguiente: ",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2860,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "a.  Sección en el informe reportando la cantidad de solicitudes recibidas.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1JN6RP8lj98lxmjsIBnxf9FVZbzLTvDmi/view?pli=1"
+  },
+  {
+    "idPregunta": 2861,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "Si en la pregunta anterior contestó la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron recibidas durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+    "explicacion": "Registre en el  campo  \"justificación\" el NÚMERO de solicitudes recibidas, el cual deberá corresponder con lo consignado en el informe publicado. ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "873"
+  },
+  {
+    "idPregunta": 2862,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "b. Sección en el informe reportando la cantidad de solicitudes que fueron trasladadas a otra entidad.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2. ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1JN6RP8lj98lxmjsIBnxf9FVZbzLTvDmi/view"
+  },
+  {
+    "idPregunta": 2863,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "Si en la pregunta anterior contestó la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron trasladadas a otra entidad durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+    "explicacion": "Registre en el campo \"justificación\" el NÚMERO de solicitudes que fueron trasladadas, el cual deberá corresponder con lo consignado en el informe publicado.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "0"
+  },
+  {
+    "idPregunta": 2864,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "c. Sección en el informe reportando el tiempo de respuesta a cada solicitud.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1JN6RP8lj98lxmjsIBnxf9FVZbzLTvDmi/view"
+  },
+  {
+    "idPregunta": 2865,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "d. Sección en el informe reportando el número de solicitudes en las que se negó el acceso a la información.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1JN6RP8lj98lxmjsIBnxf9FVZbzLTvDmi/view"
+  },
+  {
+    "idPregunta": 2866,
+    "categoria": "6-planeacion",
+    "subcategoria": "6.10. Informes trimestrales sobre acceso a información, quejas y reclamos",
+    "pregunta": "Si en la pregunta anterior contestó la opción “SI”, responda esta pregunta seleccionando SIEMPRE la opción NO APLICA (N/A), y en el campo “JUSTIFICACIÓN LEGAL” proporcione la CANTIDAD A MODO DE VALOR NUMÉRICO de solicitudes de acceso a la información que fueron negadas durante la última vigencia; de igual modo, en caso de no contar con la cifra señalada en el informe, seleccione la opción NO APLICA (N/A) y escriba N/A en el campo de Justificación Legal.",
+    "explicacion": "Registre en el campo \"justificación\" el NÚMERO de solicitudes en las que se negó el acceso a la información, el cual deberá corresponder con lo consignado en el informe publicado.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "0"
+  },
+  {
+    "idPregunta": 2643,
+    "categoria": "7-tramites",
+    "subcategoria": "7.1. Trámites",
+    "pregunta": "TRÁMITES:",
+    "explicacion": "Esta sección vinculará con el menú de trámites, conforme con la estandarización que se indica en el lineamiento general y las guías de sede electrónica, trámites, otros procedimientos administrativos y consultas de acceso a información pública para integrarlas al Portal Único del Estado colombiano, expedidas por MinTIC. De igual forma, de conformidad con lo señalado  por el MinTIC (miércoles 16 de mayo de 2021), se precisó que el nivel de trámites hace referencia a la información que reposa en el Sistema Único de Trámites -SUIT-, con lo cual se entenderá como cumplido este nivel con la publicación correspondiente del enlace del SUIT en el sitio web del sujeto obligado de naturaleza pública.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2644,
+    "categoria": "7-tramites",
+    "subcategoria": "7.1. Trámites",
+    "pregunta": "a Normatividad que sustenta el trámite.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tramite-y-servicios/"
+  },
+  {
+    "idPregunta": 2645,
+    "categoria": "7-tramites",
+    "subcategoria": "7.1. Trámites",
+    "pregunta": "Procesos.",
+    "explicacion": "Procesos para la realización del trámite.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/protocolo-de-atencion-al-ciudadano/"
+  },
+  {
+    "idPregunta": 2646,
+    "categoria": "7-tramites",
+    "subcategoria": "7.1. Trámites",
+    "pregunta": "Costos asociados.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tramite-y-servicios/"
+  },
+  {
+    "idPregunta": 2647,
+    "categoria": "7-tramites",
+    "subcategoria": "7.1. Trámites",
+    "pregunta": "Formatos y/o formularios asociados.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tramite-y-servicios/"
+  },
+  {
+    "idPregunta": 2648,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "a. Descripción General del Menú Participa.",
+    "explicacion": "Para cumplir con el requisito, el sujeto obligado deberá informar: a. ¿De qué se trata el Menú Participa? b. ¿Cuáles son las secciones que lo integran? c. ¿Cómo se puede participar?. Se entenderá como cumplido sólo si se publica la información completa de estos tres elementos.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2649,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "b. Publicar la información sobre los mecanismos, espacios o instancias del Menú Participa.",
+    "explicacion": "Publicar la información sobre los mecanismos, espacios o instancias del Menú Participa establecidos por la normatividad específica que obliga a la entidad y/o los que ofrece para la promoción de la participación en la descripción general del Menú Participa.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/protocolo-de-atencion-al-ciudadano/"
+  },
+  {
+    "idPregunta": 2650,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "c. Publicar la Estrategia de participación ciudadana.",
+    "explicacion": "\"Publicar la Estrategia de participación ciudadana o generar  un enlace (hipervínculo) que redireccione a este documento,  en el marco de las publicaciones del plan institucional que  se disponen en el Menú de Transparencia y Acceso a la  Información para consulta general.\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2651,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "d. Publicar la Estrategia anual de rendición de cuentas.",
+    "explicacion": "Publicar la Estrategia anual de rendición de cuentas o generar un enlace (hipervínculo) que redireccione a este documento, en el marco de las publicaciones del plan institucional que se disponen en el Menú de Transparencia y Acceso a la Información para consulta general.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/rendicion-de-cuentas/"
+  },
+  {
+    "idPregunta": 2652,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "e. Publicar el Plan Anticorrupción y de Atención al Ciudadano (PAAC).",
+    "explicacion": "Publicar el Plan Anticorrupción y de Atención al Ciudadano (PAAC) o generar un enlace (hipervínculo) que redireccione a este documento, en el marco de las publicaciones del plan institucional que se disponen en el Menú de Transparencia y - DOCUMENTO OFICIAL - 1 8 Acceso a la Información para consulta general.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/procesos-de-prevencion-y-evaluacion/"
+  },
+  {
+    "idPregunta": 2653,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "f. Publicación de informes de rendición de cuentas generales.",
+    "explicacion": "Crear un enlace o hipervínculo que redireccione a la sección de Transparencia y Acceso a la Información en la cual estén publicados los informes de rendición de cuentas generales y, si le aplica, los informes de rendición de cuentas sobre la implementación del Plan Marco de Implementación (PMI) del Acuerdo de paz. Para conocer las responsabilidades de la entidad en este tema, consultar el micrositio del sistema de rendición de cuentas de la implementación del acuerdo de paz (SIRCAP) en: https://www.funcionpublica.gov.co/sircap ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/preguntas-y-respuestas-frecuentes/"
+  },
+  {
+    "idPregunta": 2654,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "g. Convocatorias para la participación de la ciudadanía y grupos de valor en los espacios, instancias o acciones que ofrece la entidad.",
+    "explicacion": "Convocar a la participación de la ciudadanía y grupos de valor en los espacios, instancias o acciones que ofrece la entidad en el Menú Participa, es importante que su difusión se enfoque en la población objetivo que fue definida en la caracterización de usuarios. La convocatoria debe detallar el tema, objetivo, antecedentes, requisitos o reglas de participación, metodología, resultados esperados, plazos y etapas, etc.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2655,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "h. Calendario de la estrategia anual de participación ciudadana.",
+    "explicacion": "Incluir el calendario con las acciones y plazos propuestas en la estrategia anual de participación ciudadana.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2656,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "i. Formulario de  inscripción ciudadana a procesos de participación, instancias o acciones que ofrece la entidad.",
+    "explicacion": "\"Disponer de un formulario de inscripción ciudadana a procesos de participación, instancias o acciones que ofrece la entidad en  el Menú Participa. Para mayor información sobre el formulario, consulte  el documento del Departamento Administrativo de la Función Pública \"\"Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública. Versión 1\"\", página 19, disponible en:   https://www.funcionpublica.gov.co/documents/418548/34150781/Lineamientos+para+publicar+informaci%C3%B3n+en+el+Men%C3%BA+Participa+sobre+participaci%C3%B3n+ciudadana+en+la+gesti%C3%B3n+p%C3%BAblica+-+Versi%C3%B3n+1+-+Mayo+2021.pdf/38857fc0-f1aa-cfd6-d21d-6ddb9724da7f?t=1621028045675&download=true \" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2657,
+    "categoria": "8-participa",
+    "subcategoria": "8.1. Descripción General",
+    "pregunta": "j. Canal de interacción deliberatoria para la participación ciudadana.",
+    "explicacion": "Disponer del canal que los participantes usaran para interactuar fácilmente en las deliberaciones que se convoquen y llegar a los acuerdos sobre los temas objeto de la participación. Puede ser chat, foro virtual, blogs, encuestas, mensajes de texto, programas radiales, entre otros.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2729,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Diagnóstico e identificación de problemas:",
+    "explicacion": "Vincular a ciudadanos e interesados en el proceso de recolección  de información y análisis de la misma para identificar y explicar los problemas que les afectan.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2730,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Publicación temas de interés.",
+    "explicacion": "Publicar los temas de interés sobre los cuales se adelantará el diagnóstico de necesidades e identificación de problemas con la participación de los ciudadanos y grupos de valor.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2731,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Caja de herramientas.",
+    "explicacion": "Conjunto de estrategias y recursos que utiliza la entidad para apoyar pedagógicamente la apropiación de un tema particular.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2732,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Herramienta de evaluación.",
+    "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades de diagnóstico de necesidades e identificación de problemas que haya adelantado la entidad.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2733,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Divulgar resultados.",
+    "explicacion": "\"Divulgar entre los participantes los resultados de los  ejercicios de diagnóstico de necesidades e identificación de  problemas desarrollados.\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2734,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Planeación y presupuesto participativo :",
+    "explicacion": "\"Planeación Participativa: Mecanismo mediante el cual la ciudadanía e interesados deciden el rumbo de las políticas, planes, programas, proyectos o trámites.  Presupuesto Participativo: Proceso por medio del cual la ciudadanía con el gobierno, asignan un porcentaje de los recursos a programas y proyectos.\" ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2735,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Porcentaje del presupuesto para el proceso.",
+    "explicacion": "Publicar información sobre el porcentaje del presupuesto institucional definido para el proceso de participación, con base en el cual los ciudadanos y grupos de valor podrán priorizar los proyectos que respondan a sus necesidades.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2736,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Habilitar canales de interacción y caja de herramientas.",
+    "explicacion": "Habilitar los canales virtuales para la interacción con la ciudadanía en las etapas definidas para la planeación o para el presupuesto participativo cuando aplique.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2737,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Publicar la información sobre las decisiones.",
+    "explicacion": "Publicar la información sobre las decisiones que se tomaron con la ciudadanía y grupos de valor para la construcción de la planeación y/o presupuesto participativo.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2738,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Visibilizar avances de decisiones y su estado (semáforo).",
+    "explicacion": "Visibilizar reportes de avance de las decisiones tomadas e indicar el estado de estas (semáforo) y las frecuencias de participación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/atencion-al-usuario/"
+  },
+  {
+    "idPregunta": 2739,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Consulta Ciudadana:",
+    "explicacion": "Mecanismo que busca conocer las opiniones, sugerencias o propuestas, comentarios y aportes de los usuarios, ciudadanos y grupos de interés con respecto a los proyectos, normas, políticas, programas o trámites adelantados por la entidad antes de la formulación de los mismos o la toma de decisiones.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2740,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Tema de consulta (normas, políticas, programas o proyectos) y resumen del mismo.",
+    "explicacion": "Identificar y establecer qué asunto se someterá a consulta: normas, políticas, programas, proyectos o trámites, también, definir los objetivos, antecedentes, requisitos normados para que la ciudadanía y grupos de valor participen, así como el resultado esperado.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-viabilizados-mvct/"
+  },
+  {
+    "idPregunta": 2741,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Habilitar canales de consulta y caja de herramientas.",
+    "explicacion": "\"Habilitar los canales virtuales definidos para la consulta, y adicionalmente crear una caja de herramientas con los elementos establecidos en el documento del Departamento Administrativo de la Función Pública \"\"Lineamientos para publicar información en el Menú Participa sobre participación ciudadana en la gestión pública. Versión 1\"\", disponible en:   https://www.funcionpublica.gov.co/documents/418548/34150781/Lineamientos+para+publicar+informaci%C3%B3n+en+el+Men%C3%BA+Participa+sobre+participaci%C3%B3n+ciudadana+en+la+gesti%C3%B3n+p%C3%BAblica+-+Versi%C3%B3n+1+-+Mayo+2021.pdf/38857fc0-f1aa-cfd6-d21d-6ddb9724da7f?t=1621028045675&download=true ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-viabilizados-mvct/"
+  },
+  {
+    "idPregunta": 2742,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Publicar observaciones y comentarios y las respuestas de proyectos normativos.",
+    "explicacion": "Publicar las observaciones y comentarios de los ciudadanos y grupos de interés, así como las respuestas que la entidad les dio.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-viabilizados-mvct/"
+  },
+  {
+    "idPregunta": 2743,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Crear un enlace que redireccione a la Sección Normativa.",
+    "explicacion": "Crear un enlace o hipervínculo que redireccione a la Sección Normativa, donde se encuentra disponible el informe global de observaciones.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-viabilizados-mvct/"
+  },
+  {
+    "idPregunta": 2744,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "e. Facilitar herramienta de evaluación.",
+    "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades para facilitar la participación y consulta ciudadana a las normas, políticas o programas o proyectos adelantadas o sobre trámites.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-viabilizados-mvct/"
+  },
+  {
+    "idPregunta": 2745,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Colaboración e innovación:",
+    "explicacion": "La búsqueda de soluciones a problemáticas públicas con el conocimiento de los grupos de valor y así resolver los desafíos de las entidades y  abrir canales para recibir ideas y propuestas de solución.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2746,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Disponer un espacio para consulta  sobre temas o problemáticas.",
+    "explicacion": "Disponer de un espacio para la consulta sobre temas o problemáticas para la ciudadana y los grupos de interés a través de canales electrónicos, esto con el fin de obtener aportes e ideas de ajuste, para ello puede usar herramientas interactivas que permitan priorizar y expresar preferencias. Algunos ejemplos de estas herramientas de priorización son: mapas de retos, cruce de variables, sombrillas de oportunidades, arañas, dianas o mapas de posicionamiento, entre otros. Al respecto, se puede consultar las publicaciones sobre innovación del Ministerio de las Tecnologías de la Información y las Comunicaciones (MinTIC) ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2747,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Convocatoria con el reto.",
+    "explicacion": "Convocatoria para participar de un reto de cocreación, con una pregunta tipo: ¿cómo se imagina (…) en la entidad? ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2748,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Informar retos vigentes y reporte con la frecuencia de votaciones de soluciones en cada reto.",
+    "explicacion": "Publicar los retos vigentes para el proceso de colaboración e innovación abierta, su estado de avance de acuerdo con el cronograma previsto y el plazo de vencimiento. Cada reto deberá contener un resumen del tema, sus plazos y las propuestas recibidas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2749,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Publicar la propuesta elegida y los criterios para su selección.",
+    "explicacion": "Publicar la propuesta elegida y los criterios de análisis utilizados para su selección desde el punto de vista de pertinencia, viabilidad técnica y costos.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2750,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "e.Divulgar el plan de trabajo para implementar la solución diseñada.",
+    "explicacion": "Divulgar el plan de trabajo para implementar la solución diseñada frente al reto.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2751,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "f. Publicar la información sobre los desarrollos o prototipos.",
+    "explicacion": "Publicar la información sobre los desarrollos o prototipos de solución diseñados con base en el proceso de colaboración e innovación abierta con la participación ciudadana y de los grupos de interés.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/proyectos-de-innovacion/"
+  },
+  {
+    "idPregunta": 2752,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Rendición de cuentas:",
+    "explicacion": "Obligación de las autoridades de la administración pública para informar y explicar y dar a conocer los resultados de su gestión a los ciudadanos.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2753,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Habilitar un espacio para que la ciudadanía postule temáticas.",
+    "explicacion": "Habilitar un espacio para que la ciudadanía postule temáticas para la rendición de cuentas y que incluya los requisitos para su presentación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2754,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Estrategia de comunicación para la rendición de cuentas.",
+    "explicacion": "Revisar que la estrategia de rendición de cuentas esté registrada en el Plan Anticorrupción y de Atención al Ciudadano (PAAC) y que incluya la divulgación de información continua, el desarrollo constante de espacios de interacción y la publicación de compromisos.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2755,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Calendario eventos de diálogo.",
+    "explicacion": "Identificar las actividades de información, diálogo y responsabilidad de la estrategia de rendición de cuentas, así como los requisitos para participar y el resultado esperado con la participación de la ciudadanía. Es importante que los eventos de diálogo articulen las actividades de rendición de cuentas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2756,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Articular a los informes de rendición de cuentas en el Menú transparencia.",
+    "explicacion": "Verificar la publicación en el Menú de Transparencia y Acceso a la información de los informes de rendición de cuentas sobre avances, resultados de la gestión y garantía de derechos, así como los informes de rendición de cuentas sobre la implementación del acuerdo de paz, según la programación para su publicación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2757,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "e. Habilitar un canal para eventos de diálogo Articulación con sistema nacional de rendición de cuentas.",
+    "explicacion": "Definir las herramientas o canales electrónicos para los espacios o mecanismos que propone la entidad para implementar las acciones de información, diálogo y responsabilidad en la estrategia de rendición de cuentas como: conferencias masivas por plataformas electrónicas (Teams, Zoom, Meet, etc.), transmisiones por redes sociales (YouTube, Facebook, Instagram, etc.) o vía streaming, desarrollo de pautas o programas radiales (en coordinación con emisoras comunitarias), video-llamadas con grupos focalizados, etc. Estos pueden ser complementarios a eventos presenciales.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2758,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "f. Preguntas y respuestas de eventos de diálogo.",
+    "explicacion": "Publicar las preguntas presentadas por los ciudadanos y grupos de interés en los eventos de diálogo para la rendición de cuentas y las respetivas respuestas dadas por la entidad a dichos los interrogantes.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2759,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "g. Memorias de cada evento.",
+    "explicacion": "Publicar las memorias de cada evento de diálogo para la rendición de cuentas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2760,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "h. Acciones de mejora incorporadas.",
+    "explicacion": "Publicar reportes del estado de avance de todas las acciones de diálogo y responsabilidad para la rendición de cuentas de acuerdo con el cronograma previsto (semáforo), los temas tratados, número de asistentes, conclusiones y las acciones de mejora como resultado de la rendición de cuentas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/participa/"
+  },
+  {
+    "idPregunta": 2761,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "Control social:",
+    "explicacion": "Mecanismo de vigilancia de la gestión pública y sus resultados de acuerdo con lo establecido en la regulación aplicable y correcta utilización de los recursos y bienes públicos.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2762,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "a. Informar las modalidades de control social.",
+    "explicacion": "Publicar la información sobre las modalidades de control social que ofrece la entidad para la vigilancia de la gestión pública.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2763,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "b. Convocar  cuando inicie ejecución de programa, proyecto o  contratos.",
+    "explicacion": "Publicar la convocatoria a la ciudadanía cuando la entidad inicie la ejecución de un programa, proyecto, contrato o de la prestación de un servicio público para que la ciudadanía esté enterada y ejerza la vigilancia correspondiente.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2764,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "c. Resumen del tema objeto de vigilancia",
+    "explicacion": "Publicar información resumen de cada tema de interés ciudadano, para lo cual, debe indicar el tema objeto de vigilancia ciudadana, así como el avance de los indicadores de gestión asociados, los recursos asignados, la metodología de diálogo definida para interactuar con el grupo de control social, los plazos, las observaciones recibidas y las respuestas dadas por la entidad. Para esto, la entidad podrá diseñar su propio tablero de control.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2765,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "d. Informes del interventor o el supervisor",
+    "explicacion": "Si algún plan, programa o proyecto de la entidad es objeto de vigilancia por parte de una veeduría ciudadana, deberá publicar como mínimo los dos informes que el interventor o el supervisor hace frente al grupo de auditoría ciudadana, según lo establecido en el artículo 72 de la Ley 1757 de 2015.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2766,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "e. Facilitar herramienta de evaluación de las actividades.",
+    "explicacion": "Facilitar a los participantes una herramienta de evaluación de las actividades y espacios de control social adelantadas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2767,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "f. Publicar el registro de las observaciones de las veedurías.",
+    "explicacion": "Publicar información, datos e indicadores que sirvan de insumos para el análisis de resultados y avances de la gestión en las acciones de participación para el control social y las veedurías ciudadanas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2768,
+    "categoria": "8-participa",
+    "subcategoria": "8.2. Estructura y Secciones del menú \"PARTICIPA\"",
+    "pregunta": "g. Acciones de mejora.",
+    "explicacion": "Publicar la información sobre las acciones de mejora y correctivos incorporados en la planeación institucional que se tomaron con base en las acciones de control social y veedurías ciudadanas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/planes-de-mejoramiento/"
+  },
+  {
+    "idPregunta": 2658,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Instrumentos de gestión de la información: ",
+    "explicacion": "\"Los sujetos obligados deberán publicar la información que le corresponda, así: 7.1 Instrumentos de gestión de la información Publicar la información sobre gestión documental. Incluyendo lo siguiente: registros de activos de información, índice de información clasificada y reservada, esquema de publicación de la información, tipos de datos o información clasificada o reservada (indicando fecha de levantamiento de la reserva), programa de gestión documental, tablas de retención documental.   La anterior información deberá publicarse conforme con los lineamientos del Archivo General de la Nación. Si el sujeto obligado cuenta con la información registrada en el portal de datos.gov.co, deberá vincularse la información allí publicada.\" ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2659,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Registros de activos de información:",
+    "explicacion": "De conformidad a lo establecido en el Decreto 103 de 2015, el Registro de Activos de Información y el índice de Información Clasificada y reservada deben estar publicados en el portal de datos abiertos del Estado Colombiano www.datos.gov.co ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2660,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "a. Nombre o título de la categoría de la información.",
+    "explicacion": "Término con que se da a conocer el nombre o asunto de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2661,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "b.  Descripción del contenido la categoría de información.",
+    "explicacion": " Define brevemente de qué se trata la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2662,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "c. Idioma.",
+    "explicacion": " Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2663,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "d. Medio de conservación y/o soporte.",
+    "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros (físico, análogo o digital- electrónico).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2664,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "e. Formato.",
+    "explicacion": "Identifica la forma, tamaño o modo en la que se presenta la información o se permite su visualización o consulta, tales como: hoja de cálculo, imagen, audio, video, documento de texto, etc.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2665,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "f. Información publicada o disponible.",
+    "explicacion": "Indica si la información está publicada o disponible para ser solicitada, señalando dónde está publicada y/o dónde se puede consultar o solicitar.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1H5WFzevwSt3tN6BxMuahlrlzDODAZ5-N/view"
+  },
+  {
+    "idPregunta": 2666,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "g. Enlace a www.datos.gov.co.",
+    "explicacion": "Parágrafo del artículo 2.1.1.2.1.4 del Decreto 1081 del 2020:  El Portal de Datos Abiertos del Estado Colombiano, como mecanismo de difusión, no cuenta con la naturaleza jurídica de ser un archivo digital, por lo que las entidades y sujetos obligados continúan con sus obligaciones en materia de tablas de retención documental y la gestión documental o de archivo que les aplique conforme con la normativa vigente.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/catalogo-de-datos-abiertos/"
+  },
+  {
+    "idPregunta": 2667,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Índice de información clasificada y reservada:",
+    "explicacion": "De conformidad a lo establecido en el Decreto 103 de 2015, el Registro de Activos de Información y el índice de Información Clasificada y reservada deben estar publicados en el portal de datos abiertos del Estado Colombiano www.datos.gov.co.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2668,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "a. Nombre o título de la categoría de información.",
+    "explicacion": "Término con que se da a conocer el nombre o asunto de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2669,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "b. Nombre o título de la información.",
+    "explicacion": "Palabra o frase con que se da a conocer el nombre o asunto de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2670,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "c. Idioma.",
+    "explicacion": "Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2671,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "d. Medio de conservación y/o soporte.",
+    "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros, (físico- análogo o digital- electrónico).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2672,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "e. Fecha de generación de la información.",
+    "explicacion": "Identifica el momento de la creación de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2673,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "f. Nombre del responsable de la producción de la  información.",
+    "explicacion": "Corresponde al nombre del área, dependencia o unidad interna, o al nombre de la entidad externa que creó la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2674,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "g. Nombre del responsable de la información.",
+    "explicacion": "Corresponde al nombre del área, dependencia o unidad encargada de la custodia o control de la información para efectos de permitir su acceso.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2675,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "h. Objetivo legítimo de la excepción.",
+    "explicacion": "La identificación de la excepción que, dentro de las previstas en los artículos 18 y 19 de la Ley 1712 de 2014, cobija la calificación de información reservada o clasificada.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2676,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "i. Fundamento constitucional o legal.",
+    "explicacion": "El fundamento constitucional o legal que justifican la clasificación o la reserva, señalando expresamente la norma, artículo, inciso o párrafo que la ampara.  ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2677,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "j. Fundamento jurídico de la excepción.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2678,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "k. Excepción total o parcial.",
+    "explicacion": "Según sea integral o parcial la calificación, las partes o secciones clasificadas o reservadas.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2679,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "l. Plazo de la clasificación o reserva.",
+    "explicacion": "El tiempo que cobija la clasificación o reserva.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1_oUHZrWvDLFsQh0j_n4sl4BUyj1v1Bih/view"
+  },
+  {
+    "idPregunta": 2680,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "m. Enlace a www.datos.gov.co.",
+    "explicacion": "Parágrafo del artículo 2.1.1.2.1.4 del Decreto 1081 del 2020:  El Portal de Datos Abiertos del Estado Colombiano, como mecanismo de difusión, no cuenta con la naturaleza jurídica de ser un archivo digital, por lo que las entidades y sujetos obligados continúan con sus obligaciones en materia de tablas de retención documental y la gestión documental o de archivo que les aplique conforme con la normativa vigente.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2681,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Esquema de publicación de la información:",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2682,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "a. Nombre o título de la información.",
+    "explicacion": "Palabra o frase con que se da a conocer el nombre o asunto de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2683,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "b. Idioma.",
+    "explicacion": "Establece el Idioma, lengua o dialecto en que se encuentra la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2684,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "c. Medio de conservación y/o soporte",
+    "explicacion": "Establece el soporte en el que se encuentra la información: documento físico, medio electrónico o por algún otro tipo de formato audio visual entre otros, (físico- análogo o digital- electrónico).",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2685,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "d. Formato",
+    "explicacion": "Identifica la forma, tamaño o modo en la que se presenta la información o se permite su visualización o consulta, tales como: hoja de cálculo, imagen, audio, video, documento de texto, etc.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2686,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "e. Fecha de generación de la información ",
+    "explicacion": "Identifica el momento de la creación de la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2687,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "f. Frecuencia de actualización.",
+    "explicacion": "Identifica la periodicidad o el segmento de tiempo en el que se debe actualizar la información, de acuerdo a su naturaleza y a la normativa aplicable.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2688,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "g. Lugar de consulta.",
+    "explicacion": "Indica el lugar donde se encuentra publicado o puede ser consultado el documento, tales como lugar en el sitio web y otro medio en donde se puede descargar y/o acceder a la información cuyo contenido se describe.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2689,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "h. Nombre del responsable de la producción de la información.",
+    "explicacion": "Corresponde al nombre del área, dependencia o unidad interna, o al nombre de la entidad externa que creó la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2690,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "i. Nombre del responsable de la información.",
+    "explicacion": "Corresponde al nombre del área, dependencia o unidad encargada de la custodia o control de la información para efectos de permitir su acceso ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/instrumentos-de-gestion-de-informacion-publica-2/"
+  },
+  {
+    "idPregunta": 2691,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Programa de gestión documental:",
+    "explicacion": "Los sujetos obligados de naturaleza privada que no están cobijados por el Decreto 2609 de 2012, o el que lo complemente o sustituya, deben cumplir, en la elaboración del programa de Gestión Documental, como mínimo con lo siguiente: 1. Política de Gestión Documental. 2. Tablas de Retención Documental. 3. Archivo Institucional. 4. Políticas para la gestión de documentos electrónicos (Preservación y custodia digital). 5. Integrarse al Sistema Nacional de Archivos.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2692,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "a. Plan para facilitar la identificación, gestión, clasificación, organización, conservación y disposición de la información pública, elaborado según lineamientos del Decreto 2609 de 2012, o las normas que lo sustituyan o modifiquen.  Los sujetos obligados de naturaleza privada que no están cobijados por el Decreto 2609 de 2012, o el que lo complemente o sustituya, deben cumplir, en la elaboración del programa de Gestión Documental, como mínimo con lo siguiente: 1. Política de Gestión Doc",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1ZjFtExoXGaxidkmOvlz3AVaZiQ7W_WCu/view"
+  },
+  {
+    "idPregunta": 2693,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "b. Aprobación por parte del Comité de Desarrollo Administrativo (entidades del orden nacional) o la aprobación del Comité Interno de Archivo (entidades del orden territorial).",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Decreto 2609 de 2014 ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://drive.google.com/file/d/1ZjFtExoXGaxidkmOvlz3AVaZiQ7W_WCu/view"
+  },
+  {
+    "idPregunta": 2694,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "Tablas de retención documental:",
+    "explicacion": "Lista de series documentales con sus correspondientes tipos de documentos, a los cuales se les asigna el tiempo de permanencia en cada etapa del ciclo vital de los documentos.  ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2695,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "a. Listado de series, con sus correspondientes tipos documentales, a las cuales se asigna el tiempo de permanencia en cada etapa del ciclo vital de los documentos.",
+    "explicacion": "Resolución 1519 de 2020,Anexo técnico 2, Art. 35 y 36 del Decreto 103 de 2015, Acuerdo 004 de 2013 del Archivo General de la Nación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tdr/"
+  },
+  {
+    "idPregunta": 2696,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.1. Instrumentos de gestión de la información",
+    "pregunta": "b. Adoptadas y actualizadas por medio de acto administrativo o documento equivalente de acuerdo con el régimen legal al sujeto obligado, de conformidad con lo establecido por el acuerdo No. 004 de 2013 del Archivo General de la Nación.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tdr/"
+  },
+  {
+    "idPregunta": 2769,
+    "categoria": "9-datos-abiertos",
+    "subcategoria": "9.2. Sección de Datos Abiertos",
+    "pregunta": "Habilitar una vista de sus datos en el Portal de Datos Abiertos  (datos.gov.co).",
+    "explicacion": "\"Habilitar una vista de sus datos en el Portal de Datos Abiertos (datos.gov.co).\" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/catalogo-de-datos-abiertos/"
+  },
+  {
+    "idPregunta": 2697,
+    "categoria": "10-grupos-interes",
+    "subcategoria": "10.1. Información para  Grupos Específicos.",
+    "pregunta": "a. Información para niños, niñas y adolescentes.",
+    "explicacion": "Cada entidad deberá identificar la información específica para grupos de interés, conforme con su caracterización, y como mínimo la siguiente:     -Información para niños, niñas y adolescentes, Información para Mujeres-.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/Emcaninios/"
+  },
+  {
+    "idPregunta": 2698,
+    "categoria": "10-grupos-interes",
+    "subcategoria": "10.1. Información para  Grupos Específicos.",
+    "pregunta": "b. Información para Mujeres.",
+    "explicacion": "Cada entidad deberá identificar la información específica para grupos de interés, conforme con su caracterización, y como mínimo la siguiente:     -Información para niños, niñas y adolescentes, Información para Mujeres- ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/Emcaninios/"
+  },
+  {
+    "idPregunta": 2699,
+    "categoria": "10-grupos-interes",
+    "subcategoria": "10.1. Información para  Grupos Específicos.",
+    "pregunta": "c. Otros de grupos de interés.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/informacion-para-poblacion-vulnerable/"
+  },
+  {
+    "idPregunta": 2700,
+    "categoria": "11-reporte",
+    "subcategoria": "11.1. Normatividad Especial",
+    "pregunta": "Cada sujeto obligado según su naturaleza jurídica reportara en este ítem normatividad especial que les aplique.",
+    "explicacion": "El sujeto obligado deberá publicar la información, documentos, reportes o datos a los que está obligado por normativa especial, diferente a la referida en otras secciones.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/politicas-lineamientos-y-manuales/"
+  },
+  {
+    "idPregunta": 2611,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.1. Procesos de recaudo de rentas locales",
+    "pregunta": "Publicación de los procesos recaudo de rentas locales, incluyendo:  flujogramas, procedimientos y manuales aplicables:",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2612,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.1. Procesos de recaudo de rentas locales",
+    "pregunta": "a.  Flujogramas.",
+    "explicacion": "Procesos de recaudo de rentas locales. Los Municipios y Distritos publicarán el proceso de recaudo de rentas locales, incluyendo flujogramas, procedimientos y manuales aplicables. Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2613,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.1. Procesos de recaudo de rentas locales",
+    "pregunta": "b. Procedimientos.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2614,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.1. Procesos de recaudo de rentas locales",
+    "pregunta": "c. Manuales aplicables.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2701,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA), indicando como mínimo lo siguiente:",
+    "explicacion": " Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA).  De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2702,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "a. Acuerdo Municipal/Distrital por el medio del cual se aprueba el impuesto y su tarifa, y demás normativa específica aplicable.",
+    "explicacion": " Los municipios y distritos deberán publicar los conceptos y las tarifas asociadas a la liquidación del Impuesto de Industria y Comercio (ICA). De igual modo, sólo deberán cumplir con esta información aquellas entidades que generen información tributaria asociada al Impuesto de Industria y Comercio (ICA).",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2703,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "b. Sujeto activo.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2704,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "c. Sujeto pasivo.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2705,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "d. Hecho generador.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2706,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "e. Hecho imponible.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2707,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "f. Causación.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2708,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "g. Base gravable.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2709,
+    "categoria": "12-tributaria",
+    "subcategoria": "12.2.  Tarifas de liquidación del Impuesto de Industria y Comercio (ICA)",
+    "pregunta": "h. Tarifa.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No aplica por la naturaleza de la Entidad"
+  },
+  {
+    "idPregunta": 2615,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.1. Trámites, Otros Procedimientos Administrativos y consultas de acceso a información pública",
+    "pregunta": "Trámites, Otros Procedimientos Administrativos y consultas de acceso a información pública.",
+    "explicacion": "Los sujetos obligados que tengan el carácter de autoridad, entendidas como los organismos y entidades de la Administración Pública conformada por la Rama Ejecutiva del Poder Público en el orden nacional y territorial y por todos los demás organismos y entidades de naturaleza pública que de manera permanente tienen a su cargo el ejercicio de las actividades y funciones administrativas o la prestación de servicios públicos del Estado colombiano que están señalados en el artículo 2 del Decreto 2106 de 2019, en el artículo 2.2.9.1.1.2 y 2.2.17.1.2 del Decreto 1078 de 2015 por medio del cual se expide el Decreto Único Reglamentario del Sector de Tecnologías de la Información y las Comunicaciones y en particular el Titulo 9, Capítulo 1, sección 1, y del artículo 2 de la Ley 1437 de 2011; deberán adoptar el lineamiento general y guías de sede electrónica, trámites, otros procedimientos administrativos y consultas de acceso a información pública para integrarlas al Portal Único del Estado colombiano aplicando lo señalado en los artículos 60 de la Ley 1437 de 2011, 14 y 15 del Decreto 2106 del 22 de noviembre de 2019 y el artículo 2.2.17.6.1. del título 17 de la parte 2 del libro 2 ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/tramite-y-servicios/"
+  },
+  {
+    "idPregunta": 2710,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.2. Canales de atención y pida una cita",
+    "pregunta": "a. Los sujetos obligados deberán incluir en su respectiva sede electrónica la información y contenidos relacionados con los canales habilitados para la atención a la ciudadanía y demás grupos caracterizados, con la finalidad de identificar y dar a conocer los canales digitales oficiales de recepción de solicitudes, peticiones e información, de conformidad con el artículo 14 del Decreto 2106 de 2019.",
+    "explicacion": "Artículo 14 del Decreto 2106 de 2019.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2711,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.2. Canales de atención y pida una cita",
+    "pregunta": "b. Mecanismo para que el usuario pueda agendar una cita para atención presencial, e indicar los horarios de atención en sedes físicas.",
+    "explicacion": "De conformidad a lo establecido por la Resolución 2893 de 2020, la obligación de habilitar un mecanismo para agendar cita de atención presencial y de indicar los horarios de atención en sedes físicas es de las entidades de naturaleza pública. Las entidades de naturaleza privada podrán habilitar sus propios canales de atención como parte de una buena práctica de gestión pública.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/contactenos/"
+  },
+  {
+    "idPregunta": 2770,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "Condiciones técnicas:",
+    "explicacion": "\"Los sujetos obligados que, por su regulación específica en la prestación de un servicio público, le apliquen formularios específicos para la atención de sus usuarios, dicho formulario servirá igualmente para atender las solicitudes de información pública y recibir quejas o denuncias. En todo caso, se deberá permitir la recepción de quejas o denuncias anónimas en los términos del formulario referido anteriormente. Los sujetos obligados podrán implementar, además, nuevas tecnologías de comunicación, habilitando canales de chatbot automatizado y con asistencia humana, así como canales vía mensajería instantánea.\" ",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2771,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "a. Acuse de recibo.",
+    "explicacion": "Al momento de enviar el formulario, por parte del usuario, el sistema debe generar un mensaje de confirmación de recibido, indicando la fecha y hora de recepción, informando que por tardar antes de las siguientes 24 horas hábiles se remitirá el número de registro o radicación. Al respecto se sugiere revisar las pautas del Archivo General de la Nación contenidas en el Acuerdo 060 del 2001, o el que lo modifique, subrogue, derogue o adicione.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2772,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "b. Validación de campos.",
+    "explicacion": "El formulario deberá contar con una validación de campos que permita indicar al ciudadano si existen errores en el diligenciamiento o si le hace falta incluir alguna información. El aviso de error debe ser visible y accesible para todos los usuarios.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2773,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "c.  Mecanismos para evitar SPAM.",
+    "explicacion": "El sujeto obligado debe desarrollar mecanismos para evitar la recepción de correos electrónicos enviados de manera automática puedan ser categorizados como no deseados.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2774,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "d. Mecanismo de seguimiento en línea.",
+    "explicacion": "El sujeto obligado debe habilitar un mecanismo de seguimiento en línea para verificar el estado de la respuesta de la PQRSD.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2775,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "e. Mensaje de falla en el sistema.",
+    "explicacion": "En caso de existir una falla del sistema durante el proceso de diligenciamiento o envío del formulario, el sujeto debe habilitar un mecanismo para generar un mensaje de falla en el proceso. El mensaje debe indicar el motivo de la falla y la opción que cuenta el usuario para hacer nuevamente su solicitud ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2776,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "f. Integración con el sistema de PQRSD de la entidad.",
+    "explicacion": "Las solicitudes de información púbica deben estar vinculados como tipología dentro del sistema de PQRSD del sujeto obligado, a fin de gestionar y hacer seguimiento integral a las solicitudes que reciba.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2777,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "g. Disponibilidad del formulario a través de dispositivos móviles.",
+    "explicacion": "El formulario debe estar disponible para su diligenciamiento y envío a través de dispositivos móviles.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2778,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "h. Seguridad Digital.",
+    "explicacion": "Los sujetos deberán aplicar las medidas de seguridad digital y de la información referidas en anexo 3 de la presente Resolución.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2779,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "Condiciones del formulario:",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": null
+  },
+  {
+    "idPregunta": 2780,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "a.  Selección de  opción de la PQRSD  (Petición, Queja/Reclamo, Solicitud de Información, Denuncia, Sugerencia/ Propuesta).",
+    "explicacion": "Incluir una sección de ayuda, con ejemplos, para que el usuario pueda distinguir cada una de las tipologías de PQRSD.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2781,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "b.  Nombre y Apellidos o Razón Social de la Empresa  o posibilidad de presentar queja/denuncia anónima.",
+    "explicacion": "O posibilidad de presentar queja/denuncia anónima. Indicar la posibilidad de presentar quejas anónimas, para lo cual, se deben indicar las condiciones para aceptarlas conforme con la siguiente normativa: artículo 38 de la Ley 190 de 1995; artículo 69; de la Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2782,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "c. Tipo de documento de identidad o el de la empresa ( Cédula de Ciudadanía, NUIP -Número Único de Identificación Personal, Cédula de Extranjería, NIT -Número de Identificación Tributaria-, Pasaporte ).",
+    "explicacion": "Si es anónima no requiere identificación.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2783,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "d. Número de documento de identidad o NIT de la empresa.",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2784,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "e. Modalidad  de  recepción de la  respuesta ( correo electrónico, dirección de correspondencia).",
+    "explicacion": "Indicar si desea recibir la respuesta por correo electrónico o en la dirección de correspondencia. Si es anónima no requiere la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2785,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "f. Correo electrónico.",
+    "explicacion": "Si es anónima no requiere la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2786,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "g. Dirección de correspondencia (Dirección, Barrio/ Vereda / Corregimiento, Municipio/ Distrito, País - en caso que sea diferente al de Colombia).",
+    "explicacion": null,
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2787,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "h. Número de contacto.",
+    "explicacion": "Campo numérico. Si es anónima no requiere la información.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2788,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "i. Objeto de la PQRSD.",
+    "explicacion": "Texto, no se requiere justificación ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2789,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "j. Adjuntar documentos o anexos.",
+    "explicacion": "Opción adjuntar documentos ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2790,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "k. Aviso de aceptación de condiciones.",
+    "explicacion": "\"Se deberá colocar la siguiente leyenda explicativa justo antes del botón \"\"enviar\"\"  \"\"Al hacer clic el botón enviar, usted acepta la remisión de la PQRS a la entidad (NOMBRE ENTIDAD). Sus datos serán recolectados y tratados conforme con la Política de Tratamiento de Datos. En la opción consulta de PQRSD podrá verificar el estado de la respuesta.  En caso que la solicitud de información sea de naturaleza de identidad reservada, deberá efectuar el respectivo trámite ante la Procuraduría General de la Nación, haciendo clic en el siguiente link: https://www.procuraduria.gov.co/portal/solicitud_informacion_identificacion_reservada.page  Se deberá indicar los términos que aplican en la presentación de quejas anónimas, para lo cual, se deben indicar las condiciones para aceptarlas conforme con la siguiente normativa: artículo 38 de la Ley 190 de 1995; artículo 69; de la Ley 734 de 2002 y artículo 81 de la Ley 962 de 2005\"\". \" ",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2791,
+    "categoria": "13-atencion-servicios",
+    "subcategoria": "13.3. PQRSD",
+    "pregunta": "l. Botón \"Enviar\".",
+    "explicacion": "Anexo técnico 2 -Resolución 1519 de 2020.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/pqrfo/"
+  },
+  {
+    "idPregunta": 2616,
+    "categoria": "14-noticias",
+    "subcategoria": "14.1. Sección de Noticias",
+    "pregunta": "a. Sección de noticias.",
+    "explicacion": "En la página principal, el sujeto obligado publicará las noticias más relevantes para la ciudadanía y los grupos de valor. La información deberá publicarse de acuerdo a las pautas o lineamientos en materia de lenguaje claro, accesibilidad y usabilidad.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/noticias/"
+  },
+  {
+    "idPregunta": 2617,
+    "categoria": "15-condiciones-tecnicas",
+    "subcategoria": "15.1. Anexo 3. Condiciones de seguridad digital",
+    "pregunta": "a. ¿La entidad ha implementado una política de seguridad digital y de seguridad de la información, de conformidad con el artículo 6 y el Anexo 3 de la Resolución MinTIC 1591 de 2020?",
+    "explicacion": "Proporcione únicamente para la Procuraduría General de la Nación  el enlace o URL  correspondiente a la carpeta (repositorio virtual tipo drive) donde se encuentre alojada la política de seguridad digital y de seguridad de la información de su entidad. La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2618,
+    "categoria": "15-condiciones-tecnicas",
+    "subcategoria": "15.1. Anexo 3. Condiciones de seguridad digital",
+    "pregunta": "b. ¿La entidad ha adoptado el Modelo de Seguridad y Privacidad de la Información (MSPI), recomendado por la Dirección de Gobierno Digital del Ministerio de Tecnologías de la Información y las Comunicaciones?",
+    "explicacion": "Proporcione  el enlace o URL  correspondiente  donde se pueda verificar evidencia de la implementación del MSPI.  La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+    "normatividad": null,
+    "cumplimiento": "si",
+    "urlEvidencia": "https://www.pdacauca.gov.co/resoluciones-mipg/"
+  },
+  {
+    "idPregunta": 2619,
+    "categoria": "15-condiciones-tecnicas",
+    "subcategoria": "15.1. Anexo 3. Condiciones de seguridad digital",
+    "pregunta": "c. En caso de que la entidad haya sufrido algún incidente de seguridad de la información en el último año ¿esta  ha comunicado los incidentes a la Superintendencia de Industria y Comercio, y en caso de ser graves o muy graves al Grupo de Respuestas a Incidentes de Seguridad Informática del Gobierno Nacional (CSIRT)?*  (En caso de no haber sufrido incidentes, seleccione la opción \"\"no aplica\"\") ",
+    "explicacion": "En caso de haber sufrido un incidente de seguridad de la información, proporcione  el enlace o URL  correspondiente  donde se pueda verificar evidencia de la comunicación correspondiente  La obligación de cumplir con el anexo 3 de seguridad aplica a todos los sujetos obligados referidos en el artículo 5 de la Ley 1712 de 2014.",
+    "normatividad": null,
+    "cumplimiento": "na",
+    "urlEvidencia": "No se han tenido incidentes de seguridad Informática  en el ultimo año"
+  }
+]

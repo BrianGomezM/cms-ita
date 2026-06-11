@@ -5,9 +5,19 @@ import { RichTextBlock } from '../blocks/RichText'
 import { CardsBlock } from '../blocks/Cards'
 import { GaleriaBlock } from '../blocks/Galeria'
 import { ApiExternaBlock } from '../blocks/ApiExterna'
+import { AccordionFAQBlock } from '../blocks/AccordionFAQ'
+import { ITABannerBlock } from '../blocks/ITABanner'
+import { ContrataBlock } from '../blocks/ContrataBlock'
+import { TramiteBlock } from '../blocks/TramiteBlock'
+import { ParticipaBlock } from '../blocks/ParticipaBlock'
+import { DatosAbiertosBlock } from '../blocks/DatosAbiertosBlock'
+import { DocumentListBlock } from '../blocks/DocumentList'
+import { TimelineBlock } from '../blocks/Timeline'
+import { DataTableBlock } from '../blocks/DataTable'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
+import { revalidatePageAfterChange, revalidatePageAfterDelete } from '../hooks/revalidateWeb'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -32,8 +42,8 @@ export const Pages: CollectionConfig = {
   hooks: {
     beforeOperation: [injectTenantContext],
     beforeChange: [autoAssignTenant],
-    afterChange: [auditAfterChange],   // ← agregar
-    afterDelete: [auditAfterDelete],   // ← agregar
+    afterChange: [auditAfterChange, revalidatePageAfterChange],
+    afterDelete: [auditAfterDelete, revalidatePageAfterDelete],
   },
   access: {
     // Páginas publicadas son públicas — cualquiera puede leerlas
@@ -139,6 +149,15 @@ export const Pages: CollectionConfig = {
         CardsBlock,
         GaleriaBlock,
         ApiExternaBlock,
+        AccordionFAQBlock,
+        ITABannerBlock,
+        ContrataBlock,
+        TramiteBlock,
+        ParticipaBlock,
+        DatosAbiertosBlock,
+        DocumentListBlock,
+        TimelineBlock,
+        DataTableBlock,
       ],
       admin: {
         description: 'Arrastra y ordena los bloques para construir la página',

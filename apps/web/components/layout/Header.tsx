@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { Menu, X, ChevronDown, Search, Phone } from 'lucide-react'
 
-const navLinks = [
+const navLinksPorDefecto = [
   { label: 'Inicio', href: '/' },
   {
     label: 'Nosotros',
@@ -34,6 +34,16 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
   const [menuAbierto, setMenuAbierto] = useState(false)
   const [dropdownAbierto, setDropdownAbierto] = useState<string | null>(null)
 
+  const navLinks = tenant?.menuPrincipal?.length
+    ? tenant.menuPrincipal.map((item) => ({
+        label: item.etiqueta,
+        href: item.enlace,
+        children: item.submenu?.length
+          ? item.submenu.map((sub) => ({ label: sub.etiqueta, href: sub.enlace }))
+          : undefined,
+      }))
+    : navLinksPorDefecto
+
   return (
     <header className="sticky top-0 z-50 shadow-md">
 
@@ -51,12 +61,14 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
             <span>Un sitio web oficial del Estado colombiano</span>
             <span className="hidden sm:inline text-blue-200">— Aquí le explicamos cómo identificarlo →</span>
           </a>
-          <div className="hidden sm:flex items-center gap-4 text-xs text-blue-200">
-            <span className="flex items-center gap-1">
-              <Phone size={11} />
-              018000 xxx xxx
-            </span>
-          </div>
+          {tenant?.footer?.lineaGratuita && (
+            <div className="hidden sm:flex items-center gap-4 text-xs text-blue-200">
+              <span className="flex items-center gap-1">
+                <Phone size={11} />
+                {tenant.footer.lineaGratuita}
+              </span>
+            </div>
+          )}
         </div>
       </div>
 

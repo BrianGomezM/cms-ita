@@ -22,9 +22,11 @@ export const Tenants: CollectionConfig = {
     afterChange: [auditAfterChange],   // ← agregar
     afterDelete: [auditAfterDelete],   // ← agregar
   },
-  // Solo superadmin gestiona tenants
+  // La info del tenant (nombre, logo, colores, dominio) es pública:
+  // el sitio web la necesita para resolver qué tenant servir y aplicar su marca.
+  // Solo superadmin puede crear/editar/eliminar tenants.
   access: {
-    read: soloSuperAdmin,
+    read: () => true,
     create: soloSuperAdmin,
     update: soloSuperAdmin,
     delete: soloSuperAdmin,
@@ -97,6 +99,151 @@ export const Tenants: CollectionConfig = {
             { label: 'Inter', value: 'inter' },
             { label: 'Roboto', value: 'roboto' },
             { label: 'Open Sans', value: 'open-sans' },
+          ],
+        },
+      ],
+    },
+    // ── Menú de navegación ──────────────────────────────
+    {
+      name: 'menuPrincipal',
+      type: 'array',
+      label: 'Menú de navegación',
+      labels: { singular: 'Enlace del menú', plural: 'Enlaces del menú' },
+      admin: {
+        description:
+          'Enlaces que aparecen en el menú principal del sitio web. Arrastra para cambiar el orden.',
+      },
+      fields: [
+        {
+          name: 'etiqueta',
+          type: 'text',
+          required: true,
+          label: 'Texto del enlace',
+          admin: { description: 'Ej: Servicios' },
+        },
+        {
+          name: 'enlace',
+          type: 'text',
+          required: true,
+          label: 'Dirección',
+          admin: { description: 'Ej: /servicios o https://www.otrosito.com' },
+        },
+        {
+          name: 'submenu',
+          type: 'array',
+          label: 'Submenú (opcional)',
+          labels: { singular: 'Enlace del submenú', plural: 'Enlaces del submenú' },
+          admin: {
+            description: 'Enlaces que se despliegan al pasar el mouse sobre este ítem del menú',
+          },
+          fields: [
+            {
+              name: 'etiqueta',
+              type: 'text',
+              required: true,
+              label: 'Texto del enlace',
+            },
+            {
+              name: 'enlace',
+              type: 'text',
+              required: true,
+              label: 'Dirección',
+              admin: { description: 'Ej: /servicios/registro-mercantil' },
+            },
+          ],
+        },
+      ],
+    },
+    // ── Pie de página ────────────────────────────────────
+    {
+      name: 'footer',
+      type: 'group',
+      label: 'Pie de página',
+      fields: [
+        {
+          name: 'direccion',
+          type: 'text',
+          label: 'Dirección física',
+        },
+        {
+          name: 'telefonoConmutador',
+          type: 'text',
+          label: 'Teléfono conmutador',
+        },
+        {
+          name: 'lineaGratuita',
+          type: 'text',
+          label: 'Línea gratuita / atención al ciudadano',
+        },
+        {
+          name: 'lineaAnticorrupcion',
+          type: 'text',
+          label: 'Línea anticorrupción',
+        },
+        {
+          name: 'correoNotificaciones',
+          type: 'email',
+          label: 'Correo de notificaciones judiciales',
+        },
+        {
+          name: 'horarioAtencion',
+          type: 'text',
+          label: 'Horario de atención',
+          admin: { description: 'Ej: Lunes a viernes de 8:00 a.m. a 5:00 p.m.' },
+        },
+        {
+          name: 'redesSociales',
+          type: 'array',
+          label: 'Redes sociales',
+          labels: { singular: 'Red social', plural: 'Redes sociales' },
+          fields: [
+            {
+              name: 'red',
+              type: 'select',
+              required: true,
+              label: 'Red social',
+              options: [
+                { label: 'Facebook', value: 'facebook' },
+                { label: 'X (Twitter)', value: 'x' },
+                { label: 'Instagram', value: 'instagram' },
+                { label: 'YouTube', value: 'youtube' },
+                { label: 'LinkedIn', value: 'linkedin' },
+                { label: 'TikTok', value: 'tiktok' },
+                { label: 'WhatsApp', value: 'whatsapp' },
+              ],
+            },
+            {
+              name: 'url',
+              type: 'text',
+              required: true,
+              label: 'Enlace al perfil',
+              admin: { description: 'Ej: https://www.facebook.com/tuentidad' },
+            },
+          ],
+        },
+        {
+          name: 'enlacesLegales',
+          type: 'array',
+          label: 'Enlaces legales',
+          labels: { singular: 'Enlace legal', plural: 'Enlaces legales' },
+          admin: {
+            description:
+              'Ej: Política de privacidad, Términos y condiciones, Mapa del sitio',
+          },
+          fields: [
+            {
+              name: 'etiqueta',
+              type: 'text',
+              required: true,
+              label: 'Texto del enlace',
+            },
+            {
+              name: 'enlace',
+              type: 'text',
+              required: true,
+              label: 'Dirección',
+              admin: { description: 'Ej: /politica-privacidad' },
+            },
           ],
         },
       ],

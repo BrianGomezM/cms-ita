@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  NODE_OPTIONS: --no-deprecation
+
+jobs:
+  cms:
+    name: CMS — lint, tests y build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: cms_ita_test
+          POSTGRES_USER: cms_user
+          POSTGRES_PASSWORD: cms_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U cms_user"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URI: postgresql://cms_user:cms_password@localhost:5432/cms_ita_test
+      PAYLOAD_SECRET: ci_test_secret_minimo_32_caracteres
+      NEXT_PUBLIC_SERVER_URL: http://localhost:3000
+      NEXT_PUBLIC_SITE_URL: http://localhost:3001
+      REVALIDATE_SECRET: ci_revalidate_secret
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm --filter cms lint
+
+      - name: Tests de integración
+        run: pnpm --filter cms test:int
+
+      - name: Build
+        run: pnpm --filter cms build
+
+  web:
+    name: Web — lint y build
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_CMS_URL: http://localhost:3000
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Instalar dependencias
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm --filter web lint
+
+      - name: Build
+        run: pnpm --filter web build

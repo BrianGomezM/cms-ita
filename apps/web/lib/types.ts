@@ -1,5 +1,32 @@
 // Tipos que reflejan la estructura de la API de Payload
 
+export type MenuLink = {
+  etiqueta: string
+  enlace: string
+  submenu?: { etiqueta: string; enlace: string }[]
+}
+
+export type RedSocial = {
+  red: 'facebook' | 'x' | 'instagram' | 'youtube' | 'linkedin' | 'tiktok' | 'whatsapp'
+  url: string
+}
+
+export type EnlaceLegal = {
+  etiqueta: string
+  enlace: string
+}
+
+export type TenantFooter = {
+  direccion?: string
+  telefonoConmutador?: string
+  lineaGratuita?: string
+  lineaAnticorrupcion?: string
+  correoNotificaciones?: string
+  horarioAtencion?: string
+  redesSociales?: RedSocial[]
+  enlacesLegales?: EnlaceLegal[]
+}
+
 export type Tenant = {
   id: number
   nombre: string
@@ -11,6 +38,16 @@ export type Tenant = {
     fuente: string
   }
   logo?: Media
+  menuPrincipal?: MenuLink[]
+  footer?: TenantFooter
+}
+
+export type ITAResumen = {
+  total: number
+  cumple: number
+  noAplica: number
+  aplicables: number
+  porcentaje: number
 }
 
 export type Media = {
@@ -48,6 +85,146 @@ export type GaleriaBlockType = {
   titulo?: string
   tipo: 'grid' | 'carrusel' | 'masonry'
   imagenes: { imagen: Media; caption?: string }[]
+}
+
+export type FAQItem = {
+  id: string
+  pregunta: string
+  respuesta: string
+}
+
+export type AccordionFAQBlockType = {
+  blockType: 'accordion-faq'
+  titulo?: string
+  descripcion?: string
+  items: FAQItem[]
+}
+
+export type ITABannerBlockType = {
+  blockType: 'ita-banner'
+  titulo?: string
+  descripcion?: string
+  enlace?: string
+}
+
+export type ProcesoContratacion = {
+  id: string
+  nombre: string
+  modalidad?: 'licitacion' | 'directa' | 'minima-cuantia' | 'seleccion-abreviada' | 'concurso-meritos'
+  estado: 'abierto' | 'evaluacion' | 'adjudicado' | 'cerrado'
+  fechaPublicacion?: string
+  valor?: string
+  enlaceSecop?: string
+}
+
+export type ContrataBlockType = {
+  blockType: 'contrata'
+  titulo?: string
+  descripcion?: string
+  items: ProcesoContratacion[]
+}
+
+export type Tramite = {
+  id: string
+  nombre: string
+  descripcion?: string
+  tipo: 'virtual' | 'presencial' | 'mixto'
+  tiempoRespuesta?: string
+  costo?: string
+  enlace?: string
+}
+
+export type TramiteBlockType = {
+  blockType: 'tramite'
+  titulo?: string
+  descripcion?: string
+  items: Tramite[]
+}
+
+export type MecanismoParticipacion = {
+  id: string
+  titulo: string
+  descripcion?: string
+  tipoMecanismo: 'pqrsd' | 'encuesta' | 'rendicion-cuentas' | 'consulta' | 'foro'
+  enlace: string
+  fechaLimite?: string
+}
+
+export type ParticipaBlockType = {
+  blockType: 'participa'
+  titulo?: string
+  descripcion?: string
+  items: MecanismoParticipacion[]
+}
+
+export type ConjuntoDatos = {
+  id: string
+  nombre: string
+  descripcion?: string
+  formato: 'csv' | 'xlsx' | 'json' | 'xml' | 'pdf'
+  fechaActualizacion?: string
+  enlaceDescarga: string
+  enlaceCatalogo?: string
+}
+
+export type DatosAbiertosBlockType = {
+  blockType: 'datos-abiertos'
+  titulo?: string
+  descripcion?: string
+  items: ConjuntoDatos[]
+}
+
+export type DocumentoItem = {
+  id: string
+  nombre: string
+  descripcion?: string
+  categoria?: string
+  archivo: Media
+  fecha?: string
+}
+
+export type DocumentListBlockType = {
+  blockType: 'document-list'
+  titulo?: string
+  descripcion?: string
+  items: DocumentoItem[]
+}
+
+export type HitoTimeline = {
+  id: string
+  fecha: string
+  titulo: string
+  descripcion?: string
+}
+
+export type TimelineBlockType = {
+  blockType: 'timeline'
+  titulo?: string
+  descripcion?: string
+  items: HitoTimeline[]
+}
+
+export type ColumnaTabla = {
+  id: string
+  etiqueta: string
+}
+
+export type CeldaTabla = {
+  id: string
+  valor?: string
+}
+
+export type FilaTabla = {
+  id: string
+  celdas: CeldaTabla[]
+}
+
+export type DataTableBlockType = {
+  blockType: 'data-table'
+  titulo?: string
+  descripcion?: string
+  columnas: ColumnaTabla[]
+  filas: FilaTabla[]
 }
 
 export type ApiExternaBlockType = {
@@ -106,3 +283,12 @@ export type Block =
   | CardsBlockType
   | GaleriaBlockType
   | ApiExternaBlockType
+  | AccordionFAQBlockType
+  | ITABannerBlockType
+  | ContrataBlockType
+  | TramiteBlockType
+  | ParticipaBlockType
+  | DatosAbiertosBlockType
+  | DocumentListBlockType
+  | TimelineBlockType
+  | DataTableBlockType

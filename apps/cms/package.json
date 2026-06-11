@@ -16,7 +16,8 @@
     "test": "pnpm run test:int && pnpm run test:e2e",
     "test:e2e": "cross-env NODE_OPTIONS=\"--no-deprecation --import=tsx/esm\" playwright test --config=playwright.config.ts",
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts",
-    "seed:ita": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed/ita-seed.ts"
+    "seed:ita": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed/ita-seed.ts",
+    "seed:pages": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed/pages-seed.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.84.1",
@@ -26,18 +27,22 @@
     "@payloadcms/ui": "3.84.1",
     "cross-env": "^7.0.3",
     "dotenv": "16.4.7",
+    "exceljs": "^4.4.0",
     "graphql": "^16.8.1",
     "next": "16.2.6",
     "payload": "3.84.1",
+    "pdfkit": "^0.19.1",
     "rate-limiter-flexible": "^11.1.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
     "sharp": "0.34.2"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.5",
     "@playwright/test": "1.58.2",
     "@testing-library/react": "16.3.0",
     "@types/node": "22.19.9",
+    "@types/pdfkit": "^0.17.6",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "4.5.2",

@@ -1,9 +1,43 @@
 import type { Tenant } from '@/lib/types'
-import { Phone, Mail, MapPin, AlertTriangle, ExternalLink } from 'lucide-react'
+import {
+  Phone,
+  Mail,
+  MapPin,
+  AlertTriangle,
+  ExternalLink,
+  Clock,
+  Globe,
+} from 'lucide-react'
 import Link from 'next/link'
+import {
+  FacebookIcon,
+  XIcon,
+  InstagramIcon,
+  YoutubeIcon,
+  LinkedinIcon,
+  WhatsappIcon,
+  TiktokIcon,
+} from '@/components/icons/SocialIcons'
+
+const ICONOS_REDES = {
+  facebook: FacebookIcon,
+  x: XIcon,
+  instagram: InstagramIcon,
+  youtube: YoutubeIcon,
+  linkedin: LinkedinIcon,
+  whatsapp: WhatsappIcon,
+  tiktok: TiktokIcon,
+}
 
 export default function Footer({ tenant }: { tenant?: Tenant }) {
   const year = new Date().getFullYear()
+  const footer = tenant?.footer
+  const enlacesLegales = footer?.enlacesLegales?.length
+    ? footer.enlacesLegales
+    : [
+        { etiqueta: 'Política de privacidad', enlace: '/politicas' },
+        { etiqueta: 'Términos de uso', enlace: '/terminos' },
+      ]
 
   return (
     <footer className="bg-[#001a33] text-gray-300">
@@ -31,17 +65,25 @@ export default function Footer({ tenant }: { tenant?: Tenant }) {
               Impulsamos el desarrollo empresarial del Cauca, promoviendo la competitividad y la transparencia.
             </p>
             {/* Redes sociales */}
-            <div className="flex gap-3">
-              {['FB', 'TW', 'IG', 'YT'].map((red) => (
-                <a
-                  key={red}
-                  href="#"
-                  className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-xs text-gray-300 hover:bg-[#0066cc] hover:text-white transition-colors"
-                >
-                  {red}
-                </a>
-              ))}
-            </div>
+            {!!footer?.redesSociales?.length && (
+              <div className="flex gap-3">
+                {footer.redesSociales.map((red) => {
+                  const Icono = ICONOS_REDES[red.red] ?? Globe
+                  return (
+                    <a
+                      key={red.red}
+                      href={red.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={red.red}
+                      className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-gray-300 hover:bg-[#0066cc] hover:text-white transition-colors"
+                    >
+                      <Icono size={16} />
+                    </a>
+                  )
+                })}
+              </div>
+            )}
           </div>
 
           {/* Col 2 — Servicios */}
@@ -95,26 +137,42 @@ export default function Footer({ tenant }: { tenant?: Tenant }) {
               Contacto
             </h3>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-2 text-gray-400">
-                <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
-                <span>Conmutador: (602) xxx xxxx</span>
-              </li>
-              <li className="flex items-start gap-2 text-gray-400">
-                <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
-                <span>Línea gratuita: 018000 xxx xxx</span>
-              </li>
-              <li className="flex items-start gap-2 text-gray-400">
-                <Mail size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
-                <span>notificaciones@cccauca.org.co</span>
-              </li>
-              <li className="flex items-start gap-2 text-gray-400">
-                <MapPin size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
-                <span>Popayán, Cauca, Colombia</span>
-              </li>
-              <li className="flex items-start gap-2 text-red-400">
-                <AlertTriangle size={14} className="mt-0.5 shrink-0" />
-                <span>Anticorrupción: <strong className="text-red-300">195</strong></span>
-              </li>
+              {footer?.telefonoConmutador && (
+                <li className="flex items-start gap-2 text-gray-400">
+                  <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                  <span>Conmutador: {footer.telefonoConmutador}</span>
+                </li>
+              )}
+              {footer?.lineaGratuita && (
+                <li className="flex items-start gap-2 text-gray-400">
+                  <Phone size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                  <span>Línea gratuita: {footer.lineaGratuita}</span>
+                </li>
+              )}
+              {footer?.correoNotificaciones && (
+                <li className="flex items-start gap-2 text-gray-400">
+                  <Mail size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                  <span>{footer.correoNotificaciones}</span>
+                </li>
+              )}
+              {footer?.direccion && (
+                <li className="flex items-start gap-2 text-gray-400">
+                  <MapPin size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                  <span>{footer.direccion}</span>
+                </li>
+              )}
+              {footer?.horarioAtencion && (
+                <li className="flex items-start gap-2 text-gray-400">
+                  <Clock size={14} className="mt-0.5 text-[#e8a020] shrink-0" />
+                  <span>{footer.horarioAtencion}</span>
+                </li>
+              )}
+              {footer?.lineaAnticorrupcion && (
+                <li className="flex items-start gap-2 text-red-400">
+                  <AlertTriangle size={14} className="mt-0.5 shrink-0" />
+                  <span>Anticorrupción: <strong className="text-red-300">{footer.lineaAnticorrupcion}</strong></span>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -125,12 +183,11 @@ export default function Footer({ tenant }: { tenant?: Tenant }) {
         <div className="container-institucional py-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-500">
           <span>© {year} {tenant?.nombre ?? 'Portal Institucional'}. Todos los derechos reservados.</span>
           <div className="flex items-center gap-4">
-            <Link href="/politicas" className="hover:text-gray-300 transition-colors">
-              Política de privacidad
-            </Link>
-            <Link href="/terminos" className="hover:text-gray-300 transition-colors">
-              Términos de uso
-            </Link>
+            {enlacesLegales.map((link) => (
+              <Link key={link.enlace} href={link.enlace} className="hover:text-gray-300 transition-colors">
+                {link.etiqueta}
+              </Link>
+            ))}
             <a
               href="https://www.gov.co"
               target="_blank"

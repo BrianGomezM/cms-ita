@@ -3,6 +3,7 @@ import { leerPropiaTenant, editorOSuperior } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
+import { itaExportExcel, itaExportPdf } from '../endpoints/itaExport'
 
 
 // Categorías reales de la Resolución MinTIC 1519
@@ -48,6 +49,40 @@ export const ITAChecklist: CollectionConfig = {
     update: editorOSuperior,
     delete: ({ req: { user } }) => (user as any)?.rol === 'superadmin',
   },
+  // Endpoint público: solo expone el porcentaje de cumplimiento del Índice de
+  // Transparencia, sin observaciones ni evidencias (esos datos siguen privados).
+  endpoints: [
+    {
+      path: '/resumen',
+      method: 'get',
+      handler: async (req) => {
+        const tenantParam = req.query?.tenant
+        const tenantId = Array.isArray(tenantParam) ? tenantParam[0] : tenantParam
+
+        if (!tenantId) {
+          return Response.json({ error: 'Falta el parámetro "tenant"' }, { status: 400 })
+        }
+
+        const { docs } = await req.payload.find({
+          collection: 'ita-checklist',
+          where: { tenant: { equals: tenantId } },
+          limit: 500,
+          depth: 0,
+          overrideAccess: true,
+        })
+
+        const total = docs.length
+        const cumple = docs.filter((i: any) => i.cumplimiento === 'si').length
+        const noAplica = docs.filter((i: any) => i.cumplimiento === 'na').length
+        const aplicables = total - noAplica
+        const porcentaje = aplicables > 0 ? Math.round((cumple / aplicables) * 100) : 0
+
+        return Response.json({ total, cumple, noAplica, aplicables, porcentaje })
+      },
+    },
+    itaExportExcel,
+    itaExportPdf,
+  ],
   fields: [
     // ── Identificación ──────────────────────────────────
     {

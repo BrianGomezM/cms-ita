@@ -1,4 +1,5 @@
 import type { AdminViewProps } from 'payload'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { ResumenGeneral } from './components/ResumenGeneral'
@@ -63,6 +64,19 @@ export default async function DashboardITAView({ initPageResult }: AdminViewProp
 
       <ResumenGeneral {...resumen} nombreTenant={nombreTenant} />
 
+      {tenantId && (
+        <div style={{ display: 'flex', gap: '12px', marginBottom: '16px', flexWrap: 'wrap' }}>
+          <a href={`/api/ita-checklist/export/excel?tenant=${tenantId}`}
+            style={{ padding: '8px 16px', background: '#15803d', color: 'white', borderRadius: '6px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
+            📊 Descargar reporte Excel
+          </a>
+          <a href={`/api/ita-checklist/export/pdf?tenant=${tenantId}`}
+            style={{ padding: '8px 16px', background: '#b91c1c', color: 'white', borderRadius: '6px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
+            📄 Descargar reporte PDF
+          </a>
+        </div>
+      )}
+
       <div style={{ display: 'flex', gap: '12px', marginBottom: '24px', flexWrap: 'wrap' }}>
         <a href={`/admin/collections/ita-checklist?where[cumplimiento][equals]=no`}
           style={{ padding: '8px 16px', background: '#ef4444', color: 'white', borderRadius: '6px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
@@ -72,10 +86,10 @@ export default async function DashboardITAView({ initPageResult }: AdminViewProp
           style={{ padding: '8px 16px', background: '#f59e0b', color: 'white', borderRadius: '6px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
           ⏳ Pendientes ({resumen.pendiente})
         </a>
-        <a href="/admin/collections/ita-checklist"
+        <Link href="/admin/collections/ita-checklist"
           style={{ padding: '8px 16px', background: 'var(--theme-elevation-150)', color: 'var(--theme-text)', borderRadius: '6px', textDecoration: 'none', fontSize: '13px', fontWeight: 600 }}>
           📋 Todos ({resumen.total})
-        </a>
+        </Link>
       </div>
 
       <h2 style={{ fontSize: '16px', color: 'var(--theme-text)', marginBottom: '16px' }}>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import { getCurrentTenant } from '@/lib/payload'
 import './globals.css'
 
 const roboto = Roboto({
@@ -9,9 +10,12 @@ const roboto = Roboto({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  title: 'Portal Institucional',
-  description: 'Sitio web institucional',
+export async function generateMetadata(): Promise<Metadata> {
+  const tenant = await getCurrentTenant()
+  return {
+    title: tenant?.nombre ?? 'Portal Institucional',
+    description: `Sitio web institucional de ${tenant?.nombre ?? 'la entidad'}`,
+  }
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,14 +1,15 @@
-import { getPageBySlug } from '@/lib/payload'
+import { getPageBySlug, getCurrentTenant } from '@/lib/payload'
 import BlockRenderer from '@/components/BlockRenderer'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 
 export default async function HomePage() {
   const page = await getPageBySlug('inicio')
+  const tenant = page?.tenant ?? (await getCurrentTenant()) ?? undefined
 
   return (
     <>
-      <Header tenant={page?.tenant} />
+      <Header tenant={tenant} />
       <main className="flex-1">
         {page ? (
           <BlockRenderer blocks={page.layout} />
@@ -32,7 +33,7 @@ export default async function HomePage() {
           </div>
         )}
       </main>
-      <Footer tenant={page?.tenant} />
+      <Footer tenant={tenant} />
     </>
   )
 }
