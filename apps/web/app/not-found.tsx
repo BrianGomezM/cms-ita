@@ -21,13 +21,13 @@ export default function NotFound() {
               404
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 bg-[#003366] rounded-2xl flex items-center justify-center shadow-lg">
+              <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center shadow-lg">
                 <Search size={32} className="text-white" />
               </div>
             </div>
           </div>
 
-          <h1 className="text-2xl font-bold text-[#003366] mb-3">
+          <h1 className="text-2xl font-bold text-primary mb-3">
             Página no encontrada
           </h1>
           <p className="text-gray-600 mb-8 leading-relaxed">
@@ -57,7 +57,7 @@ export default function NotFound() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:border-[#003366] hover:text-[#003366] transition-colors"
+                  className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:border-primary hover:text-primary transition-colors"
                 >
                   {link.label}
                 </Link>

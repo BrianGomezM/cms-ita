@@ -12,7 +12,7 @@ export const Tenants: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'nombre',
-    group: 'Administración',
+    group: 'Configuración',
     defaultColumns: ['nombre', 'nit', 'slug', 'activo'],
     description: 'Entidades públicas cliente del CMS',
   },

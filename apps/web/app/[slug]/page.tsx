@@ -37,7 +37,7 @@ export default async function PageRoute({ params }: Props) {
     <>
       <Header tenant={page.tenant} />
       <main className="flex-1">
-        <BlockRenderer blocks={page.layout} />
+        <BlockRenderer blocks={page.layout} tenant={page.tenant} />
       </main>
       <Footer tenant={page.tenant} />
     </>

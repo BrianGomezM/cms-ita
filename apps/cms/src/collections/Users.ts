@@ -97,5 +97,15 @@ export const Users: CollectionConfig = {
         condition: (data) => data?.rol !== 'superadmin',
       },
     },
+    {
+      name: 'foto',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Foto de perfil',
+      admin: {
+        description: 'Se mostrará como tu avatar en la parte superior del panel',
+        position: 'sidebar',
+      },
+    },
   ],
 }

@@ -72,6 +72,8 @@ export interface Config {
     media: Media;
     pages: Page;
     'ita-checklist': ItaChecklist;
+    'mensajes-contacto': MensajesContacto;
+    noticias: Noticia;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +86,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
     'ita-checklist': ItaChecklistSelect<false> | ItaChecklistSelect<true>;
+    'mensajes-contacto': MensajesContactoSelect<false> | MensajesContactoSelect<true>;
+    noticias: NoticiasSelect<false> | NoticiasSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -291,6 +295,10 @@ export interface User {
    * No aplica para Super Administradores
    */
   tenant?: (number | null) | Tenant;
+  /**
+   * Se mostrará como tu avatar en la parte superior del panel
+   */
+  foto?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -435,6 +443,10 @@ export interface Page {
         | {
             titulo?: string | null;
             tipo?: ('grid' | 'carrusel' | 'masonry') | null;
+            /**
+             * Cantidad de columnas en pantallas grandes (aplica a Grilla y Masonry)
+             */
+            columnas?: ('2' | '3' | '4' | '5') | null;
             imagenes?:
               | {
                   imagen: number | Media;
@@ -679,6 +691,78 @@ export interface Page {
             blockName?: string | null;
             blockType: 'data-table';
           }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            columnas?: ('2' | '3' | '4') | null;
+            integrantes?:
+              | {
+                  foto?: (number | null) | Media;
+                  nombre: string;
+                  cargo: string;
+                  dependencia?: string | null;
+                  correo?: string | null;
+                  telefono?: string | null;
+                  descripcion?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'equipo';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            mostrarInfoContacto?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'contacto';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            cantidad?: ('3' | '6' | '9') | null;
+            soloDestacadas?: boolean | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'noticias';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            aliados?:
+              | {
+                  logo: number | Media;
+                  nombre: string;
+                  /**
+                   * Ej: https://www.aliado.com
+                   */
+                  enlace?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'aliados';
+          }
+        | {
+            titulo?: string | null;
+            descripcion?: string | null;
+            testimonios?:
+              | {
+                  foto?: (number | null) | Media;
+                  nombre: string;
+                  cargo?: string | null;
+                  testimonio: string;
+                  calificacion?: ('5' | '4' | '3') | null;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'testimonios';
+          }
       )[]
     | null;
   updatedAt: string;
@@ -738,6 +822,69 @@ export interface ItaChecklist {
   createdAt: string;
 }
 /**
+ * Mensajes enviados desde el formulario de contacto del sitio web
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mensajes-contacto".
+ */
+export interface MensajesContacto {
+  id: number;
+  nombre: string;
+  correo: string;
+  telefono?: string | null;
+  asunto: string;
+  mensaje: string;
+  leido?: boolean | null;
+  tenant: number | Tenant;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Noticias, avisos y comunicados publicados en el portal
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "noticias".
+ */
+export interface Noticia {
+  id: number;
+  titulo: string;
+  /**
+   * Ej: apertura-convocatoria-2026. Sin "/" ni espacios.
+   */
+  slug: string;
+  /**
+   * Se muestra en el listado de noticias. Máximo 200 caracteres.
+   */
+  resumen: string;
+  contenido?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  imagen?: (number | null) | Media;
+  categoria?: ('noticia' | 'aviso' | 'comunicado' | 'evento') | null;
+  fechaPublicacion: string;
+  destacado?: boolean | null;
+  tenant: number | Tenant;
+  /**
+   * Debe estar en "Publicado" para que aparezca en el sitio web.
+   */
+  estado: 'borrador' | 'publicado';
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
@@ -780,6 +927,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'ita-checklist';
         value: number | ItaChecklist;
+      } | null)
+    | ({
+        relationTo: 'mensajes-contacto';
+        value: number | MensajesContacto;
+      } | null)
+    | ({
+        relationTo: 'noticias';
+        value: number | Noticia;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -890,6 +1045,7 @@ export interface UsersSelect<T extends boolean = true> {
   nombre?: T;
   rol?: T;
   tenant?: T;
+  foto?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1039,6 +1195,7 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               titulo?: T;
               tipo?: T;
+              columnas?: T;
               imagenes?:
                 | T
                 | {
@@ -1219,6 +1376,80 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        equipo?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              columnas?: T;
+              integrantes?:
+                | T
+                | {
+                    foto?: T;
+                    nombre?: T;
+                    cargo?: T;
+                    dependencia?: T;
+                    correo?: T;
+                    telefono?: T;
+                    descripcion?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        contacto?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              mostrarInfoContacto?: T;
+              id?: T;
+              blockName?: T;
+            };
+        noticias?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              cantidad?: T;
+              soloDestacadas?: T;
+              id?: T;
+              blockName?: T;
+            };
+        aliados?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              aliados?:
+                | T
+                | {
+                    logo?: T;
+                    nombre?: T;
+                    enlace?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        testimonios?:
+          | T
+          | {
+              titulo?: T;
+              descripcion?: T;
+              testimonios?:
+                | T
+                | {
+                    foto?: T;
+                    nombre?: T;
+                    cargo?: T;
+                    testimonio?: T;
+                    calificacion?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1242,6 +1473,40 @@ export interface ItaChecklistSelect<T extends boolean = true> {
   tenant?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "mensajes-contacto_select".
+ */
+export interface MensajesContactoSelect<T extends boolean = true> {
+  nombre?: T;
+  correo?: T;
+  telefono?: T;
+  asunto?: T;
+  mensaje?: T;
+  leido?: T;
+  tenant?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "noticias_select".
+ */
+export interface NoticiasSelect<T extends boolean = true> {
+  titulo?: T;
+  slug?: T;
+  resumen?: T;
+  contenido?: T;
+  imagen?: T;
+  categoria?: T;
+  fechaPublicacion?: T;
+  destacado?: T;
+  tenant?: T;
+  estado?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

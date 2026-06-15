@@ -10,7 +10,7 @@ export const Media: CollectionConfig = {
     plural: 'Archivos multimedia',
   },
   admin: {
-    group: 'Contenido',
+    group: 'Mi sitio',
     description: 'Imágenes, documentos y archivos subidos al CMS',
   },
    hooks: {

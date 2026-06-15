@@ -27,12 +27,14 @@ const navLinksPorDefecto = [
   },
   { label: 'Contratación', href: '/contratacion' },
   { label: 'Transparencia', href: '/transparencia' },
+  { label: 'Noticias', href: '/noticias' },
   { label: 'Contacto', href: '/contacto' },
 ]
 
 export default function Header({ tenant }: { tenant?: Tenant }) {
   const [menuAbierto, setMenuAbierto] = useState(false)
   const [dropdownAbierto, setDropdownAbierto] = useState<string | null>(null)
+  const [busquedaAbierta, setBusquedaAbierta] = useState(false)
 
   const navLinks = tenant?.menuPrincipal?.length
     ? tenant.menuPrincipal.map((item) => ({
@@ -89,11 +91,11 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
               />
             ) : (
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-[#003366] rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
                   CC
                 </div>
                 <div className="hidden sm:block">
-                  <div className="font-bold text-[#003366] text-sm leading-tight">
+                  <div className="font-bold text-primary text-sm leading-tight">
                     {tenant?.nombre ?? 'Portal Institucional'}
                   </div>
                   <div className="text-xs text-gray-500">Entidad pública</div>
@@ -113,7 +115,7 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
               >
                 <Link
                   href={link.href}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-[#003366] hover:bg-blue-50 rounded-lg transition-colors"
+                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
                 >
                   {link.label}
                   {link.children && <ChevronDown size={14} />}
@@ -126,7 +128,7 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-[#003366] transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
                       >
                         {child.label}
                       </Link>
@@ -140,15 +142,16 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
           {/* Acciones */}
           <div className="flex items-center gap-2">
             <button
-              className="p-2 text-gray-500 hover:text-[#003366] hover:bg-blue-50 rounded-lg transition-colors"
-              aria-label="Buscar"
+              className="p-2 text-gray-500 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
+              aria-label={busquedaAbierta ? 'Cerrar buscador' : 'Buscar'}
+              onClick={() => setBusquedaAbierta(!busquedaAbierta)}
             >
-              <Search size={20} />
+              {busquedaAbierta ? <X size={20} /> : <Search size={20} />}
             </button>
 
             {/* Botón menú móvil */}
             <button
-              className="lg:hidden p-2 text-gray-500 hover:text-[#003366] hover:bg-blue-50 rounded-lg transition-colors"
+              className="lg:hidden p-2 text-gray-500 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
               onClick={() => setMenuAbierto(!menuAbierto)}
               aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
             >
@@ -158,6 +161,24 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
         </div>
       </div>
 
+      {/* ── Buscador ── */}
+      {busquedaAbierta && (
+        <div className="bg-white border-b border-gray-200 shadow-lg">
+          <form action="/buscar" method="get" className="container-institucional py-4 flex gap-2">
+            <input
+              type="search"
+              name="q"
+              placeholder="Buscar en el sitio..."
+              autoFocus
+              className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
+            />
+            <button type="submit" className="btn-primary">
+              Buscar
+            </button>
+          </form>
+        </div>
+      )}
+
       {/* ── Menú móvil ── */}
       {menuAbierto && (
         <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
@@ -166,7 +187,7 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
               <div key={link.href}>
                 <Link
                   href={link.href}
-                  className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-[#003366] hover:bg-blue-50 rounded-lg transition-colors"
+                  className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
                   onClick={() => setMenuAbierto(false)}
                 >
                   {link.label}
@@ -177,7 +198,7 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:text-[#003366] hover:bg-blue-50 rounded-lg transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
                         onClick={() => setMenuAbierto(false)}
                       >
                         {child.label}

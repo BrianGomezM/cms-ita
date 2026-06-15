@@ -8,17 +8,21 @@ export default function HeroBlock({
   servicios,
   banners,
 }: HeroBlockType) {
-  const serviciosMapeados = servicios?.map((s) => ({
-    iconName: s.icono,
-    label: s.label,
-    href: s.href,
-  })) ?? []
+  const serviciosMapeados = servicios
+    ?.filter((s): s is Required<typeof s> => Boolean(s.icono && s.label && s.href))
+    .map((s) => ({
+      iconName: s.icono,
+      label: s.label,
+      href: s.href,
+    })) ?? []
 
-  const bannersMapeados = banners?.map((b) => ({
-    image: typeof b.imagen === 'object' ? (b.imagen?.url ?? '') : '',
-    title: b.titulo,
-    href: b.href,
-  })) ?? []
+  const bannersMapeados = banners
+    ?.filter((b): b is Required<typeof b> => Boolean(b.imagen?.url && b.titulo && b.href))
+    .map((b) => ({
+      image: b.imagen.url,
+      title: b.titulo,
+      href: b.href,
+    })) ?? []
 
   return (
     <HeroSection

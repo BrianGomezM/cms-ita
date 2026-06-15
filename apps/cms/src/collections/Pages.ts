@@ -14,6 +14,11 @@ import { DatosAbiertosBlock } from '../blocks/DatosAbiertosBlock'
 import { DocumentListBlock } from '../blocks/DocumentList'
 import { TimelineBlock } from '../blocks/Timeline'
 import { DataTableBlock } from '../blocks/DataTable'
+import { EquipoBlock } from '../blocks/Equipo'
+import { ContactoBlock } from '../blocks/Contacto'
+import { NoticiasBlock } from '../blocks/Noticias'
+import { AliadosBlock } from '../blocks/Aliados'
+import { TestimoniosBlock } from '../blocks/Testimonios'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
@@ -28,12 +33,13 @@ export const Pages: CollectionConfig = {
 
   admin: {
     useAsTitle: 'titulo',
-    group: 'Contenido',
+    group: 'Mi sitio',
     defaultColumns: ['titulo', 'slug', 'estado', 'tenant', 'updatedAt'],
     description: 'Páginas del sitio web institucional',
     preview: (doc) => {
-      if (doc?.slug) return `${process.env.NEXT_PUBLIC_SERVER_URL}/preview/${doc.slug}`
-      return null
+      if (!doc?.slug) return null
+      const tenantId = typeof doc.tenant === 'object' ? (doc.tenant as { id?: number })?.id : doc.tenant
+      return `${process.env.NEXT_PUBLIC_SITE_URL}/preview/${doc.slug}?tenant=${tenantId ?? ''}`
     },
   },
   versions: {
@@ -158,6 +164,11 @@ export const Pages: CollectionConfig = {
         DocumentListBlock,
         TimelineBlock,
         DataTableBlock,
+        EquipoBlock,
+        ContactoBlock,
+        NoticiasBlock,
+        AliadosBlock,
+        TestimoniosBlock,
       ],
       admin: {
         description: 'Arrastra y ordena los bloques para construir la página',

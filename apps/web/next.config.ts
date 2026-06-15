@@ -1,6 +1,6 @@
 import type { NextConfig } from 'next'
 import path from 'path'
-import { securityHeaders } from '../cms/src/middleware/securityHeaders'
+import { securityHeaders, previewFrameHeaders } from '../cms/src/middleware/securityHeaders'
 
 const isDev = process.env.NODE_ENV === 'development'
 
@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       {
         source: '/(.*)',
         headers: securityHeaders,
+      },
+      {
+        source: '/preview/:path*',
+        headers: previewFrameHeaders,
       },
     ]
   },

@@ -1,11 +1,12 @@
-import type { Block } from '@/lib/types'
+'use client'
+
+import type { Block, Tenant } from '@/lib/types'
 import HeroBlock from './blocks/HeroBlock'
 import CardsBlock from './blocks/CardsBlock'
 import RichTextBlock from './blocks/RichTextBlock'
 import GaleriaBlock from './blocks/GaleriaBlock'
 import ApiExternaBlock from './blocks/ApiExternaBlock'
 import AccordionFAQBlock from './blocks/AccordionFAQBlock'
-import ITABannerBlock from './blocks/ITABannerBlock'
 import ContrataBlock from './blocks/ContrataBlock'
 import TramiteBlock from './blocks/TramiteBlock'
 import ParticipaBlock from './blocks/ParticipaBlock'
@@ -15,17 +16,32 @@ import TimelineBlock from './blocks/TimelineBlock'
 import DataTableBlock from './blocks/DataTableBlock'
 import EquipoBlock from './blocks/EquipoBlock'
 import ContactoBlock from './blocks/ContactoBlock'
-import NoticiasBlock from './blocks/NoticiasBlock'
 import AliadosBlock from './blocks/AliadosBlock'
 import TestimoniosBlock from './blocks/TestimoniosBlock'
-import type { Tenant } from '@/lib/types'
 
-export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; tenant?: Tenant }) {
+// Bloques que consultan datos en vivo desde el servidor (noticias, resumen ITA)
+// y no pueden renderizarse dentro de un componente de cliente. En la vista
+// previa se muestran como un mensaje informativo; su contenido real se ve en
+// el sitio publicado.
+const BLOQUES_NO_PREVISUALIZABLES: Record<string, string> = {
+  noticias: 'Noticias y avisos',
+  'ita-banner': 'Indicador de Transparencia (ITA)',
+}
+
+export default function PreviewBlockRenderer({ blocks, tenant }: { blocks: Block[]; tenant?: Tenant }) {
   if (!blocks?.length) return null
 
   return (
     <>
       {blocks.map((block, i) => {
+        if (block.blockType in BLOQUES_NO_PREVISUALIZABLES) {
+          return (
+            <div key={i} className="container-institucional py-8 text-center text-sm text-gray-400 border-y border-dashed border-gray-200">
+              Bloque &quot;{BLOQUES_NO_PREVISUALIZABLES[block.blockType]}&quot; — visible en el sitio publicado
+            </div>
+          )
+        }
+
         switch (block.blockType) {
           case 'hero':
             return <HeroBlock key={i} {...block} />
@@ -39,8 +55,6 @@ export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; ten
             return <ApiExternaBlock key={i} {...block} />
           case 'accordion-faq':
             return <AccordionFAQBlock key={i} {...block} />
-          case 'ita-banner':
-            return <ITABannerBlock key={i} {...block} />
           case 'contrata':
             return <ContrataBlock key={i} {...block} />
           case 'tramite':
@@ -59,8 +73,6 @@ export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; ten
             return <EquipoBlock key={i} {...block} />
           case 'contacto':
             return <ContactoBlock key={i} {...block} tenant={tenant} />
-          case 'noticias':
-            return <NoticiasBlock key={i} {...block} />
           case 'aliados':
             return <AliadosBlock key={i} {...block} />
           case 'testimonios':

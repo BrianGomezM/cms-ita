@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@payloadcms/live-preview-react':
+        specifier: 3.84.1
+        version: 3.84.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -420,6 +423,15 @@ packages:
   '@nolyfill/is-core-module@1.0.39':
     resolution: {integrity: sha512-nn5ozdjYQpUCZlWGuxcJY/KpxkWQs4DcbMCmKojjyrYDEAGy4Ce19NN4v5MduafTwJlbKc99UA8YhSVqq9yPZA==}
     engines: {node: '>=12.4.0'}
+
+  '@payloadcms/live-preview-react@3.84.1':
+    resolution: {integrity: sha512-jKG1llQh0QMwltSaZJ0fDzxj8bdllboQYBlJnv2kYs1HW4ZgIRbVtvtcvOEInooi9yUManjzr/r5GOxTNsLryg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.1 || ^19.1.2 || ^19.2.1
+
+  '@payloadcms/live-preview@3.84.1':
+    resolution: {integrity: sha512-FiimjzLX/nBCXa00EOTm+U1I7PufcNItB023I9eu7ZpxiDNulg6kSBT9A37LJif5C9napaePu4l5vXB/5qSGYg==}
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
@@ -2308,6 +2320,14 @@ snapshots:
       fastq: 1.20.1
 
   '@nolyfill/is-core-module@1.0.39': {}
+
+  '@payloadcms/live-preview-react@3.84.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)':
+    dependencies:
+      '@payloadcms/live-preview': 3.84.1
+      react: 19.2.4
+      react-dom: 19.2.4(react@19.2.4)
+
+  '@payloadcms/live-preview@3.84.1': {}
 
   '@rtsao/scc@1.1.0': {}
 

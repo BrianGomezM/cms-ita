@@ -24,6 +24,22 @@ export const GaleriaBlock: Block = {
       ],
     },
     {
+      name: 'columnas',
+      type: 'select',
+      label: 'Imágenes por fila',
+      defaultValue: '3',
+      admin: {
+        description: 'Cantidad de columnas en pantallas grandes (aplica a Grilla y Masonry)',
+        condition: (_, siblingData) => siblingData?.tipo !== 'carrusel',
+      },
+      options: [
+        { label: '2 por fila', value: '2' },
+        { label: '3 por fila', value: '3' },
+        { label: '4 por fila', value: '4' },
+        { label: '5 por fila', value: '5' },
+      ],
+    },
+    {
       name: 'imagenes',
       type: 'array',
       label: 'Imágenes',

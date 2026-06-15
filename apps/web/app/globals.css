@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  /* Paleta institucional CCC Cauca */
+  /* Paleta institucional por defecto. El tenant puede sobrescribir
+     --color-primary y --color-secondary (ver app/layout.tsx); las
+     variantes claras/oscuras se derivan automáticamente. */
   --color-primary: #003366;
-  --color-primary-dark: #002244;
-  --color-primary-light: #0044aa;
+  --color-primary-dark: color-mix(in srgb, var(--color-primary) 85%, black);
+  --color-primary-light: color-mix(in srgb, var(--color-primary) 80%, white);
   --color-secondary: #0066cc;
-  --color-secondary-light: #3388dd;
+  --color-secondary-light: color-mix(in srgb, var(--color-secondary) 75%, white);
   --color-accent: #e8a020;
   --color-gov: #3366cc;
 
@@ -19,8 +21,8 @@
   --color-gray-800: #1e293b;
   --color-gray-900: #0f172a;
 
-  /* Tipografía */
-  --font-sans: 'Roboto', system-ui, sans-serif;
+  /* Tipografía. El tenant puede sobrescribir --font-sans (ver app/layout.tsx) */
+  --font-sans: var(--font-tenant, 'Roboto', system-ui, sans-serif);
 }
 
 @layer base {
@@ -48,15 +50,15 @@
   }
 
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-[#003366] text-white font-semibold rounded-lg hover:bg-[#002244] transition-colors;
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-[#0066cc] text-white font-semibold rounded-lg hover:bg-[#0044aa] transition-colors;
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-secondary text-white font-semibold rounded-lg hover:bg-secondary-light transition-colors;
   }
 
   .btn-outline {
-    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-[#003366] text-[#003366] font-semibold rounded-lg hover:bg-[#003366] hover:text-white transition-colors;
+    @apply inline-flex items-center gap-2 px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition-colors;
   }
 
   .card {
@@ -64,7 +66,7 @@
   }
 
   .section-title {
-    @apply text-3xl font-bold text-[#003366] mb-2;
+    @apply text-3xl font-bold text-primary mb-2;
   }
 
   .section-subtitle {

@@ -51,7 +51,7 @@ export default function Footer({ tenant }: { tenant?: Tenant }) {
           {/* Col 1 — Entidad */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-[#0066cc] rounded-lg flex items-center justify-center text-white font-bold text-sm">
+              <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-white font-bold text-sm">
                 CC
               </div>
               <div>
@@ -76,7 +76,7 @@ export default function Footer({ tenant }: { tenant?: Tenant }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={red.red}
-                      className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-gray-300 hover:bg-[#0066cc] hover:text-white transition-colors"
+                      className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center text-gray-300 hover:bg-secondary hover:text-white transition-colors"
                     >
                       <Icono size={16} />
                     </a>

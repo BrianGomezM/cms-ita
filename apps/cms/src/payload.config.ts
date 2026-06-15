@@ -1,5 +1,7 @@
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { en } from '@payloadcms/translations/languages/en'
+import { es } from '@payloadcms/translations/languages/es'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
@@ -10,6 +12,8 @@ import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { ITAChecklist } from './collections/ITAChecklist'
+import { ContactMessages } from './collections/ContactMessages'
+import { Noticias } from './collections/Noticias'
 
 
 const filename = fileURLToPath(import.meta.url)
@@ -25,6 +29,21 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    avatar: {
+      Component: '/app/(payload)/components/CustomAvatar#default',
+    },
+    livePreview: {
+      collections: ['pages'],
+      breakpoints: [
+        { name: 'mobile', label: 'Móvil', width: 375, height: 720 },
+        { name: 'tablet', label: 'Tablet', width: 768, height: 1024 },
+        { name: 'desktop', label: 'Escritorio', width: 1440, height: 900 },
+      ],
+      url: ({ data }) => {
+        const tenantId = typeof data?.tenant === 'object' ? data?.tenant?.id : data?.tenant
+        return `${process.env.NEXT_PUBLIC_SITE_URL}/preview/${data?.slug || ''}?tenant=${tenantId ?? ''}`
+      },
+    },
     components: {
   views: {
     dashboardITA: {
@@ -35,6 +54,9 @@ export default buildConfig({
   afterNavLinks: [
     '/app/(payload)/components/NavLinkITA#default',
   ],
+  beforeDashboard: [
+    '/app/(payload)/components/AccesosDirectos#default',
+  ],
 },
   },
 
@@ -44,6 +66,8 @@ export default buildConfig({
     Media,
     Pages,
     ITAChecklist,
+    ContactMessages,
+    Noticias,
   ],
 
   editor: lexicalEditor(),
@@ -58,6 +82,7 @@ export default buildConfig({
   }),
   i18n: {
     fallbackLanguage: 'es',
+    supportedLanguages: { en, es },
   },
   cors: [
     'http://localhost:3000',

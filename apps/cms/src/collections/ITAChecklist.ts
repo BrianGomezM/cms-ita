@@ -33,7 +33,7 @@ export const ITAChecklist: CollectionConfig = {
   },
   admin: {
     useAsTitle: 'pregunta',
-    group: 'Auditoría ITA',
+    group: 'Transparencia',
     defaultColumns: ['idPregunta', 'categoria', 'cumplimiento', 'tenant', 'fechaVerificacion'],
     description: 'Ítems de auditoría Resolución MinTIC 1519',
   },

@@ -36,3 +36,22 @@ export const securityHeaders = [
       ]
     : []),
 ]
+
+// Headers para las rutas de vista previa (/preview/*), que se embeben en un
+// iframe dentro del panel admin (Live Preview). Sin X-Frame-Options: la
+// directiva CSP frame-ancestors es el estándar moderno y permite el origen
+// del CMS además del propio.
+export const previewFrameHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: `frame-ancestors 'self' ${process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'}`,
+  },
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+]

@@ -84,7 +84,8 @@ export type GaleriaBlockType = {
   blockType: 'galeria'
   titulo?: string
   tipo: 'grid' | 'carrusel' | 'masonry'
-  imagenes: { imagen: Media; caption?: string }[]
+  columnas?: '2' | '3' | '4' | '5'
+  imagenes: { imagen?: Media; caption?: string }[]
 }
 
 export type FAQItem = {
@@ -98,6 +99,33 @@ export type AccordionFAQBlockType = {
   titulo?: string
   descripcion?: string
   items: FAQItem[]
+}
+
+export type Noticia = {
+  id: number
+  titulo: string
+  slug: string
+  resumen: string
+  contenido?: unknown
+  imagen?: Media
+  categoria: 'noticia' | 'aviso' | 'comunicado' | 'evento'
+  fechaPublicacion: string
+  destacado?: boolean
+}
+
+export type NoticiasBlockType = {
+  blockType: 'noticias'
+  titulo?: string
+  descripcion?: string
+  cantidad: '3' | '6' | '9'
+  soloDestacadas?: boolean
+}
+
+export type ContactoBlockType = {
+  blockType: 'contacto'
+  titulo?: string
+  descripcion?: string
+  mostrarInfoContacto?: boolean
 }
 
 export type ITABannerBlockType = {
@@ -227,6 +255,53 @@ export type DataTableBlockType = {
   filas: FilaTabla[]
 }
 
+export type IntegranteEquipo = {
+  id: string
+  foto?: Media
+  nombre: string
+  cargo: string
+  dependencia?: string
+  correo?: string
+  telefono?: string
+  descripcion?: string
+}
+
+export type EquipoBlockType = {
+  blockType: 'equipo'
+  titulo?: string
+  descripcion?: string
+  columnas: '2' | '3' | '4'
+  integrantes: IntegranteEquipo[]
+}
+
+export type Aliado = {
+  logo: Media
+  nombre: string
+  enlace?: string
+}
+
+export type AliadosBlockType = {
+  blockType: 'aliados'
+  titulo?: string
+  descripcion?: string
+  aliados: Aliado[]
+}
+
+export type Testimonio = {
+  foto?: Media
+  nombre: string
+  cargo?: string
+  testimonio: string
+  calificacion: '3' | '4' | '5'
+}
+
+export type TestimoniosBlockType = {
+  blockType: 'testimonios'
+  titulo?: string
+  descripcion?: string
+  testimonios: Testimonio[]
+}
+
 export type ApiExternaBlockType = {
   blockType: 'api-externa'
   titulo?: string
@@ -249,15 +324,15 @@ export type Page = {
 
 
 export type HeroServicio = {
-  icono: string
-  label: string
-  href: string
+  icono?: string
+  label?: string
+  href?: string
 }
 
 export type HeroBanner = {
-  imagen: Media  // objeto Media del CMS
-  titulo: string
-  href: string
+  imagen?: Media  // objeto Media del CMS — puede faltar mientras se edita
+  titulo?: string
+  href?: string
 }
 
 export type HeroBlockType = {
@@ -292,3 +367,8 @@ export type Block =
   | DocumentListBlockType
   | TimelineBlockType
   | DataTableBlockType
+  | EquipoBlockType
+  | ContactoBlockType
+  | NoticiasBlockType
+  | AliadosBlockType
+  | TestimoniosBlockType
