@@ -24,6 +24,7 @@ import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0
 import { default as default_f69268ee40240f11dfd28f09ad0fb679 } from '../../../app/(payload)/components/CustomAvatar'
 import { default as default_92633f255d8eb00de42c410d9122805c } from '../../../app/(payload)/components/NavLinkITA'
 import { default as default_1c16780fff61923adf610aa0d3952a37 } from '../../../app/(payload)/components/AccesosDirectos'
+import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 import { default as default_dadb2ce6b700f5bcec8c5f06836435c3 } from '../../../app/(payload)/views/DashboardITA/index'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 
@@ -55,6 +56,7 @@ export const importMap = {
   "/app/(payload)/components/CustomAvatar#default": default_f69268ee40240f11dfd28f09ad0fb679,
   "/app/(payload)/components/NavLinkITA#default": default_92633f255d8eb00de42c410d9122805c,
   "/app/(payload)/components/AccesosDirectos#default": default_1c16780fff61923adf610aa0d3952a37,
+  "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
   "/app/(payload)/views/DashboardITA/index#default": default_dadb2ce6b700f5bcec8c5f06836435c3,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1
 }

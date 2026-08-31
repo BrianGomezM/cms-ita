@@ -233,6 +233,22 @@ export interface Tenant {
 export interface Media {
   id: number;
   /**
+   * Dónde se guarda físicamente el archivo (ej: media/hero/, media/galeria/). No se puede cambiar después de subir el archivo.
+   */
+  carpeta:
+    | 'hero'
+    | 'cards'
+    | 'galeria'
+    | 'equipo'
+    | 'aliados'
+    | 'testimonios'
+    | 'noticias'
+    | 'documentos'
+    | 'tenants'
+    | 'paginas'
+    | 'usuarios'
+    | 'general';
+  /**
    * Descripción de la imagen para lectores de pantalla (WCAG)
    */
   alt: string;
@@ -240,6 +256,7 @@ export interface Media {
    * Tenant al que pertenece este archivo
    */
   tenant?: (number | null) | Tenant;
+  prefix?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -1068,8 +1085,10 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "media_select".
  */
 export interface MediaSelect<T extends boolean = true> {
+  carpeta?: T;
   alt?: T;
   tenant?: T;
+  prefix?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;

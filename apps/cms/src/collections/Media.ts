@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload'
 import { leerPropiaTenant } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
+import { setUploadPrefix } from '../hooks/setUploadPrefix'
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -12,9 +13,10 @@ export const Media: CollectionConfig = {
   admin: {
     group: 'Mi sitio',
     description: 'Imágenes, documentos y archivos subidos al CMS',
+    defaultColumns: ['filename', 'carpeta', 'alt', 'tenant'],
   },
    hooks: {
-    beforeOperation: [injectTenantContext],
+    beforeOperation: [injectTenantContext, setUploadPrefix],
     beforeChange: [autoAssignTenant],
   },
   access: {
@@ -41,6 +43,32 @@ export const Media: CollectionConfig = {
     ],
   },
   fields: [
+    {
+      name: 'carpeta',
+      type: 'select',
+      required: true,
+      defaultValue: 'general',
+      label: 'Carpeta / componente',
+      admin: {
+        description:
+          'Dónde se guarda físicamente el archivo (ej: media/hero/, media/galeria/). No se puede cambiar después de subir el archivo.',
+        position: 'sidebar',
+      },
+      options: [
+        { label: 'Hero (portada)', value: 'hero' },
+        { label: 'Cards', value: 'cards' },
+        { label: 'Galería', value: 'galeria' },
+        { label: 'Equipo', value: 'equipo' },
+        { label: 'Aliados', value: 'aliados' },
+        { label: 'Testimonios', value: 'testimonios' },
+        { label: 'Noticias', value: 'noticias' },
+        { label: 'Documentos', value: 'documentos' },
+        { label: 'Logos de tenant', value: 'tenants' },
+        { label: 'SEO / OG de páginas', value: 'paginas' },
+        { label: 'Avatares de usuario', value: 'usuarios' },
+        { label: 'General / otros', value: 'general' },
+      ],
+    },
     {
       name: 'alt',
       type: 'text',

@@ -9,6 +9,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./scripts/init-rls.sql:/docker-entrypoint-initdb.d/01-rls.sql
+    ports:
+      - "5433:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cms_user}"]
       interval: 10s
@@ -24,6 +26,9 @@ services:
       MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
     volumes:
       - minio_data:/data
+    ports:
+      - "9000:9000"
+      - "9001:9001"
     healthcheck:
       test: ["CMD", "mc", "ready", "local"]
       interval: 30s
@@ -31,6 +36,7 @@ services:
       retries: 3
 
   cms:
+    profiles: ["full"]
     build:
       context: ./apps/cms
       dockerfile: Dockerfile
@@ -52,6 +58,7 @@ services:
       - "3000:3000"
 
   web:
+    profiles: ["full"]
     build:
       context: ./apps/web
       dockerfile: Dockerfile
