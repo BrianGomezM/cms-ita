@@ -1,17 +1,8 @@
 "use client"
 
-import {
-  RefreshCw, Monitor, Download, Lightbulb,
-  User, Megaphone, Search, Award, ClipboardList, BarChart,
-  type LucideIcon,
-} from "lucide-react"
+import { DynamicIcon } from "lucide-react/dynamic"
 import Link from "next/link"
 import Image from "next/image"
-
-const ICON_MAP: Record<string, LucideIcon> = {
-  RefreshCw, Monitor, Download, Lightbulb,
-  User, Megaphone, Search, Award, ClipboardList, BarChart,
-}
 
 interface ServiceItem {
   iconName: string
@@ -21,26 +12,59 @@ interface ServiceItem {
 
 interface NewsItem {
   image: string
-  title: string
+  title?: string
   href: string
+  opacity?: ImagenDesvanecido
+}
+
+type TituloPosicion = 'izquierda' | 'centro' | 'derecha'
+type ImagenDesvanecido = 'ninguno' | 'suave' | 'medio' | 'fuerte'
+type ImagenAjuste = 'cubrir' | 'contener' | 'original'
+
+const TITULO_POSICION_CLASES: Record<TituloPosicion, string> = {
+  izquierda: 'text-left items-start',
+  centro: 'text-center items-center',
+  derecha: 'text-right items-end',
+}
+
+const IMAGEN_DESVANECIDO_CLASES: Record<ImagenDesvanecido, string> = {
+  ninguno: 'opacity-100',
+  suave: 'opacity-90',
+  medio: 'opacity-70',
+  fuerte: 'opacity-50',
+}
+
+const IMAGEN_AJUSTE_CLASES: Record<ImagenAjuste, string> = {
+  cubrir: 'object-cover object-[center_40%]',
+  contener: 'object-contain object-center',
+  original: 'object-none object-center',
 }
 
 interface HeroSectionProps {
   imagenPrincipal?: string
   titulo?: string
   subtitulo?: string
+  tituloTamano?: number
+  tituloNegrita?: boolean
+  tituloColor?: string
+  tituloPosicion?: TituloPosicion
+  subtituloColor?: string
+  imagenDesvanecido?: ImagenDesvanecido
+  imagenAjuste?: ImagenAjuste
   services?: ServiceItem[]
   news?: NewsItem[]
 }
 
 function ServiceCard({ service }: { service: ServiceItem }) {
-  const Icon = ICON_MAP[service.iconName] ?? User
   return (
     <Link
       href={service.href}
       className="group flex flex-col items-center justify-center gap-3 rounded-xl bg-white p-6 shadow-md transition-all duration-200 hover:border-2 hover:border-primary hover:scale-105 border-2 border-transparent min-h-35"
     >
-      <Icon className="h-10 w-10 text-primary transition-colors group-hover:text-secondary" />
+      <DynamicIcon
+        name={service.iconName as never}
+        className="h-10 w-10 text-primary transition-colors group-hover:text-secondary"
+      />
       <span className="text-center text-sm font-medium text-primary">{service.label}</span>
     </Link>
   )
@@ -48,17 +72,24 @@ function ServiceCard({ service }: { service: ServiceItem }) {
 
 function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <Link href={item.href} className="group relative block h-30 overflow-hidden rounded-xl">
+    <Link
+      href={item.href}
+      className="group relative block h-30 w-full overflow-hidden rounded-xl sm:w-[calc((100%-2rem)/3)]"
+    >
       <Image
         src={item.image}
-        alt={item.title}
+        alt={item.title || ''}
         fill
-        className="object-cover transition-transform duration-300 group-hover:scale-110"
+        className={`object-cover transition-transform duration-300 group-hover:scale-110 ${IMAGEN_DESVANECIDO_CLASES[item.opacity ?? 'ninguno']}`}
       />
-      <div className="absolute inset-0 bg-primary/70 transition-colors group-hover:bg-primary/80" />
-      <div className="absolute inset-0 flex items-center justify-center p-4">
-        <span className="text-center text-sm font-semibold text-white">{item.title}</span>
-      </div>
+      {item.title && (
+        <>
+          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent" />
+          <div className="absolute inset-0 flex items-end p-3">
+            <span className="text-sm font-semibold text-white drop-shadow-md">{item.title}</span>
+          </div>
+        </>
+      )}
     </Link>
   )
 }
@@ -67,6 +98,13 @@ export default function HeroSection({
   imagenPrincipal,
   titulo,
   subtitulo,
+  tituloTamano = 48,
+  tituloNegrita = true,
+  tituloColor,
+  tituloPosicion = 'izquierda',
+  subtituloColor,
+  imagenDesvanecido = 'suave',
+  imagenAjuste = 'cubrir',
   services = [],
   news = [],
 }: HeroSectionProps) {
@@ -83,7 +121,7 @@ export default function HeroSection({
             src={imagenPrincipal}
             alt="Imagen principal"
             fill
-            className="object-cover object-[center_40%] opacity-90"
+            className={`${IMAGEN_AJUSTE_CLASES[imagenAjuste]} ${IMAGEN_DESVANECIDO_CLASES[imagenDesvanecido]}`}
             priority
           />
           <div className="absolute inset-0 bg-linear-to-r from-[#dce8ff]/15 via-[#dce8ff]/10 to-transparent" />
@@ -96,12 +134,22 @@ export default function HeroSection({
 
         <div className="flex flex-col justify-center lg:col-span-7">
           {(titulo || subtitulo) && (
-            <div className="mb-8">
+            <div className={`mb-8 flex flex-col ${TITULO_POSICION_CLASES[tituloPosicion]}`}>
               {titulo && (
-                <h1 className="mb-2 text-4xl font-bold text-primary lg:text-5xl">{titulo}</h1>
+                <h1
+                  className={`mb-2 ${tituloColor ? '' : 'text-primary'} ${tituloNegrita ? 'font-bold' : 'font-normal'}`}
+                  style={{ fontSize: `${tituloTamano}px`, color: tituloColor || undefined }}
+                >
+                  {titulo}
+                </h1>
               )}
               {subtitulo && (
-                <p className="text-xl text-secondary lg:text-2xl">{subtitulo}</p>
+                <p
+                  className={`text-xl lg:text-2xl ${subtituloColor ? '' : 'text-secondary'}`}
+                  style={{ color: subtituloColor || undefined }}
+                >
+                  {subtitulo}
+                </p>
               )}
             </div>
           )}
@@ -115,7 +163,7 @@ export default function HeroSection({
           )}
 
           {news.length > 0 && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-4">
               {news.map((item, index) => (
                 <NewsCard key={index} item={item} />
               ))}

@@ -379,6 +379,7 @@ export type HeroServicio = {
 
 export type HeroBanner = {
   imagen?: Media  // objeto Media del CMS — puede faltar mientras se edita
+  opacidad?: 'ninguno' | 'suave' | 'medio' | 'fuerte'
   titulo?: string
   href?: string
 }
@@ -387,7 +388,14 @@ export type HeroBlockType = {
   blockType: 'hero'
   titulo: string
   subtitulo?: string
+  tituloTamano?: number
+  tituloNegrita?: boolean
+  tituloColor?: string
+  tituloPosicion?: 'izquierda' | 'centro' | 'derecha'
+  subtituloColor?: string
   imagenPrincipal?: Media        // ← objeto Media, no string
+  imagenDesvanecido?: 'ninguno' | 'suave' | 'medio' | 'fuerte'
+  imagenAjuste?: 'cubrir' | 'contener' | 'original'
   servicios?: HeroServicio[]
   banners?: HeroBanner[]
   // campos legacy

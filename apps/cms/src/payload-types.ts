@@ -520,34 +520,59 @@ export interface Page {
             titulo: string;
             subtitulo?: string | null;
             /**
+             * Entre 20 y 90. Recomendado: 40-56.
+             */
+            tituloTamano?: number | null;
+            tituloNegrita?: boolean | null;
+            /**
+             * Ej: #003366. Vacío = usa el color institucional.
+             */
+            tituloColor?: string | null;
+            /**
+             * Ej: #0066CC. Vacío = usa el color institucional.
+             */
+            subtituloColor?: string | null;
+            /**
+             * Alinea el título y el subtítulo dentro del banner.
+             */
+            tituloPosicion?: ('izquierda' | 'centro' | 'derecha') | null;
+            /**
              * Imagen grande lado izquierdo. Recomendado: 500x550px PNG fondo transparente.
              */
             imagenPrincipal?: (number | null) | Media;
             /**
-             * Grid de servicios (máximo 8)
+             * Qué tan transparente se ve la imagen sobre el fondo del banner.
+             */
+            imagenDesvanecido?: ('ninguno' | 'suave' | 'medio' | 'fuerte') | null;
+            /**
+             * Cómo se ajusta la imagen dentro del espacio disponible.
+             */
+            imagenAjuste?: ('cubrir' | 'contener' | 'original') | null;
+            /**
+             * Agrega las tarjetas de servicios que necesites.
              */
             servicios?:
               | {
-                  icono:
-                    | 'RefreshCw'
-                    | 'Monitor'
-                    | 'Download'
-                    | 'Lightbulb'
-                    | 'User'
-                    | 'Megaphone'
-                    | 'Search'
-                    | 'Award'
-                    | 'ClipboardList'
-                    | 'BarChart';
+                  /**
+                   * Busca y elige el ícono que mejor represente este servicio (más de 1900 disponibles).
+                   */
+                  icono: string;
                   label: string;
                   href: string;
                   id?: string | null;
                 }[]
               | null;
+            /**
+             * Agrega los banners que necesites.
+             */
             banners?:
               | {
                   imagen: number | Media;
-                  titulo: string;
+                  /**
+                   * Qué tan transparente se ve la imagen del banner.
+                   */
+                  opacidad?: ('ninguno' | 'suave' | 'medio' | 'fuerte') | null;
+                  titulo?: string | null;
                   href: string;
                   id?: string | null;
                 }[]
@@ -1445,7 +1470,14 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               titulo?: T;
               subtitulo?: T;
+              tituloTamano?: T;
+              tituloNegrita?: T;
+              tituloColor?: T;
+              subtituloColor?: T;
+              tituloPosicion?: T;
               imagenPrincipal?: T;
+              imagenDesvanecido?: T;
+              imagenAjuste?: T;
               servicios?:
                 | T
                 | {
@@ -1458,6 +1490,7 @@ export interface PagesSelect<T extends boolean = true> {
                 | T
                 | {
                     imagen?: T;
+                    opacidad?: T;
                     titulo?: T;
                     href?: T;
                     id?: T;

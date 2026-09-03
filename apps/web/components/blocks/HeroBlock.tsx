@@ -4,7 +4,14 @@ import HeroSection from '@/components/blocks/HeroSection'
 export default function HeroBlock({
   titulo,
   subtitulo,
+  tituloTamano,
+  tituloNegrita,
+  tituloColor,
+  tituloPosicion,
+  subtituloColor,
   imagenPrincipal,
+  imagenDesvanecido,
+  imagenAjuste,
   servicios,
   banners,
 }: HeroBlockType) {
@@ -17,11 +24,12 @@ export default function HeroBlock({
     })) ?? []
 
   const bannersMapeados = banners
-    ?.filter((b): b is Required<typeof b> => Boolean(b.imagen?.url && b.titulo && b.href))
+    ?.filter((b) => Boolean(b.imagen?.url && b.href))
     .map((b) => ({
-      image: b.imagen.url,
+      image: b.imagen!.url!,
       title: b.titulo,
-      href: b.href,
+      href: b.href!,
+      opacity: b.opacidad,
     })) ?? []
 
   return (
@@ -29,6 +37,13 @@ export default function HeroBlock({
       imagenPrincipal={imagenPrincipal?.url}
       titulo={titulo}
       subtitulo={subtitulo}
+      tituloTamano={tituloTamano}
+      tituloNegrita={tituloNegrita}
+      tituloColor={tituloColor}
+      tituloPosicion={tituloPosicion}
+      subtituloColor={subtituloColor}
+      imagenDesvanecido={imagenDesvanecido}
+      imagenAjuste={imagenAjuste}
       services={serviciosMapeados}
       news={bannersMapeados}
     />
