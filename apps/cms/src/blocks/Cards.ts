@@ -3,7 +3,7 @@ import type { Block } from 'payload'
 export const CardsBlock: Block = {
   slug: 'cards',
   labels: {
-    singular: 'Tarjetas / Cards',
+    singular: 'Tarjetas',
     plural: 'Bloques de tarjetas',
   },
   fields: [

@@ -1,9 +1,10 @@
 'use client'
 import type { Tenant } from '@/lib/types'
+import { obtenerIniciales } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState } from 'react'
-import { Menu, X, ChevronDown, Search, Phone } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Menu, X, ChevronDown, ChevronRight, Search } from 'lucide-react'
 
 const navLinksPorDefecto = [
   { label: 'Inicio', href: '/' },
@@ -34,7 +35,13 @@ const navLinksPorDefecto = [
 export default function Header({ tenant }: { tenant?: Tenant }) {
   const [menuAbierto, setMenuAbierto] = useState(false)
   const [dropdownAbierto, setDropdownAbierto] = useState<string | null>(null)
-  const [busquedaAbierta, setBusquedaAbierta] = useState(false)
+
+  useEffect(() => {
+    document.body.style.overflow = menuAbierto ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [menuAbierto])
 
   const navLinks = tenant?.menuPrincipal?.length
     ? tenant.menuPrincipal.map((item) => ({
@@ -46,11 +53,17 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
       }))
     : navLinksPorDefecto
 
+  const accesosRapidos =
+    tenant?.accesosRapidos?.map((item) => ({ label: item.etiqueta, href: item.enlace })) ?? []
+
+  const menuIconoUrl = tenant?.menuHamburguesa?.icono?.url ?? tenant?.logo?.url
+  const menuTitulo = tenant?.menuHamburguesa?.titulo || tenant?.nombre || 'Portal Institucional'
+
   return (
     <header className="sticky top-0 z-50 shadow-md">
 
       {/* ── Barra GOV.CO — obligatoria Res. 1519 ── */}
-      <div className="bg-[#3366cc] text-white text-xs py-1.5 px-4">
+      <div className="bg-gov text-white text-xs py-1.5 px-4">
         <div className="container-institucional flex items-center justify-between">
           
           <a
@@ -63,14 +76,6 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
             <span>Un sitio web oficial del Estado colombiano</span>
             <span className="hidden sm:inline text-blue-200">— Aquí le explicamos cómo identificarlo →</span>
           </a>
-          {tenant?.footer?.lineaGratuita && (
-            <div className="hidden sm:flex items-center gap-4 text-xs text-blue-200">
-              <span className="flex items-center gap-1">
-                <Phone size={11} />
-                {tenant.footer.lineaGratuita}
-              </span>
-            </div>
-          )}
         </div>
       </div>
 
@@ -92,7 +97,7 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
             ) : (
               <div className="flex items-center gap-2">
                 <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                  CC
+                  {obtenerIniciales(tenant?.nombre)}
                 </div>
                 <div className="hidden sm:block">
                   <div className="font-bold text-primary text-sm leading-tight">
@@ -104,113 +109,152 @@ export default function Header({ tenant }: { tenant?: Tenant }) {
             )}
           </Link>
 
-          {/* Navegación desktop */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <div
-                key={link.href}
-                className="relative group"
-                onMouseEnter={() => link.children && setDropdownAbierto(link.href)}
-                onMouseLeave={() => setDropdownAbierto(null)}
+          {/* Buscador — siempre visible, sin botón que lo despliegue */}
+          <form action="/buscar" method="get" className="hidden min-w-0 flex-1 max-w-xs sm:block">
+            <div className="relative">
+              <input
+                type="search"
+                name="q"
+                placeholder="Buscar..."
+                className="w-full rounded-lg border border-gray-200 py-2 pl-4 pr-9 text-sm focus:outline-none focus:ring-2 focus:ring-secondary"
+              />
+              <button
+                type="submit"
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-primary"
+                aria-label="Buscar"
               >
-                <Link
-                  href={link.href}
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-700 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
-                >
-                  {link.label}
-                  {link.children && <ChevronDown size={14} />}
-                </Link>
+                <Search size={16} />
+              </button>
+            </div>
+          </form>
 
-                {/* Dropdown */}
-                {link.children && dropdownAbierto === link.href && (
-                  <div className="absolute top-full left-0 w-52 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-50">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors"
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+          {/* Accesos rápidos */}
+          <nav className="hidden shrink-0 items-center gap-4 lg:flex">
+            {accesosRapidos.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-sm font-medium leading-tight text-primary hover:underline"
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
 
-          {/* Acciones */}
-          <div className="flex items-center gap-2">
-            <button
-              className="p-2 text-gray-500 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
-              aria-label={busquedaAbierta ? 'Cerrar buscador' : 'Buscar'}
-              onClick={() => setBusquedaAbierta(!busquedaAbierta)}
-            >
-              {busquedaAbierta ? <X size={20} /> : <Search size={20} />}
-            </button>
-
-            {/* Botón menú móvil */}
-            <button
-              className="lg:hidden p-2 text-gray-500 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
-              onClick={() => setMenuAbierto(!menuAbierto)}
-              aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
-            >
-              {menuAbierto ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
+          {/* Botón del menú (hamburguesa, siempre visible) */}
+          <button
+            className="shrink-0 p-2 text-gray-500 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
+            onClick={() => setMenuAbierto(!menuAbierto)}
+            aria-label={menuAbierto ? 'Cerrar menú' : 'Abrir menú'}
+          >
+            {menuAbierto ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </div>
       </div>
 
-      {/* ── Buscador ── */}
-      {busquedaAbierta && (
-        <div className="bg-white border-b border-gray-200 shadow-lg">
-          <form action="/buscar" method="get" className="container-institucional py-4 flex gap-2">
-            <input
-              type="search"
-              name="q"
-              placeholder="Buscar en el sitio..."
-              autoFocus
-              className="flex-1 px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary"
-            />
-            <button type="submit" className="btn-primary">
-              Buscar
-            </button>
-          </form>
-        </div>
-      )}
+      {/* ── Fondo oscurecido del menú móvil ── */}
+      <div
+        className={`fixed inset-0 z-55 bg-black/50 transition-opacity duration-300 ${
+          menuAbierto ? 'opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        onClick={() => setMenuAbierto(false)}
+        aria-hidden="true"
+      />
 
-      {/* ── Menú móvil ── */}
-      {menuAbierto && (
-        <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
-          <nav className="container-institucional py-4 flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <div key={link.href}>
-                <Link
-                  href={link.href}
-                  className="block px-4 py-3 text-sm font-medium text-gray-700 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
-                  onClick={() => setMenuAbierto(false)}
-                >
-                  {link.label}
-                </Link>
-                {link.children && (
-                  <div className="ml-4 border-l-2 border-blue-100 pl-2">
-                    {link.children.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:text-primary hover:bg-blue-50 rounded-lg transition-colors"
-                        onClick={() => setMenuAbierto(false)}
-                      >
-                        {child.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+      {/* ── Menú móvil (offcanvas) ── */}
+      <aside
+        className={`fixed inset-y-0 right-0 z-60 w-[85%] max-w-sm overflow-y-auto rounded-l-2xl bg-white shadow-2xl transition-transform duration-300 ease-in-out ${
+          menuAbierto ? 'translate-x-0' : 'translate-x-full'
+        }`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menú de navegación"
+      >
+        <div className="flex items-center justify-between gap-3 border-b border-gray-100 p-5">
+          <div className="flex min-w-0 items-center gap-3">
+            {menuIconoUrl ? (
+              <Image
+                src={menuIconoUrl}
+                alt={menuTitulo}
+                width={40}
+                height={40}
+                className="h-10 w-auto object-contain"
+              />
+            ) : (
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-sm font-bold text-white">
+                CC
               </div>
-            ))}
-          </nav>
+            )}
+            <span className="truncate text-sm font-bold leading-tight text-primary">
+              {menuTitulo}
+            </span>
+          </div>
+          <button
+            className="shrink-0 rounded-lg p-2 text-gray-400 transition-colors hover:text-primary"
+            onClick={() => setMenuAbierto(false)}
+            aria-label="Cerrar menú"
+          >
+            <X size={22} />
+          </button>
         </div>
-      )}
+
+        <nav className="p-5">
+          <h2 className="mb-2 text-xs font-bold uppercase tracking-wider text-primary">
+            Menú
+          </h2>
+          <ul className="flex flex-col">
+            {navLinks.map((link) => (
+              <li key={link.href} className="border-b border-gray-100 last:border-0">
+                {link.children ? (
+                  <>
+                    <button
+                      className="flex w-full items-center justify-between gap-2 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+                      onClick={() =>
+                        setDropdownAbierto(dropdownAbierto === link.href ? null : link.href)
+                      }
+                      aria-expanded={dropdownAbierto === link.href}
+                    >
+                      <span className="flex items-center gap-2">
+                        <ChevronRight size={16} className="shrink-0 text-primary" />
+                        {link.label}
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        className={`text-gray-400 transition-transform ${
+                          dropdownAbierto === link.href ? 'rotate-180' : ''
+                        }`}
+                      />
+                    </button>
+                    {dropdownAbierto === link.href && (
+                      <div className="flex flex-col gap-0.5 pb-2 pl-7">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="py-2 text-sm text-gray-500 transition-colors hover:text-primary"
+                            onClick={() => setMenuAbierto(false)}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className="flex items-center gap-2 py-3.5 text-sm font-medium text-gray-700 transition-colors hover:text-primary"
+                    onClick={() => setMenuAbierto(false)}
+                  >
+                    <ChevronRight size={16} className="shrink-0 text-primary" />
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </aside>
     </header>
   )
 }

@@ -1,20 +1,19 @@
 import Link from 'next/link'
-import { Home, Search, ArrowLeft } from 'lucide-react'
+import { Home, Search, ShieldCheck } from 'lucide-react'
+import { getCurrentTenant } from '@/lib/payload'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 
-export default function NotFound() {
+const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
+
+export default async function NotFound() {
+  const tenant = (await getCurrentTenant()) ?? undefined
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Barra GOV.CO */}
-      <div className="bg-[#3366cc] text-white text-xs py-1.5 px-4">
-        <div className="container-institucional">
-          <a href="https://www.gov.co" target="_blank" rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:underline w-fit">
-            🇨🇴 Un sitio web oficial del Estado colombiano
-          </a>
-        </div>
-      </div>
+    <>
+      <Header tenant={tenant} />
 
-      <div className="flex-1 flex items-center justify-center px-4 py-20">
+      <main className="flex-1 flex items-center justify-center px-4 py-20">
         <div className="text-center max-w-lg">
           <div className="relative mb-8">
             <div className="text-[160px] font-black text-gray-100 leading-none select-none">
@@ -31,7 +30,7 @@ export default function NotFound() {
             Página no encontrada
           </h1>
           <p className="text-gray-600 mb-8 leading-relaxed">
-            La página que buscas no existe o ha sido movida. Verifica la URL o regresa al inicio.
+            La página que buscas no existe, fue movida, o todavía no ha sido creada en el panel administrativo.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -39,39 +38,15 @@ export default function NotFound() {
               <Home size={18} />
               Ir al inicio
             </Link>
-            <Link href="/" className="btn-outline">
-              <ArrowLeft size={18} />
-              Volver al inicio
-            </Link>
-          </div>
-
-          <div className="mt-12 pt-8 border-t border-gray-200">
-            <p className="text-sm text-gray-500 mb-4">¿Buscabas alguno de estos?</p>
-            <div className="flex flex-wrap gap-2 justify-center">
-              {[
-                { label: 'Registro Mercantil', href: '/registro-mercantil' },
-                { label: 'Certificados', href: '/certificados' },
-                { label: 'Contratación', href: '/contratacion' },
-                { label: 'Contacto', href: '/contacto' },
-              ].map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700 hover:border-primary hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
+            <a href={`${CMS_URL}/admin`} className="btn-outline">
+              <ShieldCheck size={18} />
+              Ir al panel admin
+            </a>
           </div>
         </div>
-      </div>
+      </main>
 
-      <div className="border-t border-gray-200 py-4">
-        <div className="container-institucional text-center text-xs text-gray-400">
-          © {new Date().getFullYear()} Cámara de Comercio del Cauca. Todos los derechos reservados.
-        </div>
-      </div>
-    </div>
+      <Footer tenant={tenant} />
+    </>
   )
 }

@@ -144,6 +144,7 @@ export interface Tenant {
    * Solo minúsculas, números y guiones. Ej: alcaldia-bogota
    */
   slug: string;
+  activo?: boolean | null;
   /**
    * Dominio propio si aplica. Ej: www.alcaldiabogota.gov.co
    */
@@ -186,41 +187,162 @@ export interface Tenant {
         id?: string | null;
       }[]
     | null;
-  footer?: {
-    direccion?: string | null;
-    telefonoConmutador?: string | null;
-    lineaGratuita?: string | null;
-    lineaAnticorrupcion?: string | null;
-    correoNotificaciones?: string | null;
+  /**
+   * Enlaces fijos junto al buscador.
+   */
+  accesosRapidos?:
+    | {
+        etiqueta: string;
+        /**
+         * Ej: /ley-de-transparencia
+         */
+        enlace: string;
+        id?: string | null;
+      }[]
+    | null;
+  menuHamburguesa?: {
     /**
-     * Ej: Lunes a viernes de 8:00 a.m. a 5:00 p.m.
+     * Texto junto al ícono dentro del panel del menú. Si se deja vacío, se usa el nombre de la entidad.
      */
-    horarioAtencion?: string | null;
-    redesSociales?:
-      | {
-          red: 'facebook' | 'x' | 'instagram' | 'youtube' | 'linkedin' | 'tiktok' | 'whatsapp';
-          /**
-           * Ej: https://www.facebook.com/tuentidad
-           */
-          url: string;
-          id?: string | null;
-        }[]
-      | null;
+    titulo?: string | null;
     /**
-     * Ej: Política de privacidad, Términos y condiciones, Mapa del sitio
+     * Ícono junto al título dentro del panel del menú. Si se deja vacío, se usa el logo institucional.
      */
-    enlacesLegales?:
-      | {
-          etiqueta: string;
-          /**
-           * Ej: /politica-privacidad
-           */
-          enlace: string;
-          id?: string | null;
-        }[]
-      | null;
+    icono?: (number | null) | Media;
   };
-  activo?: boolean | null;
+  footer?: {
+    /**
+     * Ej: #0378B3
+     */
+    colorFondo?: string | null;
+    /**
+     * Ej: 1100px
+     */
+    anchoMaximo?: string | null;
+    layout?: {
+      /**
+       * Agrega una columna por cada bloque de contenido que quieras mostrar (por ejemplo: "Enlaces de interés", "Contáctanos", "Síguenos"). Se acomodan solas de izquierda a derecha y pasan a una nueva línea automáticamente según su ancho — no necesitas definir filas ni sumar columnas.
+       */
+      columnas?:
+        | {
+            ancho?: ('pequena' | 'mediana' | 'grande' | 'completa') | null;
+            align?: ('left' | 'center' | 'right') | null;
+            verticalAlign?: ('top' | 'center' | 'bottom') | null;
+            /**
+             * Horizontal sirve para barras tipo "Anticorrupción | Mapa del Sitio | ..."
+             */
+            direccionContenido?: ('columna' | 'fila') | null;
+            children?:
+              | (
+                  | {
+                      /**
+                       * Envuelve una parte en **doble asterisco** para ponerla en negrita. Ej: **Sede Principal:** Calle 4 # 7-37 B/ Centro, Popayán
+                       */
+                      contenido: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'texto';
+                    }
+                  | {
+                      contenido: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'titulo';
+                    }
+                  | {
+                      imagen: number | Media;
+                      ancho?: number | null;
+                      alto?: number | null;
+                      /**
+                       * Si la imagen debe ser clicable
+                       */
+                      enlace?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'imagen';
+                    }
+                  | {
+                      etiqueta: string;
+                      /**
+                       * Ej: /servicios, https://... , tel:018000910060
+                       */
+                      enlace: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'enlace';
+                    }
+                  | {
+                      /**
+                       * Ej: Entidades de control
+                       */
+                      subtitulo?: string | null;
+                      enlaces?:
+                        | {
+                            etiqueta: string;
+                            /**
+                             * Ej: /servicios, https://..., tel:018000910060
+                             */
+                            enlace: string;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'lista-enlaces';
+                    }
+                  | {
+                      logos?:
+                        | {
+                            imagen: number | Media;
+                            ancho?: number | null;
+                            alto?: number | null;
+                            enlace?: string | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'logos';
+                    }
+                  | {
+                      redes?:
+                        | {
+                            red: 'facebook' | 'x' | 'instagram' | 'youtube' | 'linkedin' | 'tiktok' | 'whatsapp';
+                            url: string;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'redes-sociales';
+                    }
+                  | {
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'separador';
+                    }
+                  | {
+                      alto?: number | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'espaciador';
+                    }
+                  | {
+                      /**
+                       * Se inserta tal cual en la página — úsalo con cuidado.
+                       */
+                      contenido: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'html';
+                    }
+                )[]
+              | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -307,11 +429,39 @@ export interface User {
   /**
    * Define qué puede hacer este usuario en el sistema
    */
-  rol: 'superadmin' | 'admin_cliente' | 'editor' | 'visualizador';
+  rol?: ('superadmin' | 'admin_cliente' | 'editor' | 'visualizador') | null;
   /**
-   * No aplica para Super Administradores
+   * Obligatorio para cualquier rol distinto de Super Administrador
    */
   tenant?: (number | null) | Tenant;
+  /**
+   * Solo aplica a los roles Editor y Visualizador — define qué puede hacer este usuario en cada módulo, dentro del tope de su rol (Visualizador nunca crea/edita/elimina; Editor nunca elimina). Checklist ITA y Clientes son exclusivos de Super Administrador, por eso no aparecen aquí. Super Administrador y Administrador Cliente siempre tienen acceso completo dentro de su alcance.
+   */
+  permisos?: {
+    paginas?: {
+      ver?: boolean | null;
+      crear?: boolean | null;
+      editar?: boolean | null;
+      eliminar?: boolean | null;
+    };
+    noticias?: {
+      ver?: boolean | null;
+      crear?: boolean | null;
+      editar?: boolean | null;
+      eliminar?: boolean | null;
+    };
+    medios?: {
+      ver?: boolean | null;
+      crear?: boolean | null;
+      editar?: boolean | null;
+      eliminar?: boolean | null;
+    };
+    mensajesContacto?: {
+      ver?: boolean | null;
+      editar?: boolean | null;
+      eliminar?: boolean | null;
+    };
+  };
   /**
    * Se mostrará como tu avatar en la parte superior del panel
    */
@@ -1003,6 +1153,7 @@ export interface TenantsSelect<T extends boolean = true> {
   nombre?: T;
   nit?: T;
   slug?: T;
+  activo?: T;
   dominio?: T;
   logo?: T;
   configuracion?:
@@ -1026,31 +1177,136 @@ export interface TenantsSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  accesosRapidos?:
+    | T
+    | {
+        etiqueta?: T;
+        enlace?: T;
+        id?: T;
+      };
+  menuHamburguesa?:
+    | T
+    | {
+        titulo?: T;
+        icono?: T;
+      };
   footer?:
     | T
     | {
-        direccion?: T;
-        telefonoConmutador?: T;
-        lineaGratuita?: T;
-        lineaAnticorrupcion?: T;
-        correoNotificaciones?: T;
-        horarioAtencion?: T;
-        redesSociales?:
+        colorFondo?: T;
+        anchoMaximo?: T;
+        layout?:
           | T
           | {
-              red?: T;
-              url?: T;
-              id?: T;
-            };
-        enlacesLegales?:
-          | T
-          | {
-              etiqueta?: T;
-              enlace?: T;
-              id?: T;
+              columnas?:
+                | T
+                | {
+                    ancho?: T;
+                    align?: T;
+                    verticalAlign?: T;
+                    direccionContenido?: T;
+                    children?:
+                      | T
+                      | {
+                          texto?:
+                            | T
+                            | {
+                                contenido?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          titulo?:
+                            | T
+                            | {
+                                contenido?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          imagen?:
+                            | T
+                            | {
+                                imagen?: T;
+                                ancho?: T;
+                                alto?: T;
+                                enlace?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          enlace?:
+                            | T
+                            | {
+                                etiqueta?: T;
+                                enlace?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          'lista-enlaces'?:
+                            | T
+                            | {
+                                subtitulo?: T;
+                                enlaces?:
+                                  | T
+                                  | {
+                                      etiqueta?: T;
+                                      enlace?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          logos?:
+                            | T
+                            | {
+                                logos?:
+                                  | T
+                                  | {
+                                      imagen?: T;
+                                      ancho?: T;
+                                      alto?: T;
+                                      enlace?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          'redes-sociales'?:
+                            | T
+                            | {
+                                redes?:
+                                  | T
+                                  | {
+                                      red?: T;
+                                      url?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
+                          separador?:
+                            | T
+                            | {
+                                id?: T;
+                                blockName?: T;
+                              };
+                          espaciador?:
+                            | T
+                            | {
+                                alto?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          html?:
+                            | T
+                            | {
+                                contenido?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                        };
+                    id?: T;
+                  };
             };
       };
-  activo?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1062,6 +1318,41 @@ export interface UsersSelect<T extends boolean = true> {
   nombre?: T;
   rol?: T;
   tenant?: T;
+  permisos?:
+    | T
+    | {
+        paginas?:
+          | T
+          | {
+              ver?: T;
+              crear?: T;
+              editar?: T;
+              eliminar?: T;
+            };
+        noticias?:
+          | T
+          | {
+              ver?: T;
+              crear?: T;
+              editar?: T;
+              eliminar?: T;
+            };
+        medios?:
+          | T
+          | {
+              ver?: T;
+              crear?: T;
+              editar?: T;
+              eliminar?: T;
+            };
+        mensajesContacto?:
+          | T
+          | {
+              ver?: T;
+              editar?: T;
+              eliminar?: T;
+            };
+      };
   foto?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -33,7 +33,7 @@ export default function AliadosBlock({ titulo, descripcion, aliados }: AliadosBl
             )
 
             return (
-              <div key={i} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm">
+              <div key={i} className="flex items-center justify-center p-4">
                 {aliado.enlace ? (
                   <a
                     href={aliado.enlace}

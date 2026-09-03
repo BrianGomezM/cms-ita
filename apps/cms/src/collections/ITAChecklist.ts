@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { leerPropiaTenant, editorOSuperior } from '../access'
+import { soloSuperAdmin } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
@@ -36,6 +36,9 @@ export const ITAChecklist: CollectionConfig = {
     group: 'Transparencia',
     defaultColumns: ['idPregunta', 'categoria', 'cumplimiento', 'tenant', 'fechaVerificacion'],
     description: 'Ítems de auditoría Resolución MinTIC 1519',
+    // Exclusivo de superadmin — admin_cliente y editor/visualizador no lo
+    // gestionan ni lo ven en su menú.
+    hidden: ({ user }) => (user as { rol?: string })?.rol !== 'superadmin',
   },
   hooks: {
     beforeOperation: [injectTenantContext],
@@ -44,10 +47,10 @@ export const ITAChecklist: CollectionConfig = {
     afterDelete: [auditAfterDelete],   // ← agregar
   },
   access: {
-    read: leerPropiaTenant,
-    create: editorOSuperior,
-    update: editorOSuperior,
-    delete: ({ req: { user } }) => (user as any)?.rol === 'superadmin',
+    read: soloSuperAdmin,
+    create: soloSuperAdmin,
+    update: soloSuperAdmin,
+    delete: soloSuperAdmin,
   },
   // Endpoint público: solo expone el porcentaje de cumplimiento del Índice de
   // Transparencia, sin observaciones ni evidencias (esos datos siguen privados).

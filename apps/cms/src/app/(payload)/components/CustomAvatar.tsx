@@ -1,4 +1,5 @@
 import type { Payload } from 'payload'
+import AvatarMenu from './AvatarMenu'
 
 type FotoPoblada = {
   url?: string | null
@@ -16,6 +17,8 @@ type AvatarUser = {
 
 // Avatar del usuario en el encabezado del panel: muestra la foto de perfil
 // (campo `foto` de Users) o, si no hay foto, las iniciales del nombre.
+// Al hacer clic despliega un menú rápido con "Ver perfil" y "Cerrar sesión"
+// (ver AvatarMenu.tsx — componente cliente que maneja la interacción).
 export default async function CustomAvatar({
   user,
   payload,
@@ -42,46 +45,14 @@ export default async function CustomAvatar({
   const url =
     foto && typeof foto === 'object' ? (foto.sizes?.thumbnail?.url ?? foto.url) : null
 
-  if (url) {
-    return (
-      <div
-        style={{
-          width: 25,
-          height: 25,
-          borderRadius: '50%',
-          overflow: 'hidden',
-          flexShrink: 0,
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={url}
-          alt="Foto de perfil"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        />
-      </div>
-    )
-  }
-
   const inicial = (user.nombre || user.email || '?').trim().charAt(0).toUpperCase()
 
   return (
-    <div
-      style={{
-        width: 25,
-        height: 25,
-        borderRadius: '50%',
-        background: 'var(--theme-elevation-200)',
-        color: 'var(--theme-text)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        fontWeight: 600,
-        fontSize: 12,
-        flexShrink: 0,
-      }}
-    >
-      {inicial}
-    </div>
+    <AvatarMenu
+      fotoUrl={url ?? null}
+      inicial={inicial}
+      nombre={user.nombre || 'Sin nombre'}
+      email={user.email || ''}
+    />
   )
 }

@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
     // En prod: optimización normal (el CMS estará en un dominio real, no localhost)
     unoptimized: isDev,
     remotePatterns: [
-      { protocol: 'http',  hostname: 'localhost',                       port: '3000' },
+      { protocol: 'http',  hostname: 'localhost',                       port: '4000' },
       { protocol: 'http',  hostname: 'localhost',                       port: '9000' },
       { protocol: 'https', hostname: '*.public.blob.vercel-storage.com'             },
     ],

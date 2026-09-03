@@ -2,7 +2,7 @@ import type { Block } from 'payload'
 
 export const TestimoniosBlock: Block = {
   slug: 'testimonios',
-  labels: { singular: 'Testimonios', plural: 'Bloques de testimonios' },
+  labels: { singular: 'Opiniones de usuarios', plural: 'Bloques de opiniones' },
   fields: [
     { name: 'titulo', type: 'text', label: 'Título de la sección', defaultValue: 'Lo que dicen nuestros usuarios' },
     { name: 'descripcion', type: 'textarea', label: 'Descripción (opcional)' },

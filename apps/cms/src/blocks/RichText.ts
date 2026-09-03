@@ -4,7 +4,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 export const RichTextBlock: Block = {
   slug: 'rich-text',
   labels: {
-    singular: 'Texto enriquecido',
+    singular: 'Texto libre',
     plural: 'Bloques de texto',
   },
   fields: [

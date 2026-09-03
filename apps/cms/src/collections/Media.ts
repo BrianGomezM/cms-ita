@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { leerPropiaTenant } from '../access'
+import { permisoModulo, permisoLecturaPublica } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { setUploadPrefix } from '../hooks/setUploadPrefix'
@@ -20,10 +20,13 @@ export const Media: CollectionConfig = {
     beforeChange: [autoAssignTenant],
   },
   access: {
-    read: () => true, // Los medios son públicos (logos, imágenes de páginas)
-    create: leerPropiaTenant,
-    update: leerPropiaTenant,
-    delete: leerPropiaTenant,
+    // Públicos para visitantes anónimos (logos, imágenes de páginas); un
+    // usuario ya autenticado que no sea superadmin solo ve los de su tenant,
+    // y editor/visualizador necesitan el permiso "ver" explícito.
+    read: permisoLecturaPublica('medios'),
+    create: permisoModulo('medios', 'crear'),
+    update: permisoModulo('medios', 'editar'),
+    delete: permisoModulo('medios', 'eliminar'),
   },
   upload: {
     staticDir: 'media',

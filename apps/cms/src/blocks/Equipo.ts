@@ -3,7 +3,7 @@ import type { Block } from 'payload'
 export const EquipoBlock: Block = {
   slug: 'equipo',
   labels: {
-    singular: 'Equipo / Directorio',
+    singular: 'Nuestro equipo',
     plural: 'Bloques de equipo',
   },
   fields: [

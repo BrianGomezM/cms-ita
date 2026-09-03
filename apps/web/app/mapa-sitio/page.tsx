@@ -19,12 +19,13 @@ export default async function MapaSitioPage() {
     ...(item.submenu ?? []).map((sub) => ({ etiqueta: sub.etiqueta, enlace: sub.enlace })),
   ])
 
-  const enlacesLegales = tenant?.footer?.enlacesLegales?.length
-    ? tenant.footer.enlacesLegales
-    : [
-        { etiqueta: 'Política de privacidad', enlace: '/politicas' },
-        { etiqueta: 'Términos de uso', enlace: '/terminos' },
-      ]
+  // El footer ya no expone "enlacesLegales" como campo estructurado (es
+  // 100% visual ahora) — hasta que se rediseñe esta sección, se usa un
+  // listado fijo de referencia.
+  const enlacesLegales = [
+    { etiqueta: 'Política de privacidad', enlace: '/politicas' },
+    { etiqueta: 'Términos de uso', enlace: '/terminos' },
+  ]
 
   // Páginas publicadas que no aparecen en el menú principal ni en enlaces legales
   const enlacesConocidos = new Set([

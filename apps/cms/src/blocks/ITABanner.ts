@@ -3,8 +3,8 @@ import type { Block } from 'payload'
 export const ITABannerBlock: Block = {
   slug: 'ita-banner',
   labels: {
-    singular: 'Banner Índice de Transparencia (ITA)',
-    plural: 'Banners ITA',
+    singular: 'Avance de Transparencia (ITA)',
+    plural: 'Banners de Transparencia',
   },
   fields: [
     {

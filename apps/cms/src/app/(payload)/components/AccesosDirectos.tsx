@@ -27,25 +27,21 @@ export default async function AccesosDirectos({ user }: AdminViewServerProps) {
   const accesos = [
     {
       href: '/admin/collections/pages',
-      icono: '📄',
       titulo: 'Páginas del sitio',
       descripcion: 'Edita el contenido de tu sitio web',
     },
     {
       href: '/admin/collections/noticias',
-      icono: '📰',
       titulo: 'Noticias y avisos',
       descripcion: 'Publica novedades y comunicados',
     },
     {
       href: '/admin/collections/media',
-      icono: '🖼️',
       titulo: 'Archivos multimedia',
       descripcion: 'Imágenes, logos y documentos',
     },
     {
       href: '/admin/collections/mensajes-contacto',
-      icono: '✉️',
       titulo: 'Mensajes de contacto',
       descripcion: mensajesNuevos > 0
         ? `${mensajesNuevos} mensaje${mensajesNuevos === 1 ? '' : 's'} sin leer`
@@ -54,14 +50,12 @@ export default async function AccesosDirectos({ user }: AdminViewServerProps) {
     },
     {
       href: '/admin/dashboard-ita',
-      icono: '📊',
       titulo: 'Transparencia (ITA)',
       descripcion: 'Cumplimiento de la Resolución 1519',
     },
     ...(u?.rol === 'superadmin' || u?.rol === 'admin_cliente'
       ? [{
           href: '/admin/collections/tenants',
-          icono: '⚙️',
           titulo: 'Configuración del sitio',
           descripcion: 'Colores, logo, menú, redes sociales',
         }]
@@ -69,7 +63,6 @@ export default async function AccesosDirectos({ user }: AdminViewServerProps) {
     ...(u?.rol === 'superadmin' || u?.rol === 'admin_cliente'
       ? [{
           href: '/admin/collections/users',
-          icono: '👤',
           titulo: 'Usuarios',
           descripcion: 'Administra los accesos al panel',
         }]
@@ -77,9 +70,9 @@ export default async function AccesosDirectos({ user }: AdminViewServerProps) {
   ]
 
   return (
-    <div style={{ padding: '24px 32px 0', maxWidth: '1200px' }}>
+    <div style={{ padding: '24px 5px 0', maxWidth: '1200px' }}>
       <h2 style={{ fontSize: '18px', color: 'var(--theme-text)', marginBottom: '4px' }}>
-        👋 Accesos directos
+       Accesos directos
       </h2>
       <p style={{ margin: '0 0 16px', color: 'var(--theme-elevation-500)', fontSize: '13px' }}>
         Lo que más usarás día a día
@@ -102,7 +95,6 @@ export default async function AccesosDirectos({ user }: AdminViewServerProps) {
               transition: 'background 0.2s',
             }}
           >
-            <span style={{ fontSize: '24px' }}>{acceso.icono}</span>
             <strong style={{ fontSize: '14px' }}>{acceso.titulo}</strong>
             <span style={{ fontSize: '12px', color: acceso.destacado ? '#f59e0b' : 'var(--theme-elevation-500)' }}>
               {acceso.descripcion}

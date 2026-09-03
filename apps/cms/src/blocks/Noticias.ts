@@ -3,7 +3,7 @@ import type { Block } from 'payload'
 export const NoticiasBlock: Block = {
   slug: 'noticias',
   labels: {
-    singular: 'Noticias / Avisos',
+    singular: 'Noticias y avisos',
     plural: 'Bloques de noticias',
   },
   fields: [

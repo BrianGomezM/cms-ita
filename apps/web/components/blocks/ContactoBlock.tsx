@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import type { ContactoBlockType, Tenant } from '@/lib/types'
-import { Mail, MapPin, Phone, Clock, Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import { Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
 
 const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
 
@@ -10,7 +10,6 @@ type Props = ContactoBlockType & { tenant?: Tenant }
 
 export default function ContactoBlock({ titulo, descripcion, mostrarInfoContacto, tenant }: Props) {
   const [estado, setEstado] = useState<'idle' | 'enviando' | 'enviado' | 'error'>('idle')
-  const footer = tenant?.footer
 
   async function enviar(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -154,47 +153,16 @@ export default function ContactoBlock({ titulo, descripcion, mostrarInfoContacto
             )}
           </form>
 
-          {/* Información de contacto */}
+          {/* Información de contacto — pendiente: este bloque necesita su
+              propia fuente de datos ahora que el footer es 100% visual
+              (filas/celdas/bloques) y ya no expone dirección/teléfono
+              como campos estructurados. */}
           {mostrarInfoContacto && (
             <div className="card p-6 sm:p-8 flex flex-col gap-4">
               <h3 className="font-bold text-primary text-lg mb-2">Información de contacto</h3>
-
-              {footer?.direccion && (
-                <div className="flex items-start gap-3 text-sm text-gray-600">
-                  <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>{footer.direccion}</span>
-                </div>
-              )}
-              {footer?.telefonoConmutador && (
-                <div className="flex items-start gap-3 text-sm text-gray-600">
-                  <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>Conmutador: {footer.telefonoConmutador}</span>
-                </div>
-              )}
-              {footer?.lineaGratuita && (
-                <div className="flex items-start gap-3 text-sm text-gray-600">
-                  <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>Línea gratuita: {footer.lineaGratuita}</span>
-                </div>
-              )}
-              {footer?.correoNotificaciones && (
-                <div className="flex items-start gap-3 text-sm text-gray-600">
-                  <Mail size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>{footer.correoNotificaciones}</span>
-                </div>
-              )}
-              {footer?.horarioAtencion && (
-                <div className="flex items-start gap-3 text-sm text-gray-600">
-                  <Clock size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>{footer.horarioAtencion}</span>
-                </div>
-              )}
-
-              {!footer?.direccion && !footer?.telefonoConmutador && !footer?.correoNotificaciones && (
-                <p className="text-sm text-gray-400">
-                  Configura los datos de contacto desde el panel (Tenant &gt; Footer).
-                </p>
-              )}
+              <p className="text-sm text-gray-400">
+                Este bloque está pendiente de rediseño junto con la nueva estructura del footer.
+              </p>
             </div>
           )}
         </div>

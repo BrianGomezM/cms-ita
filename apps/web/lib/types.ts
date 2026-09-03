@@ -16,20 +16,63 @@ export type EnlaceLegal = {
   enlace: string
 }
 
+export type LogoFooter = {
+  imagen: Media
+  ancho?: number
+  alto?: number
+  enlace?: string
+}
+
+// Bloques genéricos del constructor visual del footer — ninguno conoce el
+// significado de su contenido (no hay un blockType "direccion" o "pqrs"):
+// el editor combina estos bloques libremente dentro de cada celda.
+export type FooterBlockTexto = { blockType: 'texto'; contenido: string }
+export type FooterBlockTitulo = { blockType: 'titulo'; contenido: string }
+export type FooterBlockImagen = { blockType: 'imagen'; imagen: Media; ancho?: number; alto?: number; enlace?: string }
+export type FooterBlockEnlace = { blockType: 'enlace'; etiqueta: string; enlace: string }
+export type FooterBlockListaEnlaces = { blockType: 'lista-enlaces'; subtitulo?: string; enlaces?: EnlaceLegal[] }
+export type FooterBlockLogos = { blockType: 'logos'; logos?: LogoFooter[] }
+export type FooterBlockRedesSociales = { blockType: 'redes-sociales'; redes?: RedSocial[] }
+export type FooterBlockSeparador = { blockType: 'separador' }
+export type FooterBlockEspaciador = { blockType: 'espaciador'; alto?: number }
+export type FooterBlockHtml = { blockType: 'html'; contenido: string }
+
+export type FooterBlock =
+  | FooterBlockTexto
+  | FooterBlockTitulo
+  | FooterBlockImagen
+  | FooterBlockEnlace
+  | FooterBlockListaEnlaces
+  | FooterBlockLogos
+  | FooterBlockRedesSociales
+  | FooterBlockSeparador
+  | FooterBlockEspaciador
+  | FooterBlockHtml
+
+// Una columna define su ancho por nombre (no por número de 1 a 12) — se
+// acomoda sola junto a las demás y pasa de línea automáticamente. El
+// contenido vive en sus bloques hijos.
+export type FooterColumn = {
+  id: string
+  ancho?: 'pequena' | 'mediana' | 'grande' | 'completa'
+  align?: 'left' | 'center' | 'right'
+  verticalAlign?: 'top' | 'center' | 'bottom'
+  direccionContenido?: 'columna' | 'fila'
+  children?: FooterBlock[]
+}
+
 export type TenantFooter = {
-  direccion?: string
-  telefonoConmutador?: string
-  lineaGratuita?: string
-  lineaAnticorrupcion?: string
-  correoNotificaciones?: string
-  horarioAtencion?: string
-  redesSociales?: RedSocial[]
-  enlacesLegales?: EnlaceLegal[]
+  colorFondo?: string
+  anchoMaximo?: string
+  layout?: {
+    columnas?: FooterColumn[]
+  }
 }
 
 export type Tenant = {
   id: number
   nombre: string
+  nit?: string
   slug: string
   dominio?: string
   configuracion?: {
@@ -39,6 +82,11 @@ export type Tenant = {
   }
   logo?: Media
   menuPrincipal?: MenuLink[]
+  accesosRapidos?: EnlaceLegal[]
+  menuHamburguesa?: {
+    titulo?: string
+    icono?: Media
+  }
   footer?: TenantFooter
 }
 

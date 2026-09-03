@@ -3,7 +3,7 @@ import type { Block } from 'payload'
 export const DocumentListBlock: Block = {
   slug: 'document-list',
   labels: {
-    singular: 'Lista de documentos',
+    singular: 'Documentos y normativa',
     plural: 'Bloques de documentos',
   },
   fields: [

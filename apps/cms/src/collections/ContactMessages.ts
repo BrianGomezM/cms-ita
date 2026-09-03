@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { leerPropiaTenant, editorOSuperior } from '../access'
+import { permisoModulo } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 
 export const ContactMessages: CollectionConfig = {
@@ -20,9 +20,9 @@ export const ContactMessages: CollectionConfig = {
   access: {
     // Cualquier visitante del sitio puede enviar un mensaje de contacto
     create: () => true,
-    read: leerPropiaTenant,
-    update: editorOSuperior,
-    delete: editorOSuperior,
+    read: permisoModulo('mensajesContacto', 'ver'),
+    update: permisoModulo('mensajesContacto', 'editar'),
+    delete: permisoModulo('mensajesContacto', 'eliminar'),
   },
   fields: [
     {

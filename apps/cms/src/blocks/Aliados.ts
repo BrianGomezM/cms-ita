@@ -2,7 +2,7 @@ import type { Block } from 'payload'
 
 export const AliadosBlock: Block = {
   slug: 'aliados',
-  labels: { singular: 'Aliados / Convenios', plural: 'Bloques de aliados' },
+  labels: { singular: 'Aliados y convenios', plural: 'Bloques de aliados' },
   fields: [
     { name: 'titulo', type: 'text', label: 'Título de la sección', defaultValue: 'Nuestros aliados y convenios' },
     { name: 'descripcion', type: 'textarea', label: 'Descripción (opcional)' },

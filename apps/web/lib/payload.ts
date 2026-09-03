@@ -9,11 +9,12 @@ const isDev = process.env.NODE_ENV === 'development'
 // no está mapeado a ningún tenant (debe coincidir con DEFAULT_TENANT_SLUG en middleware.ts)
 const DEFAULT_TENANT_SLUG = process.env.DEFAULT_TENANT_SLUG || 'camara-comercio-cauca'
 
-// Busca un tenant por su slug o por su dominio propio
+// Busca un tenant por su slug o por su dominio propio. Un tenant con
+// "activo" desmarcado se trata como si no existiera (el sitio no se sirve).
 export async function getTenantByHost(host: string): Promise<Tenant | null> {
   try {
     const res = await fetch(
-      `${CMS_URL}/api/tenants?where[or][0][slug][equals]=${encodeURIComponent(host)}&where[or][1][dominio][equals]=${encodeURIComponent(host)}&depth=1`,
+      `${CMS_URL}/api/tenants?where[or][0][slug][equals]=${encodeURIComponent(host)}&where[or][1][dominio][equals]=${encodeURIComponent(host)}&where[activo][equals]=true&depth=1`,
       isDev ? { cache: 'no-store' } : { next: { revalidate: 300 } }
     )
     if (!res.ok) return null
@@ -27,6 +28,23 @@ export async function getTenantByHost(host: string): Promise<Tenant | null> {
 // Obtiene un tenant por su slug
 export async function getTenantBySlug(slug: string) {
   return getTenantByHost(slug)
+}
+
+// Lista todos los tenants activos — usado en la pantalla raíz cuando el host
+// de la petición no coincide con ningún tenant (ej: localhost pelado), para
+// mostrar un selector en vez de asumir un tenant por defecto.
+export async function getTenantsActivos(): Promise<Tenant[]> {
+  try {
+    const res = await fetch(
+      `${CMS_URL}/api/tenants?where[activo][equals]=true&sort=nombre&limit=50&depth=1`,
+      isDev ? { cache: 'no-store' } : { next: { revalidate: 300 } }
+    )
+    if (!res.ok) return []
+    const data = await res.json()
+    return data.docs ?? []
+  } catch {
+    return []
+  }
 }
 
 // Resuelve el tenant de la petición actual a partir del header

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { editorOSuperior } from '../access'
+import { permisoModulo, permisoLecturaConEstado } from '../access'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
@@ -27,13 +27,10 @@ export const Noticias: CollectionConfig = {
     afterDelete: [auditAfterDelete, revalidateNoticiaAfterDelete],
   },
   access: {
-    read: ({ req: { user } }) => {
-      if (user) return true
-      return { estado: { equals: 'publicado' } }
-    },
-    create: editorOSuperior,
-    update: editorOSuperior,
-    delete: editorOSuperior,
+    read: permisoLecturaConEstado('noticias'),
+    create: permisoModulo('noticias', 'crear'),
+    update: permisoModulo('noticias', 'editar'),
+    delete: permisoModulo('noticias', 'eliminar'),
   },
   fields: [
     {

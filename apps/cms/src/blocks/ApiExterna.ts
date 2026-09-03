@@ -5,8 +5,8 @@ import type { Block } from 'payload'
 export const ApiExternaBlock: Block = {
   slug: 'api-externa',
   labels: {
-    singular: 'Datos de API externa',
-    plural: 'Bloques de API externa',
+    singular: 'Datos externos',
+    plural: 'Bloques de datos externos',
   },
   fields: [
     {

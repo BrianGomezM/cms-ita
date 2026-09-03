@@ -1,4 +1,4 @@
-import { getPageBySlug, getAllPages } from '@/lib/payload'
+import { getPageBySlug } from '@/lib/payload'
 import BlockRenderer from '@/components/BlockRenderer'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -7,11 +7,10 @@ import type { Metadata } from 'next'
 
 type Props = { params: Promise<{ slug: string }> }
 
-// Genera rutas estáticas para todas las páginas publicadas
-export async function generateStaticParams() {
-  const pages = await getAllPages()
-  return pages.map((page: { slug: string }) => ({ slug: page.slug }))
-}
+// Sin generateStaticParams: el contenido depende del tenant (host), que solo
+// se conoce en tiempo de petición vía headers(). Pre-generar estas páginas en
+// build asumiría el tenant por defecto y produce el error "changed from
+// static to dynamic at runtime" al servir tenants reales.
 
 // Metadata dinámica por página
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

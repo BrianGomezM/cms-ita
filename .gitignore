@@ -110,7 +110,12 @@ vite.config.ts.timestamp-*
 
 # ─── Docker volumes locales ─────────────────────────────
 postgres_data/
-minio_data/
+
+# ─── Archivos centralizados (imágenes, documentos, media) ──
+# Bind mount de MinIO — contenido real de los clientes, no se versiona,
+# pero la carpeta y su estructura sí (para que quede clara la convención).
+Documentos_cms/*
+!Documentos_cms/.gitkeep
 
 # ─── Sistema operativo ──────────────────────────────────
 .DS_Store

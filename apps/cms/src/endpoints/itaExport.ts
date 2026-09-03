@@ -15,20 +15,14 @@ type UserWithRole = {
   tenant?: number | { id: number }
 }
 
-// Verifica que el usuario autenticado pueda exportar el reporte de este tenant
+// Checklist ITA es exclusivo de superadmin (ver collections/ITAChecklist.ts)
+// — solo superadmin puede exportar su reporte, de cualquier tenant.
 function resolverTenantAutorizado(req: PayloadRequest, tenantParam?: string | string[]): number | null {
   const user = req.user as UserWithRole | null
-  if (!user) return null
+  if (!user || user.rol !== 'superadmin') return null
 
   const tenantId = Array.isArray(tenantParam) ? tenantParam[0] : tenantParam
-  const requestedId = tenantId ? Number(tenantId) : null
-
-  if (user.rol === 'superadmin') return requestedId
-
-  const userTenantId = typeof user.tenant === 'object' ? user.tenant?.id : user.tenant
-  if (!userTenantId) return null
-  if (requestedId && requestedId !== userTenantId) return null
-  return userTenantId
+  return tenantId ? Number(tenantId) : null
 }
 
 async function obtenerDatosReporte(req: PayloadRequest, tenantId: number) {

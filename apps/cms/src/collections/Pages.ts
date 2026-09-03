@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload'
-import { editorOSuperior, leerPropiaTenant } from '../access'
+import { permisoModulo, permisoLecturaConEstado } from '../access'
 import { HeroBlock } from '../blocks/Hero'
 import { RichTextBlock } from '../blocks/RichText'
 import { CardsBlock } from '../blocks/Cards'
@@ -52,15 +52,13 @@ export const Pages: CollectionConfig = {
     afterDelete: [auditAfterDelete, revalidatePageAfterDelete],
   },
   access: {
-    // Páginas publicadas son públicas — cualquiera puede leerlas
-    read: ({ req: { user } }) => {
-      if (user) return true // usuarios autenticados ven todo
-      // Visitantes anónimos solo ven publicadas
-      return { estado: { equals: 'publicado' } }
-    },
-    create: editorOSuperior,
-    update: editorOSuperior,
-    delete: editorOSuperior,
+    // Páginas publicadas son públicas para visitantes anónimos; un usuario
+    // autenticado ve las de su propio tenant (incluidos borradores) si tiene
+    // permiso "ver"; superadmin/admin_cliente ven las de su alcance siempre.
+    read: permisoLecturaConEstado('paginas'),
+    create: permisoModulo('paginas', 'crear'),
+    update: permisoModulo('paginas', 'editar'),
+    delete: permisoModulo('paginas', 'eliminar'),
   },
   fields: [
     // ── Información básica ──────────────────────────────
@@ -149,6 +147,10 @@ export const Pages: CollectionConfig = {
       name: 'layout',
       type: 'blocks',
       label: 'Bloques de contenido',
+      labels: {
+        singular: 'Contenido',
+        plural: 'Bloques de contenido',
+      },
       blocks: [
         HeroBlock,
         RichTextBlock,
