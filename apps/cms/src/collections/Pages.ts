@@ -19,6 +19,8 @@ import { ContactoBlock } from '../blocks/Contacto'
 import { NoticiasBlock } from '../blocks/Noticias'
 import { AliadosBlock } from '../blocks/Aliados'
 import { TestimoniosBlock } from '../blocks/Testimonios'
+import { BannerPaginaBlock } from '../blocks/BannerPagina'
+import { MenuConContenidoBlock } from '../blocks/MenuConContenido'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
@@ -171,6 +173,8 @@ export const Pages: CollectionConfig = {
         NoticiasBlock,
         AliadosBlock,
         TestimoniosBlock,
+        BannerPaginaBlock,
+        MenuConContenidoBlock,
       ],
       admin: {
         description: 'Arrastra y ordena los bloques para construir la página',

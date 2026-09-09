@@ -216,6 +216,96 @@ export const Tenants: CollectionConfig = {
               ],
             },
             {
+              name: 'migasPan',
+              type: 'group',
+              label: 'Migas de pan (Inicio › Página)',
+              admin: {
+                description: 'La barra que muestra la ruta ("Inicio › Nombre de la página") arriba del contenido, en cada página interna.',
+              },
+              fields: [
+                {
+                  name: 'activo',
+                  type: 'checkbox',
+                  label: 'Mostrar migas de pan',
+                  defaultValue: true,
+                },
+                {
+                  type: 'row',
+                  admin: {
+                    condition: (_data, siblingData) => Boolean(siblingData?.activo),
+                  },
+                  fields: [
+                    {
+                      name: 'colorFondo',
+                      type: 'text',
+                      label: 'Color de fondo (hex)',
+                      defaultValue: '#0378B3',
+                      admin: { width: '34%', description: 'Ej: #0378B3' },
+                      validate: (value: unknown) => {
+                        if (!value) return 'El color de fondo es obligatorio'
+                        return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                          ? true
+                          : 'Usa un color hexadecimal, ej: #0378B3'
+                      },
+                    },
+                    {
+                      name: 'colorTexto',
+                      type: 'text',
+                      label: 'Color del enlace "Inicio" (hex)',
+                      defaultValue: '#FFFFFF',
+                      admin: { width: '33%', description: 'Ej: #FFFFFF' },
+                      validate: (value: unknown) => {
+                        if (!value) return 'El color de texto es obligatorio'
+                        return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                          ? true
+                          : 'Usa un color hexadecimal, ej: #FFFFFF'
+                      },
+                    },
+                    {
+                      name: 'colorTextoActual',
+                      type: 'text',
+                      label: 'Color de la página actual (hex)',
+                      defaultValue: '#E5F1FA',
+                      admin: {
+                        width: '33%',
+                        description: 'Un poco más apagado, para distinguirla del enlace.',
+                      },
+                      validate: (value: unknown) => {
+                        if (!value) return 'El color es obligatorio'
+                        return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                          ? true
+                          : 'Usa un color hexadecimal, ej: #E5F1FA'
+                      },
+                    },
+                  ],
+                },
+                {
+                  type: 'row',
+                  admin: {
+                    condition: (_data, siblingData) => Boolean(siblingData?.activo),
+                  },
+                  fields: [
+                    {
+                      name: 'tamanoTexto',
+                      type: 'number',
+                      label: 'Tamaño del texto (px)',
+                      defaultValue: 14,
+                      min: 10,
+                      max: 24,
+                      admin: { width: '50%' },
+                    },
+                    {
+                      name: 'negrita',
+                      type: 'checkbox',
+                      label: '"Inicio" en negrita',
+                      defaultValue: true,
+                      admin: { width: '50%' },
+                    },
+                  ],
+                },
+              ],
+            },
+            {
               name: 'menuHamburguesa',
               type: 'group',
               label: 'Menú desplegable (botón hamburguesa)',
@@ -262,28 +352,58 @@ export const Tenants: CollectionConfig = {
               admin: { hideGutter: true },
               fields: [
                 {
-                  name: 'colorFondo',
-                  type: 'text',
-                  label: 'Color de fondo (hex)',
-                  defaultValue: '#0378B3',
-                  admin: { description: 'Ej: #0378B3', width: '50%' },
-                },
-                {
                   name: 'anchoMaximo',
                   type: 'text',
                   label: 'Ancho máximo del contenido',
                   defaultValue: '1100px',
-                  admin: { description: 'Ej: 1100px', width: '50%' },
+                  admin: { description: 'Ej: 1100px' },
                 },
                 {
-                  name: 'layout',
-                  type: 'group',
-                  label: 'Columnas',
+                  name: 'secciones',
+                  type: 'array',
+                  label: 'Secciones del pie de página',
+                  labels: { singular: 'Sección', plural: 'Secciones' },
+                  admin: {
+                    initCollapsed: false,
+                    description:
+                      'Cada sección es una banda horizontal independiente, con su propio color de fondo (ej: una banda blanca con logos de aliados, otra banda clara con accesos rápidos, y la banda principal). Se apilan en el orden en que las agregues aquí — agrega o elimina las que necesites.',
+                    components: {
+                      RowLabel: '/app/(payload)/components/FooterSeccionLabel#default',
+                    },
+                  },
                   fields: [
+                    {
+                      type: 'row',
+                      fields: [
+                        {
+                          name: 'colorFondo',
+                          type: 'text',
+                          label: 'Color de fondo (hex)',
+                          defaultValue: '#0378B3',
+                          admin: { description: 'Ej: #0378B3 o #FFFFFF', width: '50%' },
+                          validate: (value: unknown) => {
+                            if (!value) return 'El color de fondo es obligatorio'
+                            return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                              ? true
+                              : 'Usa un color hexadecimal, ej: #0378B3'
+                          },
+                        },
+                        {
+                          name: 'textoOscuro',
+                          type: 'checkbox',
+                          label: 'Texto oscuro',
+                          defaultValue: false,
+                          admin: {
+                            width: '50%',
+                            description: 'Actívalo si el fondo de esta sección es claro (blanco, gris claro), para que el texto se siga leyendo bien.',
+                          },
+                        },
+                      ],
+                    },
                     {
                       name: 'vistaPrevia',
                       type: 'ui',
-                      label: 'Vista previa del layout',
+                      label: 'Vista previa de la sección',
                       admin: {
                         components: {
                           Field: '/app/(payload)/components/FooterLayoutPreview#default',
@@ -293,7 +413,7 @@ export const Tenants: CollectionConfig = {
                     {
                       name: 'columnas',
                       type: 'array',
-                      label: 'Columnas del footer',
+                      label: 'Columnas de esta sección',
                       labels: { singular: 'Columna', plural: 'Columnas' },
                       admin: {
                         initCollapsed: false,
@@ -574,6 +694,330 @@ export const Tenants: CollectionConfig = {
                                         description: 'Se inserta tal cual en la página — úsalo con cuidado.',
                                         language: 'html',
                                       },
+                                    },
+                                  ],
+                                },
+                                {
+                                  slug: 'accesos-rapidos',
+                                  labels: {
+                                    singular: 'Bloque: Slider de tarjetas (accesos rápidos)',
+                                    plural: 'Bloques: Slider de tarjetas',
+                                  },
+                                  fields: [
+                                    {
+                                      type: 'collapsible',
+                                      label: 'Diseño de las tarjetas',
+                                      admin: { initCollapsed: false },
+                                      fields: [
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'orientacionContenido',
+                                              type: 'select',
+                                              label: 'Ícono y texto en...',
+                                              defaultValue: 'vertical',
+                                              options: [
+                                                { label: 'Columna (ícono arriba, texto abajo)', value: 'vertical' },
+                                                { label: 'Fila (ícono al lado del texto)', value: 'horizontal' },
+                                              ],
+                                              admin: { width: '50%' },
+                                            },
+                                            {
+                                              name: 'alineacion',
+                                              type: 'select',
+                                              label: 'Alineación dentro de la tarjeta',
+                                              defaultValue: 'centro',
+                                              options: [
+                                                { label: 'Izquierda', value: 'izquierda' },
+                                                { label: 'Centro', value: 'centro' },
+                                                { label: 'Derecha', value: 'derecha' },
+                                              ],
+                                              admin: { width: '50%' },
+                                            },
+                                          ],
+                                        },
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'tamanoCard',
+                                              type: 'number',
+                                              label: 'Tamaño de la tarjeta (px)',
+                                              defaultValue: 140,
+                                              min: 80,
+                                              max: 320,
+                                              admin: { width: '34%', description: 'Ancho, entre 80 y 320.' },
+                                            },
+                                            {
+                                              name: 'iconoTamano',
+                                              type: 'number',
+                                              label: 'Tamaño del ícono (px)',
+                                              defaultValue: 24,
+                                              min: 16,
+                                              max: 64,
+                                              admin: { width: '33%' },
+                                            },
+                                            {
+                                              name: 'espacio',
+                                              type: 'number',
+                                              label: 'Espacio entre tarjetas (px)',
+                                              defaultValue: 16,
+                                              min: 0,
+                                              max: 60,
+                                              admin: { width: '33%' },
+                                            },
+                                          ],
+                                        },
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'textoTamano',
+                                              type: 'number',
+                                              label: 'Tamaño del texto (px)',
+                                              defaultValue: 13,
+                                              min: 10,
+                                              max: 24,
+                                              admin: { width: '25%' },
+                                            },
+                                            {
+                                              name: 'textoNegrita',
+                                              type: 'checkbox',
+                                              label: 'Texto en negrita',
+                                              defaultValue: true,
+                                              admin: { width: '25%' },
+                                            },
+                                            {
+                                              name: 'textoColor',
+                                              type: 'text',
+                                              label: 'Color del texto (hex)',
+                                              admin: {
+                                                width: '50%',
+                                                description: 'Ej: #003366. Vacío = usa el color institucional.',
+                                              },
+                                              validate: (value: unknown) => {
+                                                if (!value) return true
+                                                return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                                                  ? true
+                                                  : 'Usa un color hexadecimal, ej: #003366'
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      type: 'collapsible',
+                                      label: 'Comportamiento del desplazamiento',
+                                      admin: {
+                                        initCollapsed: false,
+                                        description: 'Solo se activa cuando las tarjetas no caben todas en el ancho disponible — con pocas tarjetas no pasa nada de esto.',
+                                      },
+                                      fields: [
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'modoDesplazamiento',
+                                              type: 'select',
+                                              label: 'Cuando no quepan todas',
+                                              defaultValue: 'botones',
+                                              options: [
+                                                { label: 'Botones (el visitante controla)', value: 'botones' },
+                                                { label: 'Automático (se deslizan solas)', value: 'automatico' },
+                                              ],
+                                              admin: { width: '50%' },
+                                            },
+                                            {
+                                              name: 'velocidadAutomatico',
+                                              type: 'number',
+                                              label: 'Velocidad (segundos)',
+                                              defaultValue: 3,
+                                              min: 1,
+                                              max: 15,
+                                              admin: {
+                                                width: '50%',
+                                                condition: (_data, siblingData) => siblingData?.modoDesplazamiento === 'automatico',
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      name: 'accesos',
+                                      type: 'array',
+                                      label: 'Tarjetas',
+                                      labels: { singular: 'Tarjeta', plural: 'Tarjetas' },
+                                      minRows: 1,
+                                      fields: [
+                                        {
+                                          name: 'icono',
+                                          type: 'text',
+                                          required: true,
+                                          label: 'Ícono',
+                                          admin: {
+                                            description: 'Busca y elige el ícono de la tarjeta (más de 1900 disponibles).',
+                                            components: {
+                                              Field: '/app/(payload)/components/IconPickerField#default',
+                                            },
+                                          },
+                                          validate: (value: unknown) => {
+                                            if (!value) return 'Elige un ícono'
+                                            return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(String(value))
+                                              ? true
+                                              : 'Ícono inválido, elígelo desde el buscador'
+                                          },
+                                        },
+                                        {
+                                          name: 'titulo',
+                                          type: 'text',
+                                          required: true,
+                                          label: 'Texto de la tarjeta',
+                                        },
+                                        {
+                                          name: 'enlace',
+                                          type: 'text',
+                                          required: true,
+                                          label: 'Enlace (URL)',
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                                {
+                                  slug: 'imagenes-slider',
+                                  labels: {
+                                    singular: 'Bloque: Slider de imágenes',
+                                    plural: 'Bloques: Slider de imágenes',
+                                  },
+                                  fields: [
+                                    {
+                                      type: 'collapsible',
+                                      label: 'Diseño del lienzo',
+                                      admin: { initCollapsed: false },
+                                      fields: [
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'colorLienzo',
+                                              type: 'text',
+                                              label: 'Color de fondo del lienzo (hex)',
+                                              defaultValue: '#FFFFFF',
+                                              admin: { width: '50%', description: 'Ej: #FFFFFF' },
+                                              validate: (value: unknown) => {
+                                                if (!value) return true
+                                                return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                                                  ? true
+                                                  : 'Usa un color hexadecimal, ej: #FFFFFF'
+                                              },
+                                            },
+                                            {
+                                              name: 'espacio',
+                                              type: 'number',
+                                              label: 'Espacio entre imágenes (px)',
+                                              defaultValue: 32,
+                                              min: 0,
+                                              max: 100,
+                                              admin: { width: '50%' },
+                                            },
+                                          ],
+                                        },
+                                        {
+                                          name: 'direccion',
+                                          type: 'select',
+                                          label: 'Dirección',
+                                          defaultValue: 'horizontal',
+                                          options: [
+                                            { label: 'Horizontal (en fila)', value: 'horizontal' },
+                                            { label: 'Vertical (en columna)', value: 'vertical' },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      type: 'collapsible',
+                                      label: 'Comportamiento del desplazamiento',
+                                      admin: {
+                                        initCollapsed: false,
+                                        description: 'Solo se activa cuando las imágenes no caben todas en el espacio disponible — con pocas imágenes se muestran quietas y centradas.',
+                                      },
+                                      fields: [
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'modoDesplazamiento',
+                                              type: 'select',
+                                              label: 'Cuando no quepan todas',
+                                              defaultValue: 'automatico',
+                                              options: [
+                                                { label: 'Automático (se deslizan solas)', value: 'automatico' },
+                                                { label: 'Botones (el visitante controla)', value: 'botones' },
+                                              ],
+                                              admin: { width: '50%' },
+                                            },
+                                            {
+                                              name: 'velocidadAutomatico',
+                                              type: 'number',
+                                              label: 'Velocidad (segundos)',
+                                              defaultValue: 3,
+                                              min: 1,
+                                              max: 15,
+                                              admin: {
+                                                width: '50%',
+                                                condition: (_data, siblingData) => siblingData?.modoDesplazamiento === 'automatico',
+                                              },
+                                            },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      name: 'imagenes',
+                                      type: 'array',
+                                      label: 'Imágenes',
+                                      labels: { singular: 'Imagen', plural: 'Imágenes' },
+                                      minRows: 1,
+                                      fields: [
+                                        {
+                                          name: 'imagen',
+                                          type: 'upload',
+                                          relationTo: 'media',
+                                          required: true,
+                                          label: 'Imagen (PNG transparente recomendado)',
+                                        },
+                                        {
+                                          type: 'row',
+                                          fields: [
+                                            {
+                                              name: 'ancho',
+                                              type: 'number',
+                                              label: 'Ancho (px)',
+                                              defaultValue: 90,
+                                              min: 16,
+                                              max: 400,
+                                              admin: { width: '50%' },
+                                            },
+                                            {
+                                              name: 'alto',
+                                              type: 'number',
+                                              label: 'Alto (px)',
+                                              defaultValue: 60,
+                                              min: 16,
+                                              max: 400,
+                                              admin: { width: '50%' },
+                                            },
+                                          ],
+                                        },
+                                        {
+                                          name: 'enlace',
+                                          type: 'text',
+                                          label: 'Enlace (opcional)',
+                                        },
+                                      ],
                                     },
                                   ],
                                 },

@@ -36,6 +36,32 @@ export type FooterBlockRedesSociales = { blockType: 'redes-sociales'; redes?: Re
 export type FooterBlockSeparador = { blockType: 'separador' }
 export type FooterBlockEspaciador = { blockType: 'espaciador'; alto?: number }
 export type FooterBlockHtml = { blockType: 'html'; contenido: string }
+export type AccesoRapidoFooter = { icono?: string; titulo?: string; enlace?: string }
+export type FooterBlockAccesosRapidos = {
+  blockType: 'accesos-rapidos'
+  orientacionContenido?: 'vertical' | 'horizontal'
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  tamanoCard?: number
+  iconoTamano?: number
+  espacio?: number
+  textoTamano?: number
+  textoNegrita?: boolean
+  textoColor?: string
+  modoDesplazamiento?: 'automatico' | 'botones'
+  velocidadAutomatico?: number
+  accesos?: AccesoRapidoFooter[]
+}
+
+export type ImagenSliderItem = { imagen?: Media; ancho?: number; alto?: number; enlace?: string }
+export type FooterBlockImagenesSlider = {
+  blockType: 'imagenes-slider'
+  colorLienzo?: string
+  espacio?: number
+  direccion?: 'horizontal' | 'vertical'
+  modoDesplazamiento?: 'automatico' | 'botones'
+  velocidadAutomatico?: number
+  imagenes?: ImagenSliderItem[]
+}
 
 export type FooterBlock =
   | FooterBlockTexto
@@ -48,6 +74,8 @@ export type FooterBlock =
   | FooterBlockSeparador
   | FooterBlockEspaciador
   | FooterBlockHtml
+  | FooterBlockAccesosRapidos
+  | FooterBlockImagenesSlider
 
 // Una columna define su ancho por nombre (no por número de 1 a 12) — se
 // acomoda sola junto a las demás y pasa de línea automáticamente. El
@@ -61,12 +89,18 @@ export type FooterColumn = {
   children?: FooterBlock[]
 }
 
-export type TenantFooter = {
+// Una sección es una banda horizontal independiente del footer, con su
+// propio color de fondo — se apilan en el orden en que se agregan.
+export type FooterSeccion = {
+  id?: string
   colorFondo?: string
+  textoOscuro?: boolean
+  columnas?: FooterColumn[]
+}
+
+export type TenantFooter = {
   anchoMaximo?: string
-  layout?: {
-    columnas?: FooterColumn[]
-  }
+  secciones?: FooterSeccion[]
 }
 
 export type Tenant = {
@@ -83,6 +117,14 @@ export type Tenant = {
   logo?: Media
   menuPrincipal?: MenuLink[]
   accesosRapidos?: EnlaceLegal[]
+  migasPan?: {
+    activo?: boolean
+    colorFondo?: string
+    colorTexto?: string
+    colorTextoActual?: string
+    tamanoTexto?: number
+    negrita?: boolean
+  }
   menuHamburguesa?: {
     titulo?: string
     icono?: Media
@@ -408,6 +450,147 @@ export type HeroBlockType = {
   }
 }
 
+export type BannerPaginaBlockType = {
+  blockType: 'banner-pagina'
+  texto: string
+  textoTamano?: number
+  textoNegrita?: boolean
+  textoColor?: string
+  textoPosicion?: 'izquierda' | 'centro' | 'derecha'
+  imagenFondo?: Media
+  imagenDesvanecido?: 'ninguno' | 'suave' | 'medio' | 'fuerte'
+  imagenAjuste?: 'cubrir' | 'contener' | 'original'
+}
+
+// Contenido reutilizable dentro de una pestaña del bloque "Menú con
+// contenido" — cada tipo es una pieza pequeña y combinable, igual que los
+// bloques de página, para no depender de un solo bloque de HTML libre.
+export type ContenidoTituloType = {
+  blockType: 'titulo'
+  texto: string
+  tamano?: number
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  color?: string
+}
+export type ContenidoSubtituloType = {
+  blockType: 'subtitulo'
+  texto: string
+  tamano?: number
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  color?: string
+}
+export type ContenidoParrafoType = { blockType: 'parrafo'; texto: string }
+export type ContenidoVinetasType = { blockType: 'vinetas'; items?: { texto: string }[] }
+export type ContenidoBotonType = {
+  blockType: 'boton'
+  texto: string
+  icono?: string
+  enlace?: string
+  documento?: Media
+  estilo?: 'primario' | 'secundario' | 'outline'
+  color?: string
+  redondeo?: 'ninguno' | 'suave' | 'completo'
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+}
+export type ContenidoImagenType = {
+  blockType: 'imagen'
+  imagen?: Media
+  ancho?: 'pequena' | 'mediana' | 'grande' | 'completa'
+  enlace?: string
+}
+export type ContenidoEnlaceType = { blockType: 'enlace'; etiqueta: string; enlace: string }
+export type ContenidoEnlaceImagenType = {
+  blockType: 'enlace-imagen'
+  imagen?: Media
+  archivo?: Media
+  texto: string
+  tamano?: number
+  negrita?: boolean
+  color?: string
+}
+export type TarjetaImagenItem = {
+  imagen?: Media
+  titulo: string
+  textoBoton?: string
+  accion?: 'enlace' | 'modal'
+  enlace?: string
+  modalTitulo?: string
+  modalImagen?: Media
+  modalContenido?: Exclude<ContenidoPestana, ContenidoTarjetasImagenType>[]
+}
+export type ContenidoTarjetasImagenType = {
+  blockType: 'tarjetas-imagen'
+  tituloTamano?: number
+  tituloNegrita?: boolean
+  tituloAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  tituloColor?: string
+  botonIcono?: string
+  botonColor?: string
+  botonTamano?: number
+  botonNegrita?: boolean
+  botonAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  tarjetas?: TarjetaImagenItem[]
+}
+export type ContenidoIconoTextoType = { blockType: 'icono-texto'; icono: string; texto: string }
+export type ContenidoGaleriaType = {
+  blockType: 'galeria'
+  imagenes?: { imagen?: Media; enlace?: string }[]
+}
+export type ElementoGaleriaDocumentos = {
+  titulo?: string
+  imagen?: Media
+  texto?: string
+  enlace?: string
+  archivo?: Media
+}
+export type ContenidoGaleriaDocumentosType = {
+  blockType: 'galeria-documentos'
+  tituloTamano?: number
+  tituloNegrita?: boolean
+  tituloAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  tituloColor?: string
+  imagenTamano?: number
+  imagenAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  tamano?: number
+  negrita?: boolean
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  color?: string
+  elementos?: ElementoGaleriaDocumentos[]
+}
+
+export type ContenidoPestana =
+  | ContenidoTituloType
+  | ContenidoSubtituloType
+  | ContenidoParrafoType
+  | ContenidoVinetasType
+  | ContenidoBotonType
+  | ContenidoImagenType
+  | ContenidoEnlaceType
+  | ContenidoEnlaceImagenType
+  | ContenidoTarjetasImagenType
+  | ContenidoIconoTextoType
+  | ContenidoGaleriaType
+  | ContenidoGaleriaDocumentosType
+
+export type PestanaMenuContenido = {
+  id?: string
+  etiqueta: string
+  bannerImagen?: Media
+  bannerTexto?: string
+  contenido?: ContenidoPestana[]
+}
+
+export type MenuConContenidoBlockType = {
+  blockType: 'menu-con-contenido'
+  textoTamano?: number
+  textoNegrita?: boolean
+  textoColor?: string
+  textoPosicion?: 'izquierda' | 'centro' | 'derecha'
+  imagenDesvanecido?: 'ninguno' | 'suave' | 'medio' | 'fuerte'
+  imagenAjuste?: 'cubrir' | 'contener' | 'original'
+  items: PestanaMenuContenido[]
+}
+
 export type Block =
   | HeroBlockType
   | RichTextBlockType
@@ -428,3 +611,5 @@ export type Block =
   | NoticiasBlockType
   | AliadosBlockType
   | TestimoniosBlockType
+  | BannerPaginaBlockType
+  | MenuConContenidoBlockType

@@ -18,6 +18,8 @@ import EquipoBlock from './blocks/EquipoBlock'
 import ContactoBlock from './blocks/ContactoBlock'
 import AliadosBlock from './blocks/AliadosBlock'
 import TestimoniosBlock from './blocks/TestimoniosBlock'
+import BannerPaginaBlock from './blocks/BannerPaginaBlock'
+import MenuConContenidoBlock from './blocks/MenuConContenidoBlock'
 
 // Bloques que consultan datos en vivo desde el servidor (noticias, resumen ITA)
 // y no pueden renderizarse dentro de un componente de cliente. En la vista
@@ -77,6 +79,10 @@ export default function PreviewBlockRenderer({ blocks, tenant }: { blocks: Block
             return <AliadosBlock key={i} {...block} />
           case 'testimonios':
             return <TestimoniosBlock key={i} {...block} />
+          case 'banner-pagina':
+            return <BannerPaginaBlock key={i} {...block} />
+          case 'menu-con-contenido':
+            return <MenuConContenidoBlock key={i} {...block} />
           default:
             return null
         }

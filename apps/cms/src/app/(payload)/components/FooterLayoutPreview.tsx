@@ -26,10 +26,15 @@ const NOMBRE_ANCHO: Record<string, string> = {
 // formulario en vivo (aunque no se haya guardado) y dibuja cajas
 // proporcionales al ancho real de cada columna, tal como se acomodarán
 // solas en el sitio — sin que el usuario tenga que imaginarlo.
-export default function FooterLayoutPreview() {
+// Vive dentro de cada "Sección" del footer, así que sus datos hermanos
+// (colorFondo, columnas) se leen con una ruta relativa a su propia fila,
+// no con una ruta fija — de lo contrario todas las secciones mostrarían
+// la vista previa de la primera.
+export default function FooterLayoutPreview({ path }: { path: string }) {
   const { getDataByPath } = useWatchForm()
-  const columnas = (getDataByPath('footer.layout.columnas') as Columna[] | undefined) ?? []
-  const colorFondo = (getDataByPath('footer.colorFondo') as string | undefined) || '#0378B3'
+  const rutaSeccion = path.split('.').slice(0, -1).join('.')
+  const columnas = (getDataByPath(`${rutaSeccion}.columnas`) as Columna[] | undefined) ?? []
+  const colorFondo = (getDataByPath(`${rutaSeccion}.colorFondo`) as string | undefined) || '#0378B3'
 
   if (columnas.length === 0) {
     return (

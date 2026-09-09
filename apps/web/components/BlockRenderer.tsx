@@ -18,6 +18,8 @@ import ContactoBlock from './blocks/ContactoBlock'
 import NoticiasBlock from './blocks/NoticiasBlock'
 import AliadosBlock from './blocks/AliadosBlock'
 import TestimoniosBlock from './blocks/TestimoniosBlock'
+import BannerPaginaBlock from './blocks/BannerPaginaBlock'
+import MenuConContenidoBlock from './blocks/MenuConContenidoBlock'
 import type { Tenant } from '@/lib/types'
 
 export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; tenant?: Tenant }) {
@@ -65,6 +67,10 @@ export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; ten
             return <AliadosBlock key={i} {...block} />
           case 'testimonios':
             return <TestimoniosBlock key={i} {...block} />
+          case 'banner-pagina':
+            return <BannerPaginaBlock key={i} {...block} />
+          case 'menu-con-contenido':
+            return <MenuConContenidoBlock key={i} {...block} />
           default:
             return null
         }

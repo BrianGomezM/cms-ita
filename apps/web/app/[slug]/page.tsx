@@ -2,6 +2,7 @@ import { getPageBySlug } from '@/lib/payload'
 import BlockRenderer from '@/components/BlockRenderer'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import Breadcrumbs from '@/components/layout/Breadcrumbs'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 
@@ -35,6 +36,7 @@ export default async function PageRoute({ params }: Props) {
   return (
     <>
       <Header tenant={page.tenant} />
+      {slug !== 'inicio' && <Breadcrumbs tenant={page.tenant} paginaTitulo={page.titulo} />}
       <main className="flex-1">
         <BlockRenderer blocks={page.layout} tenant={page.tenant} />
       </main>
