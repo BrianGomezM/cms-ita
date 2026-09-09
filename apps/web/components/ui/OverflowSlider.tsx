@@ -51,12 +51,22 @@ export default function OverflowSlider({
     (signo: 1 | -1) => {
       const el = trackRef.current
       if (!el) return
-      const paso = esHorizontal ? el.clientWidth * 0.8 : el.clientHeight * 0.8
       const limite = esHorizontal ? el.scrollWidth - el.clientWidth : el.scrollHeight - el.clientHeight
+      if (limite <= 0) return
+      // El paso es "80% de lo visible", pero nunca más que lo que en
+      // realidad falta por recorrer — si el contenido se desborda apenas
+      // (ej. le sobran 90px), un paso de 854px se pasaba de largo y la
+      // condición de "llegué al final" se disparaba en el primer click,
+      // dejando "Siguiente" sin efecto mientras "Anterior" sí saltaba
+      // (al inicio, retroceder también dispara su propia condición de
+      // wrap y manda al final) — se sentía invertido: adelante no hacía
+      // nada y atrás sí avanzaba.
+      const paso = Math.min(esHorizontal ? el.clientWidth * 0.8 : el.clientHeight * 0.8, limite)
       const actual = esHorizontal ? el.scrollLeft : el.scrollTop
-      let siguiente = actual + signo * paso
-      if (siguiente >= limite - 1) siguiente = 0
-      if (siguiente < 0) siguiente = limite
+      let siguiente: number
+      if (signo > 0 && actual >= limite - 1) siguiente = 0
+      else if (signo < 0 && actual <= 1) siguiente = limite
+      else siguiente = Math.max(0, Math.min(limite, actual + signo * paso))
       el.scrollTo(esHorizontal ? { left: siguiente, behavior: 'smooth' } : { top: siguiente, behavior: 'smooth' })
     },
     [esHorizontal],
@@ -73,7 +83,7 @@ export default function OverflowSlider({
 
   return (
     <div
-      className={`relative ${className}`}
+      className={`relative min-w-0 ${className}`}
       onMouseEnter={() => setPausado(true)}
       onMouseLeave={() => setPausado(false)}
     >
@@ -81,10 +91,10 @@ export default function OverflowSlider({
         ref={trackRef}
         className={
           esHorizontal
-            ? `flex flex-nowrap overflow-x-auto scroll-smooth ${desborda ? '' : 'justify-center'}`
-            : `flex max-h-full flex-col flex-nowrap overflow-y-auto scroll-smooth ${desborda ? '' : 'items-center'}`
+            ? `flex flex-nowrap overflow-x-auto scroll-smooth [&::-webkit-scrollbar]:hidden ${desborda ? '' : 'justify-center'}`
+            : `flex max-h-full flex-col flex-nowrap overflow-y-auto scroll-smooth [&::-webkit-scrollbar]:hidden ${desborda ? '' : 'items-center'}`
         }
-        style={{ gap: espacio, scrollbarWidth: 'thin' }}
+        style={{ gap: espacio, scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {children}
       </div>

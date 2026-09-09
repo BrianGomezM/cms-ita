@@ -305,9 +305,19 @@ function FooterBlockRenderer({ block, tema }: { block: FooterBlock; tema: TemaTe
 
     case 'html':
       // Bloque avanzado, exclusivo de Super Administrador en el CMS —
-      // confiamos en ese límite de acceso para permitir HTML crudo aquí.
-      // eslint-disable-next-line react/no-danger
-      return <div dangerouslySetInnerHTML={{ __html: block.contenido }} />
+      // confiamos en ese límite de acceso para permitir HTML crudo aquí,
+      // pero el HTML pegado no siempre viene pensado para verse bien en un
+      // teléfono (anchos/altos fijos, "white-space: nowrap"...). La clase
+      // "footer-html" (globals.css) neutraliza eso para que igual envuelva
+      // y se achique; si algo de verdad no cabe (ej. una tabla ancha),
+      // scrollea dentro de su propio bloque en vez de romper la página.
+      return (
+        <div
+          className="footer-html w-full min-w-0"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{ __html: block.contenido }}
+        />
+      )
 
     case 'accesos-rapidos': {
       const orientacionContenido = block.orientacionContenido ?? 'vertical'
@@ -393,15 +403,27 @@ const ANCHO_A_SPAN: Record<NonNullable<FooterColumn['ancho']>, number> = {
   completa: 12,
 }
 
+// Bloques cuyo contenido interno necesita el ancho real de la columna para
+// funcionar (envolver logos, o medir cuánto se desborda un slider). Con
+// items-start/center/end (alineación por defecto de la columna) un hijo de
+// flex-col se dimensiona a su propio contenido en vez de estirarse — por
+// eso estos bloques fuerzan su propio ancho con self-stretch, sin afectar
+// la alineación del resto (textos, botones, redes) que sí deben quedar
+// solo tan anchos como su contenido.
+const BLOQUES_ANCHO_COMPLETO = new Set(['logos', 'accesos-rapidos', 'imagenes-slider'])
+
 function FooterColumnRenderer({ column, tema }: { column: FooterColumn; tema: TemaTexto }) {
   const span = ANCHO_A_SPAN[column.ancho || 'mediana']
   return (
     <div
-      className={`flex gap-3 ${column.direccionContenido === 'fila' ? `flex-row flex-wrap items-center divide-x ${tema.divide}` : 'flex-col'} ${ALINEACION_TEXTO[column.align || 'left']} ${ALINEACION_VERTICAL[column.verticalAlign || 'top']}`}
-      style={{ gridColumn: `span ${span}` }}
+      className={`footer-col min-w-0 w-full flex gap-3 ${column.direccionContenido === 'fila' ? `flex-row flex-wrap items-center divide-x ${tema.divide}` : 'flex-col'} ${ALINEACION_TEXTO[column.align || 'left']} ${ALINEACION_VERTICAL[column.verticalAlign || 'top']}`}
+      style={{ '--fc-span': span } as React.CSSProperties}
     >
       {column.children?.map((block, i) => (
-        <div key={i} className={column.direccionContenido === 'fila' ? 'pl-3 first:pl-0' : undefined}>
+        <div
+          key={i}
+          className={`min-w-0 ${BLOQUES_ANCHO_COMPLETO.has(block.blockType) ? 'w-full self-stretch' : ''} ${column.direccionContenido === 'fila' ? 'pl-3 first:pl-0' : ''}`}
+        >
           <FooterBlockRenderer block={block} tema={tema} />
         </div>
       ))}

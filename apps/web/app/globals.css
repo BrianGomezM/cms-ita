@@ -29,6 +29,10 @@
   html {
     font-family: var(--font-sans);
     scroll-behavior: smooth;
+    /* Red de seguridad: contenido con ancho fijo, un slider mal medido o el
+       menú móvil fuera de pantalla (desplazado con transform) nunca deben
+       poder abrir scroll horizontal en la página. */
+    overflow-x: hidden;
   }
 
   body {
@@ -71,5 +75,39 @@
 
   .section-subtitle {
     @apply text-gray-600 text-lg mb-10;
+  }
+
+  /* Columnas del footer: ocupan el ancho ("span") que el editor eligió
+     dentro de la grilla de 12 solo desde `sm` en adelante. Antes de eso
+     siempre apilan a ancho completo — si dependiéramos únicamente de
+     `grid-cols-1` en el contenedor, un `span` mayor a 1 crearía columnas
+     implícitas y volvería a partir la fila en pantallas angostas. */
+  .footer-col {
+    grid-column: span var(--fc-span, 12) / span var(--fc-span, 12);
+  }
+
+  @media (max-width: 639px) {
+    .footer-col {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* Bloque "HTML avanzado" del footer: el HTML/CSS que pega el editor no
+     siempre está pensado para adaptarse (anchos fijos, "white-space:
+     nowrap", altos fijos que recortan texto al envolver). Se fuerza a que
+     todo dentro pueda achicarse y envolver texto sin importar lo que traiga
+     el HTML pegado; si aun así algo no cabe (ej. una tabla ancha), el
+     propio bloque scrollea en horizontal en vez de romper el ancho de la
+     página completa. */
+  .footer-html {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .footer-html * {
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    white-space: normal !important;
   }
 }

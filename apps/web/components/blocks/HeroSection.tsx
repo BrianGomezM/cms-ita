@@ -3,6 +3,7 @@
 import { DynamicIcon } from "lucide-react/dynamic"
 import Link from "next/link"
 import Image from "next/image"
+import { fontSizeClamp } from "@/lib/utils"
 
 interface ServiceItem {
   iconName: string
@@ -113,7 +114,7 @@ export default function HeroSection({
   if (!hasContent) return null
 
   return (
-    <section className="relative min-h-175 w-full overflow-hidden bg-linear-to-br from-[#e8f0fe] to-[#dce8ff]">
+    <section className="relative min-h-[420px] w-full overflow-hidden bg-linear-to-br from-[#e8f0fe] to-[#dce8ff] lg:min-h-175">
 
       {imagenPrincipal && (
         <div className="absolute inset-0 z-0">
@@ -128,7 +129,7 @@ export default function HeroSection({
         </div>
       )}
 
-      <div className="relative z-10 container mx-auto grid min-h-175 grid-cols-1 gap-8 px-4 py-12 lg:grid-cols-12 lg:gap-12">
+      <div className="relative z-10 container mx-auto grid min-h-[420px] grid-cols-1 gap-8 px-4 py-12 lg:min-h-175 lg:grid-cols-12 lg:gap-12">
 
         <div className="hidden lg:block lg:col-span-5" />
 
@@ -138,7 +139,7 @@ export default function HeroSection({
               {titulo && (
                 <h1
                   className={`mb-2 ${tituloColor ? '' : 'text-primary'} ${tituloNegrita ? 'font-bold' : 'font-normal'}`}
-                  style={{ fontSize: `${tituloTamano}px`, color: tituloColor || undefined }}
+                  style={{ fontSize: fontSizeClamp(tituloTamano), color: tituloColor || undefined }}
                 >
                   {titulo}
                 </h1>

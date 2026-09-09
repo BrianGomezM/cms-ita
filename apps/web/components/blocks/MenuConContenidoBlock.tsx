@@ -4,6 +4,7 @@ import type { MenuConContenidoBlockType } from '@/lib/types'
 import Image from 'next/image'
 import { useState } from 'react'
 import { ContenidoRenderer, CompartirRedes } from './contenido/ContenidoRenderer'
+import { fontSizeClamp } from '@/lib/utils'
 
 type TextoPosicion = 'izquierda' | 'centro' | 'derecha'
 type ImagenDesvanecido = 'ninguno' | 'suave' | 'medio' | 'fuerte'
@@ -64,7 +65,7 @@ export default function MenuConContenidoBlock({
           >
             <h2
               style={{
-                fontSize: textoTamano,
+                fontSize: fontSizeClamp(textoTamano),
                 color: textoColor || '#FFFFFF',
                 fontWeight: textoNegrita ? 700 : 400,
               }}

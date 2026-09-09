@@ -1,5 +1,6 @@
 import type { BannerPaginaBlockType } from '@/lib/types'
 import Image from 'next/image'
+import { fontSizeClamp } from '@/lib/utils'
 
 type TextoPosicion = 'izquierda' | 'centro' | 'derecha'
 type ImagenDesvanecido = 'ninguno' | 'suave' | 'medio' | 'fuerte'
@@ -53,7 +54,7 @@ export default function BannerPaginaBlock({
       >
         <h1
           style={{
-            fontSize: textoTamano,
+            fontSize: fontSizeClamp(textoTamano),
             color: textoColor || '#FFFFFF',
             fontWeight: textoNegrita ? 700 : 400,
           }}
