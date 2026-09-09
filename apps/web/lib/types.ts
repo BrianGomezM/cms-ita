@@ -410,6 +410,9 @@ export type Page = {
   layout: Block[]
   tenant: Tenant
   imagenSeo?: Media
+  // Número (sin popular) u objeto (populado según la profundidad de la
+  // consulta) — usado para armar la ruta completa de las migajas de pan.
+  paginaPadre?: number | Page | null
 }
 
 
@@ -479,7 +482,15 @@ export type ContenidoSubtituloType = {
   alineacion?: 'izquierda' | 'centro' | 'derecha'
   color?: string
 }
-export type ContenidoParrafoType = { blockType: 'parrafo'; texto: string }
+export type ContenidoParrafoType = {
+  blockType: 'parrafo'
+  texto: string
+  tamano?: number
+  negrita?: boolean
+  alineacion?: 'izquierda' | 'centro' | 'derecha' | 'justificado'
+  sangria?: number
+  color?: string
+}
 export type ContenidoVinetasType = { blockType: 'vinetas'; items?: { texto: string }[] }
 export type ContenidoBotonType = {
   blockType: 'boton'
@@ -516,7 +527,7 @@ export type TarjetaImagenItem = {
   enlace?: string
   modalTitulo?: string
   modalImagen?: Media
-  modalContenido?: Exclude<ContenidoPestana, ContenidoTarjetasImagenType>[]
+  modalContenido?: Exclude<ContenidoPestana, ContenidoTarjetasImagenType | ContenidoTarjetasIconosType>[]
 }
 export type ContenidoTarjetasImagenType = {
   blockType: 'tarjetas-imagen'
@@ -531,7 +542,48 @@ export type ContenidoTarjetasImagenType = {
   botonAlineacion?: 'izquierda' | 'centro' | 'derecha'
   tarjetas?: TarjetaImagenItem[]
 }
+// Tarjeta con título + ícono (lucide) o imagen (logo/foto) — pieza del
+// lienzo, para grids como "Competitividad Regional", "Sectores
+// productivos", etc. El título de la sección y la descripción NO viven
+// aquí: se agregan como piezas "Título" y "Párrafo" aparte, antes de esta.
+export type TarjetaIconoItem = {
+  titulo: string
+  tipo: 'imagen' | 'icono'
+  imagen?: Media
+  icono?: string
+  enlace?: string
+}
+export type ContenidoTarjetasIconosType = {
+  blockType: 'tarjetas-iconos'
+  columnas?: '2' | '3' | '4' | '5' | '6'
+  tarjetaTituloTamano?: number
+  tarjetaTituloNegrita?: boolean
+  tarjetaTituloAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  tarjetaTituloColor?: string
+  graficoAncho?: number
+  graficoAlto?: number
+  graficoAlineacion?: 'izquierda' | 'centro' | 'derecha'
+  graficoColor?: string
+  tarjetas?: TarjetaIconoItem[]
+}
 export type ContenidoIconoTextoType = { blockType: 'icono-texto'; icono: string; texto: string }
+
+export type RedCompartir = 'facebook' | 'x' | 'linkedin' | 'whatsapp'
+export type ContenidoCompartirRedesType = {
+  blockType: 'compartir-redes'
+  texto?: string
+  tamano?: number
+  negrita?: boolean
+  alineacion?: 'izquierda' | 'centro' | 'derecha'
+  color?: string
+  redes?: { red: RedCompartir; enlace?: string }[]
+  iconoTamano?: number
+  iconoForma?: 'circular' | 'cuadrado'
+  iconoSeparacion?: number
+  iconoColores?: 'marca' | 'personalizado'
+  iconoColorFondo?: string
+  iconoColorIcono?: string
+}
 export type ContenidoGaleriaType = {
   blockType: 'galeria'
   imagenes?: { imagen?: Media; enlace?: string }[]
@@ -568,7 +620,9 @@ export type ContenidoPestana =
   | ContenidoEnlaceType
   | ContenidoEnlaceImagenType
   | ContenidoTarjetasImagenType
+  | ContenidoTarjetasIconosType
   | ContenidoIconoTextoType
+  | ContenidoCompartirRedesType
   | ContenidoGaleriaType
   | ContenidoGaleriaDocumentosType
 
@@ -588,7 +642,26 @@ export type MenuConContenidoBlockType = {
   textoPosicion?: 'izquierda' | 'centro' | 'derecha'
   imagenDesvanecido?: 'ninguno' | 'suave' | 'medio' | 'fuerte'
   imagenAjuste?: 'cubrir' | 'contener' | 'original'
+  // Compartir en redes: aparece una sola vez, entre el banner y las
+  // pestañas — no por cada pestaña. Mismos campos que la pieza suelta
+  // "Compartir en redes sociales" del lienzo (ver ContenidoCompartirRedesType).
+  compartir?: Omit<ContenidoCompartirRedesType, 'blockType'>
   items: PestanaMenuContenido[]
+}
+
+// El bloque libre del constructor de páginas: solo envuelve una lista de
+// piezas de ContenidoPestana, sin estructura propia (sin título/descripción
+// fijos). Se puede agregar más de un "lienzo" a una página y combinarlo con
+// cualquier otro bloque de la lista de abajo.
+export type LienzoBlockType = {
+  blockType: 'lienzo'
+  bordeActivo?: boolean
+  bordeAncho?: number
+  bordeColor?: string
+  bordeRedondeo?: number
+  ancho?: number
+  alto?: number
+  contenido: ContenidoPestana[]
 }
 
 export type Block =
@@ -613,3 +686,4 @@ export type Block =
   | TestimoniosBlockType
   | BannerPaginaBlockType
   | MenuConContenidoBlockType
+  | LienzoBlockType

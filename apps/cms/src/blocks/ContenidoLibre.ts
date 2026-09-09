@@ -1,0 +1,1161 @@
+import type { Block, Field } from 'payload'
+
+const validarIcono = (value: unknown) => {
+  if (!value) return 'Elige un ícono'
+  return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(String(value))
+    ? true
+    : 'Ícono inválido, elígelo desde el buscador'
+}
+
+const hexOpcional = (mensaje: string) => (value: unknown) => {
+  if (!value) return true
+  return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value)) ? true : mensaje
+}
+
+const ALINEACION_OPCIONES = [
+  { label: 'Izquierda', value: 'izquierda' },
+  { label: 'Centro', value: 'centro' },
+  { label: 'Derecha', value: 'derecha' },
+]
+
+// Campos de "Compartir en redes sociales" — reutilizados tal cual en dos
+// lugares: como pieza suelta dentro del lienzo/pestañas (bloque
+// 'compartir-redes' más abajo), y directo en MenuConContenido.ts para el
+// tramo fijo debajo del banner (una sola vez, no por pestaña).
+export function camposCompartirRedes(): Field[] {
+  return [
+    {
+      name: 'texto',
+      type: 'text',
+      label: 'Texto (opcional)',
+      defaultValue: 'Compartir',
+    },
+    {
+      type: 'collapsible',
+      label: 'Diseño del texto (opcional)',
+      admin: { initCollapsed: true, condition: (_data, siblingData) => Boolean(siblingData?.texto) },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'tamano',
+              type: 'number',
+              label: 'Tamaño (px)',
+              defaultValue: 16,
+              min: 12,
+              max: 32,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'negrita',
+              type: 'checkbox',
+              label: 'Negrita',
+              defaultValue: true,
+              admin: { width: '22%' },
+            },
+            {
+              name: 'alineacion',
+              type: 'select',
+              label: 'Alineación',
+              defaultValue: 'izquierda',
+              options: ALINEACION_OPCIONES,
+              admin: { width: '22%' },
+            },
+          ],
+        },
+        {
+          name: 'color',
+          type: 'text',
+          label: 'Color (hex, opcional)',
+          admin: { description: 'Vacío = usa el color institucional.' },
+          validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+        },
+      ],
+    },
+    {
+      name: 'redes',
+      type: 'array',
+      label: 'Redes para compartir',
+      labels: { singular: 'Red', plural: 'Redes' },
+      minRows: 1,
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'red',
+              type: 'select',
+              required: true,
+              label: 'Red social',
+              options: [
+                { label: 'Facebook', value: 'facebook' },
+                { label: 'X (Twitter)', value: 'x' },
+                { label: 'LinkedIn', value: 'linkedin' },
+                { label: 'WhatsApp', value: 'whatsapp' },
+              ],
+              admin: { width: '40%' },
+            },
+            {
+              name: 'enlace',
+              type: 'text',
+              label: 'Enlace (opcional)',
+              admin: {
+                width: '60%',
+                description: 'Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.',
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: 'Diseño de los íconos (aplica a todos)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'iconoTamano',
+              type: 'number',
+              label: 'Tamaño del ícono (px)',
+              defaultValue: 18,
+              min: 12,
+              max: 40,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'iconoForma',
+              type: 'select',
+              label: 'Forma',
+              defaultValue: 'circular',
+              options: [
+                { label: 'Circular', value: 'circular' },
+                { label: 'Cuadrada', value: 'cuadrado' },
+              ],
+              admin: { width: '33%' },
+            },
+            {
+              name: 'iconoSeparacion',
+              type: 'number',
+              label: 'Separación (px)',
+              defaultValue: 10,
+              min: 0,
+              max: 40,
+              admin: { width: '33%' },
+            },
+          ],
+        },
+        {
+          name: 'iconoColores',
+          type: 'select',
+          label: 'Colores de los íconos',
+          defaultValue: 'marca',
+          options: [
+            { label: 'Colores de cada marca (recomendado)', value: 'marca' },
+            { label: 'Un solo color personalizado', value: 'personalizado' },
+          ],
+        },
+        {
+          type: 'row',
+          admin: { condition: (_data, siblingData) => siblingData?.iconoColores === 'personalizado' },
+          fields: [
+            {
+              name: 'iconoColorFondo',
+              type: 'text',
+              label: 'Color de fondo (hex)',
+              defaultValue: '#374151',
+              admin: { width: '50%' },
+              validate: hexOpcional('Usa un color hexadecimal, ej: #374151'),
+            },
+            {
+              name: 'iconoColorIcono',
+              type: 'text',
+              label: 'Color del ícono (hex)',
+              defaultValue: '#FFFFFF',
+              admin: { width: '50%' },
+              validate: hexOpcional('Usa un color hexadecimal, ej: #FFFFFF'),
+            },
+          ],
+        },
+      ],
+    },
+  ]
+}
+
+// Piezas de contenido pequeñas y reutilizables — el bloque "Lienzo" (una
+// página) y el bloque "Menú con contenido" (cada pestaña) arman TODO su
+// contenido combinando estas piezas libremente, en el orden que se quiera,
+// sin depender de un solo bloque cerrado que mezcle título + descripción +
+// tarjetas en una sola unidad indivisible. Si mañana ya no se quieren las
+// tarjetas, se borra esa pieza y se agrega otra — el resto del contenido no
+// se ve afectado.
+export const BLOQUES_CONTENIDO_BASE: Block[] = [
+  {
+    slug: 'titulo',
+    labels: { singular: 'Título', plural: 'Títulos' },
+    fields: [
+      { name: 'texto', type: 'text', required: true, label: 'Texto del título' },
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'tamano',
+            type: 'number',
+            label: 'Tamaño (px)',
+            defaultValue: 24,
+            min: 14,
+            max: 60,
+            admin: { width: '34%' },
+          },
+          {
+            name: 'alineacion',
+            type: 'select',
+            label: 'Alineación',
+            defaultValue: 'izquierda',
+            options: ALINEACION_OPCIONES,
+            admin: { width: '33%' },
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { width: '33%', description: 'Vacío = usa el color institucional.' },
+            validate: (value: unknown) => {
+              if (!value) return true
+              return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                ? true
+                : 'Usa un color hexadecimal, ej: #0378B3'
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'subtitulo',
+    labels: { singular: 'Subtítulo', plural: 'Subtítulos' },
+    fields: [
+      { name: 'texto', type: 'text', required: true, label: 'Texto del subtítulo' },
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'tamano',
+            type: 'number',
+            label: 'Tamaño (px)',
+            defaultValue: 18,
+            min: 12,
+            max: 40,
+            admin: { width: '34%' },
+          },
+          {
+            name: 'alineacion',
+            type: 'select',
+            label: 'Alineación',
+            defaultValue: 'izquierda',
+            options: ALINEACION_OPCIONES,
+            admin: { width: '33%' },
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { width: '33%', description: 'Vacío = usa el color institucional.' },
+            validate: (value: unknown) => {
+              if (!value) return true
+              return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                ? true
+                : 'Usa un color hexadecimal, ej: #0378B3'
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'parrafo',
+    labels: { singular: 'Párrafo de texto', plural: 'Párrafos de texto' },
+    fields: [
+      {
+        name: 'texto',
+        type: 'textarea',
+        required: true,
+        label: 'Texto',
+        admin: {
+          description: 'Envuelve una parte en **doble asterisco** para ponerla en negrita. Presiona Enter para hacer un salto de línea.',
+        },
+      },
+      {
+        type: 'collapsible',
+        label: 'Diseño del párrafo (opcional)',
+        admin: { initCollapsed: true },
+        fields: [
+          {
+            type: 'row',
+            fields: [
+              {
+                name: 'tamano',
+                type: 'number',
+                label: 'Tamaño (px)',
+                defaultValue: 16,
+                min: 12,
+                max: 32,
+                admin: { width: '34%' },
+              },
+              {
+                name: 'negrita',
+                type: 'checkbox',
+                label: 'Negrita',
+                defaultValue: false,
+                admin: { width: '22%' },
+              },
+              {
+                name: 'alineacion',
+                type: 'select',
+                label: 'Alineación',
+                defaultValue: 'izquierda',
+                options: [
+                  { label: 'Izquierda', value: 'izquierda' },
+                  { label: 'Centro', value: 'centro' },
+                  { label: 'Derecha', value: 'derecha' },
+                  { label: 'Justificado', value: 'justificado' },
+                ],
+                admin: { width: '22%' },
+              },
+              {
+                name: 'sangria',
+                type: 'number',
+                label: 'Sangría 1ª línea (px)',
+                defaultValue: 0,
+                min: 0,
+                max: 100,
+                admin: { width: '22%', description: 'Espacio antes de la primera línea. 0 = sin sangría.' },
+              },
+            ],
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { description: 'Vacío = usa el gris institucional del texto.' },
+            validate: hexOpcional('Usa un color hexadecimal, ej: #374151'),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'vinetas',
+    labels: { singular: 'Lista con viñetas', plural: 'Listas con viñetas' },
+    fields: [
+      {
+        name: 'items',
+        type: 'array',
+        label: 'Elementos de la lista',
+        labels: { singular: 'Elemento', plural: 'Elementos' },
+        minRows: 1,
+        fields: [
+          {
+            name: 'texto',
+            type: 'text',
+            required: true,
+            label: 'Texto',
+            admin: {
+              description: 'Envuelve una parte en **doble asterisco** para ponerla en negrita.',
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'boton',
+    labels: { singular: 'Botón', plural: 'Botones' },
+    fields: [
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'texto',
+            type: 'text',
+            required: true,
+            label: 'Texto del botón',
+            admin: { width: '50%' },
+          },
+          {
+            name: 'icono',
+            type: 'text',
+            label: 'Ícono (opcional)',
+            admin: {
+              width: '50%',
+              description: 'Busca y elige un ícono, o déjalo vacío para no mostrar ninguno.',
+              components: { Field: '/app/(payload)/components/IconPickerField#default' },
+            },
+            validate: (value: unknown) => {
+              if (!value) return true
+              return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(String(value))
+                ? true
+                : 'Ícono inválido, elígelo desde el buscador'
+            },
+          },
+        ],
+      },
+      {
+        name: 'enlace',
+        type: 'text',
+        label: 'Enlace (URL)',
+        admin: {
+          description: 'Opcional si adjuntas un documento abajo — si pones ambos, el documento tiene prioridad.',
+        },
+        validate: (value: unknown, { siblingData }: { siblingData?: { documento?: unknown } }) => {
+          if (!value && !siblingData?.documento) return 'Indica un enlace o adjunta un documento'
+          return true
+        },
+      },
+      {
+        name: 'documento',
+        type: 'upload',
+        relationTo: 'media',
+        label: 'Documento adjunto (PDF, opcional)',
+        admin: {
+          description: 'Si lo adjuntas, el botón abre este documento en una pestaña nueva en vez del enlace.',
+        },
+      },
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'estilo',
+            type: 'select',
+            label: 'Estilo',
+            defaultValue: 'primario',
+            options: [
+              { label: 'Primario', value: 'primario' },
+              { label: 'Secundario', value: 'secundario' },
+              { label: 'Contorno', value: 'outline' },
+            ],
+            admin: { width: '34%' },
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color propio (hex, opcional)',
+            admin: {
+              width: '33%',
+              description: 'Vacío = usa el color del estilo elegido.',
+            },
+            validate: (value: unknown) => {
+              if (!value) return true
+              return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                ? true
+                : 'Usa un color hexadecimal, ej: #0378B3'
+            },
+          },
+          {
+            name: 'redondeo',
+            type: 'select',
+            label: 'Redondeo de bordes',
+            defaultValue: 'suave',
+            options: [
+              { label: 'Ninguno', value: 'ninguno' },
+              { label: 'Suave (recomendado)', value: 'suave' },
+              { label: 'Completo (píldora)', value: 'completo' },
+            ],
+            admin: { width: '33%' },
+          },
+        ],
+      },
+      {
+        name: 'alineacion',
+        type: 'select',
+        label: 'Alineación',
+        defaultValue: 'izquierda',
+        options: [
+          { label: 'Izquierda (recomendado)', value: 'izquierda' },
+          { label: 'Centro', value: 'centro' },
+          { label: 'Derecha', value: 'derecha' },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'imagen',
+    labels: { singular: 'Imagen', plural: 'Imágenes' },
+    fields: [
+      { name: 'imagen', type: 'upload', relationTo: 'media', required: true, label: 'Imagen' },
+      {
+        name: 'ancho',
+        type: 'select',
+        label: 'Ancho de la imagen',
+        defaultValue: 'completa',
+        options: [
+          { label: 'Pequeña (33%)', value: 'pequena' },
+          { label: 'Mediana (50%)', value: 'mediana' },
+          { label: 'Grande (75%)', value: 'grande' },
+          { label: 'Completa (100%)', value: 'completa' },
+        ],
+      },
+      { name: 'enlace', type: 'text', label: 'Enlace (opcional)' },
+    ],
+  },
+  {
+    slug: 'enlace',
+    labels: { singular: 'Enlace', plural: 'Enlaces' },
+    fields: [
+      { name: 'etiqueta', type: 'text', required: true, label: 'Texto del enlace' },
+      { name: 'enlace', type: 'text', required: true, label: 'Dirección' },
+    ],
+  },
+  {
+    slug: 'enlace-imagen',
+    labels: { singular: 'Enlace con imagen (descarga un archivo)', plural: 'Enlaces con imagen' },
+    fields: [
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'imagen',
+            type: 'upload',
+            relationTo: 'media',
+            label: 'Imagen o ícono (opcional)',
+            admin: { width: '50%' },
+          },
+          {
+            name: 'archivo',
+            type: 'upload',
+            relationTo: 'media',
+            required: true,
+            label: 'Archivo a descargar',
+            admin: { width: '50%', description: 'Documento, imagen o cualquier archivo que se descargará al hacer clic.' },
+          },
+        ],
+      },
+      { name: 'texto', type: 'text', required: true, label: 'Texto del enlace' },
+      {
+        type: 'row',
+        fields: [
+          {
+            name: 'tamano',
+            type: 'number',
+            label: 'Tamaño del texto (px)',
+            defaultValue: 15,
+            min: 10,
+            max: 32,
+            admin: { width: '34%' },
+          },
+          {
+            name: 'negrita',
+            type: 'checkbox',
+            label: 'Negrita',
+            defaultValue: false,
+            admin: { width: '33%' },
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { width: '33%', description: 'Vacío = usa el color institucional.' },
+            validate: (value: unknown) => {
+              if (!value) return true
+              return /^#([0-9a-fA-F]{3}){1,2}$/.test(String(value))
+                ? true
+                : 'Usa un color hexadecimal, ej: #0378B3'
+            },
+          },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'icono-texto',
+    labels: { singular: 'Ícono con texto', plural: 'Íconos con texto' },
+    fields: [
+      {
+        name: 'icono',
+        type: 'text',
+        required: true,
+        label: 'Ícono',
+        admin: {
+          description: 'Busca y elige el ícono (más de 1900 disponibles).',
+          components: { Field: '/app/(payload)/components/IconPickerField#default' },
+        },
+        validate: validarIcono,
+      },
+      { name: 'texto', type: 'text', required: true, label: 'Texto' },
+    ],
+  },
+  {
+    slug: 'compartir-redes',
+    labels: { singular: 'Compartir en redes sociales', plural: 'Bloques de compartir' },
+    fields: camposCompartirRedes(),
+  },
+  {
+    slug: 'galeria',
+    labels: { singular: 'Galería de imágenes', plural: 'Galerías de imágenes' },
+    fields: [
+      {
+        name: 'imagenes',
+        type: 'array',
+        label: 'Imágenes',
+        labels: { singular: 'Imagen', plural: 'Imágenes' },
+        minRows: 1,
+        fields: [
+          { name: 'imagen', type: 'upload', relationTo: 'media', required: true, label: 'Imagen' },
+          { name: 'enlace', type: 'text', label: 'Enlace (opcional)' },
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'galeria-documentos',
+    labels: {
+      singular: 'Galería de documentos (imagen con descarga)',
+      plural: 'Galerías de documentos',
+    },
+    fields: [
+      {
+        type: 'collapsible',
+        label: 'Diseño del título (arriba de la imagen, aplica a todos)',
+        admin: { initCollapsed: true },
+        fields: [
+          {
+            type: 'row',
+            fields: [
+              {
+                name: 'tituloTamano',
+                type: 'number',
+                label: 'Tamaño (px)',
+                defaultValue: 16,
+                min: 12,
+                max: 32,
+                admin: { width: '34%' },
+              },
+              {
+                name: 'tituloNegrita',
+                type: 'checkbox',
+                label: 'Negrita',
+                defaultValue: true,
+                admin: { width: '33%' },
+              },
+              {
+                name: 'tituloAlineacion',
+                type: 'select',
+                label: 'Alineación',
+                defaultValue: 'centro',
+                options: [
+                  { label: 'Izquierda', value: 'izquierda' },
+                  { label: 'Centro', value: 'centro' },
+                  { label: 'Derecha', value: 'derecha' },
+                ],
+                admin: { width: '33%' },
+              },
+            ],
+          },
+          {
+            name: 'tituloColor',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { description: 'Vacío = usa el color institucional.' },
+            validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+          },
+        ],
+      },
+      {
+        type: 'collapsible',
+        label: 'Diseño de la imagen (aplica a todas)',
+        admin: { initCollapsed: true },
+        fields: [
+          {
+            type: 'row',
+            fields: [
+              {
+                name: 'imagenTamano',
+                type: 'number',
+                label: 'Tamaño (px)',
+                defaultValue: 120,
+                min: 40,
+                max: 300,
+                admin: { width: '50%' },
+              },
+              {
+                name: 'imagenAlineacion',
+                type: 'select',
+                label: 'Alineación',
+                defaultValue: 'centro',
+                options: [
+                  { label: 'Izquierda', value: 'izquierda' },
+                  { label: 'Centro', value: 'centro' },
+                  { label: 'Derecha', value: 'derecha' },
+                ],
+                admin: { width: '50%' },
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: 'collapsible',
+        label: 'Diseño del texto (debajo de la imagen, aplica a todos)',
+        admin: { initCollapsed: true },
+        fields: [
+          {
+            type: 'row',
+            fields: [
+              {
+                name: 'tamano',
+                type: 'number',
+                label: 'Tamaño (px)',
+                defaultValue: 15,
+                min: 10,
+                max: 28,
+                admin: { width: '34%' },
+              },
+              {
+                name: 'negrita',
+                type: 'checkbox',
+                label: 'Negrita',
+                defaultValue: true,
+                admin: { width: '33%' },
+              },
+              {
+                name: 'alineacion',
+                type: 'select',
+                label: 'Alineación',
+                defaultValue: 'centro',
+                options: [
+                  { label: 'Izquierda', value: 'izquierda' },
+                  { label: 'Centro', value: 'centro' },
+                  { label: 'Derecha', value: 'derecha' },
+                ],
+                admin: { width: '33%' },
+              },
+            ],
+          },
+          {
+            name: 'color',
+            type: 'text',
+            label: 'Color (hex, opcional)',
+            admin: { description: 'Vacío = usa el color institucional.' },
+            validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+          },
+        ],
+      },
+      {
+        name: 'elementos',
+        type: 'array',
+        label: 'Elementos',
+        labels: { singular: 'Elemento', plural: 'Elementos' },
+        minRows: 1,
+        admin: {
+          description: 'Se acomodan solos en cuadrícula — entre más agregues, más columnas ocupan.',
+        },
+        fields: [
+          { name: 'titulo', type: 'text', label: 'Título (arriba de la imagen, opcional)' },
+          { name: 'imagen', type: 'upload', relationTo: 'media', required: true, label: 'Imagen' },
+          { name: 'texto', type: 'text', label: 'Texto (debajo de la imagen, opcional)' },
+          {
+            type: 'row',
+            fields: [
+              {
+                name: 'enlace',
+                type: 'text',
+                label: 'Enlace (URL, opcional)',
+                admin: { width: '50%' },
+              },
+              {
+                name: 'archivo',
+                type: 'upload',
+                relationTo: 'media',
+                label: 'Documento (opcional)',
+                admin: {
+                  width: '50%',
+                  description: 'Si pones ambos, el documento tiene prioridad. Se abre en una pestaña nueva.',
+                },
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+]
+
+// Tarjetas de imagen con botón — el título y el botón comparten un solo
+// estilo para toda la cuadrícula (así se ven uniformes), mientras que cada
+// tarjeta solo define su propio contenido. El botón puede ir a un enlace o
+// abrir un panel de información (modal) armado con los mismos bloques de
+// contenido — así ese panel puede tener título, párrafos, íconos, lo que
+// se necesite, sin quedar limitado a un texto fijo.
+const TARJETAS_IMAGEN_BLOCK: Block = {
+  slug: 'tarjetas-imagen',
+  labels: { singular: 'Tarjetas de imagen (con botón Ver)', plural: 'Bloques de tarjetas de imagen' },
+  fields: [
+    {
+      type: 'collapsible',
+      label: 'Diseño del título (aplica a todas las tarjetas)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'tituloTamano',
+              type: 'number',
+              label: 'Tamaño (px)',
+              defaultValue: 18,
+              min: 14,
+              max: 40,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'tituloNegrita',
+              type: 'checkbox',
+              label: 'Negrita',
+              defaultValue: true,
+              admin: { width: '33%' },
+            },
+            {
+              name: 'tituloAlineacion',
+              type: 'select',
+              label: 'Alineación',
+              defaultValue: 'izquierda',
+              options: [
+                { label: 'Izquierda', value: 'izquierda' },
+                { label: 'Centro', value: 'centro' },
+                { label: 'Derecha', value: 'derecha' },
+              ],
+              admin: { width: '33%' },
+            },
+          ],
+        },
+        {
+          name: 'tituloColor',
+          type: 'text',
+          label: 'Color (hex, opcional)',
+          admin: { description: 'Vacío = usa el color institucional.' },
+          validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: 'Diseño del botón (aplica a todas las tarjetas)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'botonIcono',
+              type: 'text',
+              label: 'Ícono (opcional)',
+              admin: {
+                width: '50%',
+                description: 'Ej: arrow-right, para la flecha de "Ver más".',
+                components: { Field: '/app/(payload)/components/IconPickerField#default' },
+              },
+              validate: (value: unknown) => {
+                if (!value) return true
+                return /^[a-z0-9]+(-[a-z0-9]+)*$/.test(String(value))
+                  ? true
+                  : 'Ícono inválido, elígelo desde el buscador'
+              },
+            },
+            {
+              name: 'botonColor',
+              type: 'text',
+              label: 'Color (hex, opcional)',
+              admin: { width: '50%', description: 'Vacío = usa el color institucional.' },
+              validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+            },
+          ],
+        },
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'botonTamano',
+              type: 'number',
+              label: 'Tamaño del texto (px)',
+              defaultValue: 15,
+              min: 10,
+              max: 28,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'botonNegrita',
+              type: 'checkbox',
+              label: 'Negrita',
+              defaultValue: true,
+              admin: { width: '33%' },
+            },
+            {
+              name: 'botonAlineacion',
+              type: 'select',
+              label: 'Alineación',
+              defaultValue: 'izquierda',
+              options: [
+                { label: 'Izquierda', value: 'izquierda' },
+                { label: 'Centro', value: 'centro' },
+                { label: 'Derecha', value: 'derecha' },
+              ],
+              admin: { width: '33%' },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: 'tarjetas',
+      type: 'array',
+      label: 'Tarjetas',
+      labels: { singular: 'Tarjeta', plural: 'Tarjetas' },
+      minRows: 1,
+      fields: [
+        { name: 'imagen', type: 'upload', relationTo: 'media', required: true, label: 'Imagen' },
+        { name: 'titulo', type: 'text', required: true, label: 'Título' },
+        {
+          name: 'textoBoton',
+          type: 'text',
+          label: 'Texto del botón',
+          defaultValue: 'Ver más',
+        },
+        {
+          name: 'accion',
+          type: 'select',
+          label: 'Al hacer clic en el botón',
+          defaultValue: 'enlace',
+          options: [
+            { label: 'Ir a un enlace', value: 'enlace' },
+            { label: 'Abrir panel de información (modal)', value: 'modal' },
+          ],
+        },
+        {
+          name: 'enlace',
+          type: 'text',
+          label: 'Enlace (URL)',
+          admin: {
+            condition: (_data, siblingData) => siblingData?.accion !== 'modal',
+          },
+          validate: (value: unknown, { siblingData }: { siblingData?: { accion?: string } }) => {
+            if (siblingData?.accion !== 'modal' && !value) {
+              return 'Indica un enlace, o cambia la acción a "Abrir panel de información"'
+            }
+            return true
+          },
+        },
+        {
+          type: 'collapsible',
+          label: 'Contenido del panel de información',
+          admin: {
+            initCollapsed: false,
+            condition: (_data, siblingData) => siblingData?.accion === 'modal',
+          },
+          fields: [
+            {
+              type: 'row',
+              fields: [
+                {
+                  name: 'modalTitulo',
+                  type: 'text',
+                  label: 'Título del panel',
+                  admin: { width: '50%', description: 'Si se deja vacío, se usa el título de la tarjeta.' },
+                },
+                {
+                  name: 'modalImagen',
+                  type: 'upload',
+                  relationTo: 'media',
+                  label: 'Imagen del panel',
+                  admin: { width: '50%', description: 'Si se deja vacía, se usa la imagen de la tarjeta.' },
+                },
+              ],
+            },
+            {
+              name: 'modalContenido',
+              type: 'blocks',
+              label: 'Contenido del panel',
+              labels: { singular: 'Bloque', plural: 'Bloques' },
+              admin: { initCollapsed: false },
+              blocks: BLOQUES_CONTENIDO_BASE,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
+
+// Grid de tarjetas con título + ícono (buscador de +1900 íconos) o imagen
+// (logo, foto, ilustración) — pensado para secciones tipo "Competitividad
+// Regional", "Sectores productivos", "Nuestros programas". A diferencia de
+// "Tarjetas de imagen", esta no lleva botón ni panel: es una cuadrícula
+// simple de tarjetas clicables. El título/descripción de la sección NO van
+// aquí — se agregan como piezas "Título" y "Párrafo" aparte, antes de esta,
+// para poder cambiarlas o quitarlas sin afectar la cuadrícula.
+const TARJETAS_ICONOS_BLOCK: Block = {
+  slug: 'tarjetas-iconos',
+  labels: { singular: 'Grid de tarjetas (ícono o imagen)', plural: 'Grids de tarjetas' },
+  fields: [
+    {
+      name: 'columnas',
+      type: 'select',
+      label: 'Columnas por fila (pantallas grandes)',
+      defaultValue: '5',
+      options: [
+        { label: '2 columnas', value: '2' },
+        { label: '3 columnas', value: '3' },
+        { label: '4 columnas', value: '4' },
+        { label: '5 columnas', value: '5' },
+        { label: '6 columnas', value: '6' },
+      ],
+      admin: { description: 'En pantallas pequeñas se acomodan solas en menos columnas.' },
+    },
+    {
+      type: 'collapsible',
+      label: 'Diseño del título de cada tarjeta (aplica a todas)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'tarjetaTituloTamano',
+              type: 'number',
+              label: 'Tamaño (px)',
+              defaultValue: 15,
+              min: 11,
+              max: 32,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'tarjetaTituloNegrita',
+              type: 'checkbox',
+              label: 'Negrita',
+              defaultValue: true,
+              admin: { width: '33%' },
+            },
+            {
+              name: 'tarjetaTituloAlineacion',
+              type: 'select',
+              label: 'Alineación',
+              defaultValue: 'centro',
+              options: ALINEACION_OPCIONES,
+              admin: { width: '33%' },
+            },
+          ],
+        },
+        {
+          name: 'tarjetaTituloColor',
+          type: 'text',
+          label: 'Color (hex, opcional)',
+          admin: { description: 'Vacío = usa el color institucional.' },
+          validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+        },
+      ],
+    },
+    {
+      type: 'collapsible',
+      label: 'Diseño del ícono o imagen (aplica a todas)',
+      admin: { initCollapsed: true },
+      fields: [
+        {
+          type: 'row',
+          fields: [
+            {
+              name: 'graficoAncho',
+              type: 'number',
+              label: 'Ancho (px)',
+              defaultValue: 64,
+              min: 24,
+              max: 200,
+              admin: { width: '34%' },
+            },
+            {
+              name: 'graficoAlto',
+              type: 'number',
+              label: 'Alto (px)',
+              defaultValue: 64,
+              min: 24,
+              max: 200,
+              admin: { width: '33%' },
+            },
+            {
+              name: 'graficoAlineacion',
+              type: 'select',
+              label: 'Alineación',
+              defaultValue: 'centro',
+              options: ALINEACION_OPCIONES,
+              admin: { width: '33%' },
+            },
+          ],
+        },
+        {
+          name: 'graficoColor',
+          type: 'text',
+          label: 'Color del ícono (hex, opcional)',
+          admin: { description: 'Solo aplica cuando la tarjeta usa ícono. Vacío = color institucional.' },
+          validate: hexOpcional('Usa un color hexadecimal, ej: #0378B3'),
+        },
+      ],
+    },
+    {
+      name: 'tarjetas',
+      type: 'array',
+      label: 'Tarjetas',
+      labels: { singular: 'Tarjeta', plural: 'Tarjetas' },
+      minRows: 1,
+      fields: [
+        { name: 'titulo', type: 'text', required: true, label: 'Título' },
+        {
+          name: 'tipo',
+          type: 'select',
+          label: 'Ícono o imagen',
+          defaultValue: 'imagen',
+          options: [
+            { label: 'Imagen (logo, foto, ilustración)', value: 'imagen' },
+            { label: 'Ícono', value: 'icono' },
+          ],
+        },
+        {
+          name: 'imagen',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Imagen',
+          admin: {
+            description: 'Recomendado: PNG cuadrado con fondo transparente.',
+            condition: (_data, siblingData) => siblingData?.tipo !== 'icono',
+          },
+        },
+        {
+          name: 'icono',
+          type: 'text',
+          label: 'Ícono',
+          admin: {
+            description: 'Busca y elige el ícono (más de 1900 disponibles).',
+            condition: (_data, siblingData) => siblingData?.tipo === 'icono',
+            components: { Field: '/app/(payload)/components/IconPickerField#default' },
+          },
+          validate: (value: unknown, { siblingData }: { siblingData?: { tipo?: string } }) => {
+            if (siblingData?.tipo !== 'icono') return true
+            return validarIcono(value)
+          },
+        },
+        {
+          name: 'enlace',
+          type: 'text',
+          label: 'Enlace (URL, opcional)',
+          admin: { description: 'Si lo dejas vacío, la tarjeta no será clicable.' },
+        },
+      ],
+    },
+  ],
+}
+
+export const BLOQUES_CONTENIDO_LIBRE: Block[] = [
+  ...BLOQUES_CONTENIDO_BASE,
+  TARJETAS_IMAGEN_BLOCK,
+  TARJETAS_ICONOS_BLOCK,
+]

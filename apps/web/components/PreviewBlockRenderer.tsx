@@ -20,6 +20,7 @@ import AliadosBlock from './blocks/AliadosBlock'
 import TestimoniosBlock from './blocks/TestimoniosBlock'
 import BannerPaginaBlock from './blocks/BannerPaginaBlock'
 import MenuConContenidoBlock from './blocks/MenuConContenidoBlock'
+import LienzoBlock from './blocks/LienzoBlock'
 
 // Bloques que consultan datos en vivo desde el servidor (noticias, resumen ITA)
 // y no pueden renderizarse dentro de un componente de cliente. En la vista
@@ -83,6 +84,8 @@ export default function PreviewBlockRenderer({ blocks, tenant }: { blocks: Block
             return <BannerPaginaBlock key={i} {...block} />
           case 'menu-con-contenido':
             return <MenuConContenidoBlock key={i} {...block} />
+          case 'lienzo':
+            return <LienzoBlock key={i} {...block} />
           default:
             return null
         }

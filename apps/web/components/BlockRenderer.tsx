@@ -20,6 +20,7 @@ import AliadosBlock from './blocks/AliadosBlock'
 import TestimoniosBlock from './blocks/TestimoniosBlock'
 import BannerPaginaBlock from './blocks/BannerPaginaBlock'
 import MenuConContenidoBlock from './blocks/MenuConContenidoBlock'
+import LienzoBlock from './blocks/LienzoBlock'
 import type { Tenant } from '@/lib/types'
 
 export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; tenant?: Tenant }) {
@@ -71,6 +72,8 @@ export default function BlockRenderer({ blocks, tenant }: { blocks: Block[]; ten
             return <BannerPaginaBlock key={i} {...block} />
           case 'menu-con-contenido':
             return <MenuConContenidoBlock key={i} {...block} />
+          case 'lienzo':
+            return <LienzoBlock key={i} {...block} />
           default:
             return null
         }

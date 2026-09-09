@@ -1,4 +1,4 @@
-import type { CollectionConfig } from 'payload'
+import type { CollectionConfig, Where } from 'payload'
 import { permisoModulo, permisoLecturaConEstado } from '../access'
 import { HeroBlock } from '../blocks/Hero'
 import { RichTextBlock } from '../blocks/RichText'
@@ -21,10 +21,12 @@ import { AliadosBlock } from '../blocks/Aliados'
 import { TestimoniosBlock } from '../blocks/Testimonios'
 import { BannerPaginaBlock } from '../blocks/BannerPagina'
 import { MenuConContenidoBlock } from '../blocks/MenuConContenido'
+import { LienzoBlock } from '../blocks/Lienzo'
 import { injectTenantContext } from '../hooks/tenantContext'
 import { autoAssignTenant } from '../hooks/autoAssignTenant'
 import { auditAfterChange, auditAfterDelete } from '../middleware/auditLog'
 import { revalidatePageAfterChange, revalidatePageAfterDelete } from '../hooks/revalidateWeb'
+import { publicarVariasPaginas } from '../endpoints/publicarPaginas'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -43,10 +45,17 @@ export const Pages: CollectionConfig = {
       const tenantId = typeof doc.tenant === 'object' ? (doc.tenant as { id?: number })?.id : doc.tenant
       return `${process.env.NEXT_PUBLIC_SITE_URL}/preview/${doc.slug}?tenant=${tenantId ?? ''}`
     },
+    components: {
+      // Botón "Publicar N páginas seleccionadas" arriba de la tabla del
+      // listado — publica de una sola vez varias páginas editadas, en vez
+      // de tener que entrar una por una a darle "Publicar".
+      beforeListTable: ['/app/(payload)/components/PublicarVariasButton#default'],
+    },
   },
   versions: {
     drafts: true, // Borradores y publicación
   },
+  endpoints: [publicarVariasPaginas],
   hooks: {
     beforeOperation: [injectTenantContext],
     beforeChange: [autoAssignTenant],
@@ -144,6 +153,23 @@ export const Pages: CollectionConfig = {
         description: 'Imagen que aparece al compartir en redes. 1200x630px recomendado.',
       },
     },
+    // ── Jerarquía / migas de pan (sidebar) ───────────────
+    {
+      name: 'paginaPadre',
+      type: 'relationship',
+      relationTo: 'pages' as any,
+      label: 'Página padre',
+      admin: {
+        position: 'sidebar',
+        description: 'Si esta página vive "dentro" de otra (ej: el detalle de una tarjeta de Competitividad Regional), selecciónala aquí. Las migajas de pan del sitio mostrarán la ruta completa: Inicio › Página padre › esta página.',
+      },
+      filterOptions: ({ data }: { data?: { tenant?: unknown; id?: unknown } }) => {
+        const where: Where = {}
+        if (data?.tenant) where.tenant = { equals: data.tenant }
+        if (data?.id) where.id = { not_equals: data.id }
+        return Object.keys(where).length ? where : true
+      },
+    },
     // ── Constructor de bloques ──────────────────────────
     {
       name: 'layout',
@@ -175,6 +201,7 @@ export const Pages: CollectionConfig = {
         TestimoniosBlock,
         BannerPaginaBlock,
         MenuConContenidoBlock,
+        LienzoBlock,
       ],
       admin: {
         description: 'Arrastra y ordena los bloques para construir la página',

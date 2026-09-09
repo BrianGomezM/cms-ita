@@ -1,4 +1,4 @@
-import { getPageBySlug } from '@/lib/payload'
+import { getPageBySlug, getBreadcrumbTrail } from '@/lib/payload'
 import BlockRenderer from '@/components/BlockRenderer'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -33,10 +33,12 @@ export default async function PageRoute({ params }: Props) {
 
   if (!page) notFound()
 
+  const trail = slug !== 'inicio' ? await getBreadcrumbTrail(page) : []
+
   return (
     <>
       <Header tenant={page.tenant} />
-      {slug !== 'inicio' && <Breadcrumbs tenant={page.tenant} paginaTitulo={page.titulo} />}
+      {slug !== 'inicio' && <Breadcrumbs tenant={page.tenant} paginaTitulo={page.titulo} trail={trail} />}
       <main className="flex-1">
         <BlockRenderer blocks={page.layout} tenant={page.tenant} />
       </main>

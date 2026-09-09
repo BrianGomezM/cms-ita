@@ -37,5 +37,14 @@ export default function PreviewClient({
     return () => window.removeEventListener('message', onMessage)
   }, [router])
 
+  // Deja un rastro del tenant que se está previsualizando: si el editor
+  // navega por el menú/footer/enlaces hacia otra página (que ya no vive bajo
+  // /preview/[slug]), getCurrentTenant() usa esta cookie como respaldo en
+  // vez de fallar porque el host local no coincide con ningún tenant.
+  useEffect(() => {
+    if (!tenant?.slug) return
+    document.cookie = `preview-tenant=${tenant.slug}; path=/; max-age=7200; samesite=lax`
+  }, [tenant?.slug])
+
   return <PreviewBlockRenderer blocks={data.layout} tenant={tenant} />
 }

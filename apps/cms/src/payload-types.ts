@@ -596,6 +596,10 @@ export interface Page {
    */
   imagenSeo?: (number | null) | Media;
   /**
+   * Si esta página vive "dentro" de otra (ej: el detalle de una tarjeta de Competitividad Regional), selecciónala aquí. Las migajas de pan del sitio mostrarán la ruta completa: Inicio › Página padre › esta página.
+   */
+  paginaPadre?: (number | null) | Page;
+  /**
    * Arrastra y ordena los bloques para construir la página
    */
   layout?:
@@ -1071,6 +1075,32 @@ export interface Page {
             textoPosicion?: ('izquierda' | 'centro' | 'derecha') | null;
             imagenDesvanecido?: ('ninguno' | 'suave' | 'medio' | 'fuerte') | null;
             imagenAjuste?: ('cubrir' | 'contener' | 'original') | null;
+            compartir?: {
+              texto?: string | null;
+              tamano?: number | null;
+              negrita?: boolean | null;
+              alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+              /**
+               * Vacío = usa el color institucional.
+               */
+              color?: string | null;
+              redes?:
+                | {
+                    red: 'facebook' | 'x' | 'linkedin' | 'whatsapp';
+                    /**
+                     * Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.
+                     */
+                    enlace?: string | null;
+                    id?: string | null;
+                  }[]
+                | null;
+              iconoTamano?: number | null;
+              iconoForma?: ('circular' | 'cuadrado') | null;
+              iconoSeparacion?: number | null;
+              iconoColores?: ('marca' | 'personalizado') | null;
+              iconoColorFondo?: string | null;
+              iconoColorIcono?: string | null;
+            };
             /**
              * Cada pestaña aparece como un ítem del menú lateral, con su propio banner arriba. La primera se muestra de entrada.
              */
@@ -1113,6 +1143,17 @@ export interface Page {
                              * Envuelve una parte en **doble asterisco** para ponerla en negrita. Presiona Enter para hacer un salto de línea.
                              */
                             texto: string;
+                            tamano?: number | null;
+                            negrita?: boolean | null;
+                            alineacion?: ('izquierda' | 'centro' | 'derecha' | 'justificado') | null;
+                            /**
+                             * Espacio antes de la primera línea. 0 = sin sangría.
+                             */
+                            sangria?: number | null;
+                            /**
+                             * Vacío = usa el gris institucional del texto.
+                             */
+                            color?: string | null;
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'parrafo';
@@ -1197,6 +1238,35 @@ export interface Page {
                             id?: string | null;
                             blockName?: string | null;
                             blockType: 'icono-texto';
+                          }
+                        | {
+                            texto?: string | null;
+                            tamano?: number | null;
+                            negrita?: boolean | null;
+                            alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                            /**
+                             * Vacío = usa el color institucional.
+                             */
+                            color?: string | null;
+                            redes?:
+                              | {
+                                  red: 'facebook' | 'x' | 'linkedin' | 'whatsapp';
+                                  /**
+                                   * Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.
+                                   */
+                                  enlace?: string | null;
+                                  id?: string | null;
+                                }[]
+                              | null;
+                            iconoTamano?: number | null;
+                            iconoForma?: ('circular' | 'cuadrado') | null;
+                            iconoSeparacion?: number | null;
+                            iconoColores?: ('marca' | 'personalizado') | null;
+                            iconoColorFondo?: string | null;
+                            iconoColorIcono?: string | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'compartir-redes';
                           }
                         | {
                             imagenes?:
@@ -1312,6 +1382,17 @@ export interface Page {
                                              * Envuelve una parte en **doble asterisco** para ponerla en negrita. Presiona Enter para hacer un salto de línea.
                                              */
                                             texto: string;
+                                            tamano?: number | null;
+                                            negrita?: boolean | null;
+                                            alineacion?: ('izquierda' | 'centro' | 'derecha' | 'justificado') | null;
+                                            /**
+                                             * Espacio antes de la primera línea. 0 = sin sangría.
+                                             */
+                                            sangria?: number | null;
+                                            /**
+                                             * Vacío = usa el gris institucional del texto.
+                                             */
+                                            color?: string | null;
                                             id?: string | null;
                                             blockName?: string | null;
                                             blockType: 'parrafo';
@@ -1398,6 +1479,35 @@ export interface Page {
                                             blockType: 'icono-texto';
                                           }
                                         | {
+                                            texto?: string | null;
+                                            tamano?: number | null;
+                                            negrita?: boolean | null;
+                                            alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                            /**
+                                             * Vacío = usa el color institucional.
+                                             */
+                                            color?: string | null;
+                                            redes?:
+                                              | {
+                                                  red: 'facebook' | 'x' | 'linkedin' | 'whatsapp';
+                                                  /**
+                                                   * Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.
+                                                   */
+                                                  enlace?: string | null;
+                                                  id?: string | null;
+                                                }[]
+                                              | null;
+                                            iconoTamano?: number | null;
+                                            iconoForma?: ('circular' | 'cuadrado') | null;
+                                            iconoSeparacion?: number | null;
+                                            iconoColores?: ('marca' | 'personalizado') | null;
+                                            iconoColorFondo?: string | null;
+                                            iconoColorIcono?: string | null;
+                                            id?: string | null;
+                                            blockName?: string | null;
+                                            blockType: 'compartir-redes';
+                                          }
+                                        | {
                                             imagenes?:
                                               | {
                                                   imagen: number | Media;
@@ -1455,6 +1565,48 @@ export interface Page {
                             blockName?: string | null;
                             blockType: 'tarjetas-imagen';
                           }
+                        | {
+                            /**
+                             * En pantallas pequeñas se acomodan solas en menos columnas.
+                             */
+                            columnas?: ('2' | '3' | '4' | '5' | '6') | null;
+                            tarjetaTituloTamano?: number | null;
+                            tarjetaTituloNegrita?: boolean | null;
+                            tarjetaTituloAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                            /**
+                             * Vacío = usa el color institucional.
+                             */
+                            tarjetaTituloColor?: string | null;
+                            graficoAncho?: number | null;
+                            graficoAlto?: number | null;
+                            graficoAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                            /**
+                             * Solo aplica cuando la tarjeta usa ícono. Vacío = color institucional.
+                             */
+                            graficoColor?: string | null;
+                            tarjetas?:
+                              | {
+                                  titulo: string;
+                                  tipo?: ('imagen' | 'icono') | null;
+                                  /**
+                                   * Recomendado: PNG cuadrado con fondo transparente.
+                                   */
+                                  imagen?: (number | null) | Media;
+                                  /**
+                                   * Busca y elige el ícono (más de 1900 disponibles).
+                                   */
+                                  icono?: string | null;
+                                  /**
+                                   * Si lo dejas vacío, la tarjeta no será clicable.
+                                   */
+                                  enlace?: string | null;
+                                  id?: string | null;
+                                }[]
+                              | null;
+                            id?: string | null;
+                            blockName?: string | null;
+                            blockType: 'tarjetas-iconos';
+                          }
                       )[]
                     | null;
                   id?: string | null;
@@ -1463,6 +1615,526 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'menu-con-contenido';
+          }
+        | {
+            bordeActivo?: boolean | null;
+            bordeAncho?: number | null;
+            /**
+             * Vacío = gris institucional.
+             */
+            bordeColor?: string | null;
+            bordeRedondeo?: number | null;
+            /**
+             * Vacío = ancho automático (todo el espacio disponible).
+             */
+            ancho?: number | null;
+            /**
+             * Vacío = alto automático (según el contenido).
+             */
+            alto?: number | null;
+            /**
+             * Combina los bloques que necesites (título, párrafo, imágenes, botones, grid de tarjetas...). Agrega, quita o reordena libremente — no estás atado a una sección fija.
+             */
+            contenido?:
+              | (
+                  | {
+                      texto: string;
+                      tamano?: number | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      color?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'titulo';
+                    }
+                  | {
+                      texto: string;
+                      tamano?: number | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      color?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'subtitulo';
+                    }
+                  | {
+                      /**
+                       * Envuelve una parte en **doble asterisco** para ponerla en negrita. Presiona Enter para hacer un salto de línea.
+                       */
+                      texto: string;
+                      tamano?: number | null;
+                      negrita?: boolean | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha' | 'justificado') | null;
+                      /**
+                       * Espacio antes de la primera línea. 0 = sin sangría.
+                       */
+                      sangria?: number | null;
+                      /**
+                       * Vacío = usa el gris institucional del texto.
+                       */
+                      color?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'parrafo';
+                    }
+                  | {
+                      items?:
+                        | {
+                            /**
+                             * Envuelve una parte en **doble asterisco** para ponerla en negrita.
+                             */
+                            texto: string;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'vinetas';
+                    }
+                  | {
+                      texto: string;
+                      /**
+                       * Busca y elige un ícono, o déjalo vacío para no mostrar ninguno.
+                       */
+                      icono?: string | null;
+                      /**
+                       * Opcional si adjuntas un documento abajo — si pones ambos, el documento tiene prioridad.
+                       */
+                      enlace?: string | null;
+                      /**
+                       * Si lo adjuntas, el botón abre este documento en una pestaña nueva en vez del enlace.
+                       */
+                      documento?: (number | null) | Media;
+                      estilo?: ('primario' | 'secundario' | 'outline') | null;
+                      /**
+                       * Vacío = usa el color del estilo elegido.
+                       */
+                      color?: string | null;
+                      redondeo?: ('ninguno' | 'suave' | 'completo') | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'boton';
+                    }
+                  | {
+                      imagen: number | Media;
+                      ancho?: ('pequena' | 'mediana' | 'grande' | 'completa') | null;
+                      enlace?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'imagen';
+                    }
+                  | {
+                      etiqueta: string;
+                      enlace: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'enlace';
+                    }
+                  | {
+                      imagen?: (number | null) | Media;
+                      /**
+                       * Documento, imagen o cualquier archivo que se descargará al hacer clic.
+                       */
+                      archivo: number | Media;
+                      texto: string;
+                      tamano?: number | null;
+                      negrita?: boolean | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      color?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'enlace-imagen';
+                    }
+                  | {
+                      /**
+                       * Busca y elige el ícono (más de 1900 disponibles).
+                       */
+                      icono: string;
+                      texto: string;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'icono-texto';
+                    }
+                  | {
+                      texto?: string | null;
+                      tamano?: number | null;
+                      negrita?: boolean | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      color?: string | null;
+                      redes?:
+                        | {
+                            red: 'facebook' | 'x' | 'linkedin' | 'whatsapp';
+                            /**
+                             * Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.
+                             */
+                            enlace?: string | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      iconoTamano?: number | null;
+                      iconoForma?: ('circular' | 'cuadrado') | null;
+                      iconoSeparacion?: number | null;
+                      iconoColores?: ('marca' | 'personalizado') | null;
+                      iconoColorFondo?: string | null;
+                      iconoColorIcono?: string | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'compartir-redes';
+                    }
+                  | {
+                      imagenes?:
+                        | {
+                            imagen: number | Media;
+                            enlace?: string | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'galeria';
+                    }
+                  | {
+                      tituloTamano?: number | null;
+                      tituloNegrita?: boolean | null;
+                      tituloAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      tituloColor?: string | null;
+                      imagenTamano?: number | null;
+                      imagenAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      tamano?: number | null;
+                      negrita?: boolean | null;
+                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      color?: string | null;
+                      /**
+                       * Se acomodan solos en cuadrícula — entre más agregues, más columnas ocupan.
+                       */
+                      elementos?:
+                        | {
+                            titulo?: string | null;
+                            imagen: number | Media;
+                            texto?: string | null;
+                            enlace?: string | null;
+                            /**
+                             * Si pones ambos, el documento tiene prioridad. Se abre en una pestaña nueva.
+                             */
+                            archivo?: (number | null) | Media;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'galeria-documentos';
+                    }
+                  | {
+                      tituloTamano?: number | null;
+                      tituloNegrita?: boolean | null;
+                      tituloAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      tituloColor?: string | null;
+                      /**
+                       * Ej: arrow-right, para la flecha de "Ver más".
+                       */
+                      botonIcono?: string | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      botonColor?: string | null;
+                      botonTamano?: number | null;
+                      botonNegrita?: boolean | null;
+                      botonAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      tarjetas?:
+                        | {
+                            imagen: number | Media;
+                            titulo: string;
+                            textoBoton?: string | null;
+                            accion?: ('enlace' | 'modal') | null;
+                            enlace?: string | null;
+                            /**
+                             * Si se deja vacío, se usa el título de la tarjeta.
+                             */
+                            modalTitulo?: string | null;
+                            /**
+                             * Si se deja vacía, se usa la imagen de la tarjeta.
+                             */
+                            modalImagen?: (number | null) | Media;
+                            modalContenido?:
+                              | (
+                                  | {
+                                      texto: string;
+                                      tamano?: number | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'titulo';
+                                    }
+                                  | {
+                                      texto: string;
+                                      tamano?: number | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'subtitulo';
+                                    }
+                                  | {
+                                      /**
+                                       * Envuelve una parte en **doble asterisco** para ponerla en negrita. Presiona Enter para hacer un salto de línea.
+                                       */
+                                      texto: string;
+                                      tamano?: number | null;
+                                      negrita?: boolean | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha' | 'justificado') | null;
+                                      /**
+                                       * Espacio antes de la primera línea. 0 = sin sangría.
+                                       */
+                                      sangria?: number | null;
+                                      /**
+                                       * Vacío = usa el gris institucional del texto.
+                                       */
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'parrafo';
+                                    }
+                                  | {
+                                      items?:
+                                        | {
+                                            /**
+                                             * Envuelve una parte en **doble asterisco** para ponerla en negrita.
+                                             */
+                                            texto: string;
+                                            id?: string | null;
+                                          }[]
+                                        | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'vinetas';
+                                    }
+                                  | {
+                                      texto: string;
+                                      /**
+                                       * Busca y elige un ícono, o déjalo vacío para no mostrar ninguno.
+                                       */
+                                      icono?: string | null;
+                                      /**
+                                       * Opcional si adjuntas un documento abajo — si pones ambos, el documento tiene prioridad.
+                                       */
+                                      enlace?: string | null;
+                                      /**
+                                       * Si lo adjuntas, el botón abre este documento en una pestaña nueva en vez del enlace.
+                                       */
+                                      documento?: (number | null) | Media;
+                                      estilo?: ('primario' | 'secundario' | 'outline') | null;
+                                      /**
+                                       * Vacío = usa el color del estilo elegido.
+                                       */
+                                      color?: string | null;
+                                      redondeo?: ('ninguno' | 'suave' | 'completo') | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'boton';
+                                    }
+                                  | {
+                                      imagen: number | Media;
+                                      ancho?: ('pequena' | 'mediana' | 'grande' | 'completa') | null;
+                                      enlace?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'imagen';
+                                    }
+                                  | {
+                                      etiqueta: string;
+                                      enlace: string;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'enlace';
+                                    }
+                                  | {
+                                      imagen?: (number | null) | Media;
+                                      /**
+                                       * Documento, imagen o cualquier archivo que se descargará al hacer clic.
+                                       */
+                                      archivo: number | Media;
+                                      texto: string;
+                                      tamano?: number | null;
+                                      negrita?: boolean | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      color?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'enlace-imagen';
+                                    }
+                                  | {
+                                      /**
+                                       * Busca y elige el ícono (más de 1900 disponibles).
+                                       */
+                                      icono: string;
+                                      texto: string;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'icono-texto';
+                                    }
+                                  | {
+                                      texto?: string | null;
+                                      tamano?: number | null;
+                                      negrita?: boolean | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      color?: string | null;
+                                      redes?:
+                                        | {
+                                            red: 'facebook' | 'x' | 'linkedin' | 'whatsapp';
+                                            /**
+                                             * Ej: tu página de Facebook. Vacío = comparte automáticamente esta página en esa red.
+                                             */
+                                            enlace?: string | null;
+                                            id?: string | null;
+                                          }[]
+                                        | null;
+                                      iconoTamano?: number | null;
+                                      iconoForma?: ('circular' | 'cuadrado') | null;
+                                      iconoSeparacion?: number | null;
+                                      iconoColores?: ('marca' | 'personalizado') | null;
+                                      iconoColorFondo?: string | null;
+                                      iconoColorIcono?: string | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'compartir-redes';
+                                    }
+                                  | {
+                                      imagenes?:
+                                        | {
+                                            imagen: number | Media;
+                                            enlace?: string | null;
+                                            id?: string | null;
+                                          }[]
+                                        | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'galeria';
+                                    }
+                                  | {
+                                      tituloTamano?: number | null;
+                                      tituloNegrita?: boolean | null;
+                                      tituloAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      tituloColor?: string | null;
+                                      imagenTamano?: number | null;
+                                      imagenAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      tamano?: number | null;
+                                      negrita?: boolean | null;
+                                      alineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                                      /**
+                                       * Vacío = usa el color institucional.
+                                       */
+                                      color?: string | null;
+                                      /**
+                                       * Se acomodan solos en cuadrícula — entre más agregues, más columnas ocupan.
+                                       */
+                                      elementos?:
+                                        | {
+                                            titulo?: string | null;
+                                            imagen: number | Media;
+                                            texto?: string | null;
+                                            enlace?: string | null;
+                                            /**
+                                             * Si pones ambos, el documento tiene prioridad. Se abre en una pestaña nueva.
+                                             */
+                                            archivo?: (number | null) | Media;
+                                            id?: string | null;
+                                          }[]
+                                        | null;
+                                      id?: string | null;
+                                      blockName?: string | null;
+                                      blockType: 'galeria-documentos';
+                                    }
+                                )[]
+                              | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'tarjetas-imagen';
+                    }
+                  | {
+                      /**
+                       * En pantallas pequeñas se acomodan solas en menos columnas.
+                       */
+                      columnas?: ('2' | '3' | '4' | '5' | '6') | null;
+                      tarjetaTituloTamano?: number | null;
+                      tarjetaTituloNegrita?: boolean | null;
+                      tarjetaTituloAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Vacío = usa el color institucional.
+                       */
+                      tarjetaTituloColor?: string | null;
+                      graficoAncho?: number | null;
+                      graficoAlto?: number | null;
+                      graficoAlineacion?: ('izquierda' | 'centro' | 'derecha') | null;
+                      /**
+                       * Solo aplica cuando la tarjeta usa ícono. Vacío = color institucional.
+                       */
+                      graficoColor?: string | null;
+                      tarjetas?:
+                        | {
+                            titulo: string;
+                            tipo?: ('imagen' | 'icono') | null;
+                            /**
+                             * Recomendado: PNG cuadrado con fondo transparente.
+                             */
+                            imagen?: (number | null) | Media;
+                            /**
+                             * Busca y elige el ícono (más de 1900 disponibles).
+                             */
+                            icono?: string | null;
+                            /**
+                             * Si lo dejas vacío, la tarjeta no será clicable.
+                             */
+                            enlace?: string | null;
+                            id?: string | null;
+                          }[]
+                        | null;
+                      id?: string | null;
+                      blockName?: string | null;
+                      blockType: 'tarjetas-iconos';
+                    }
+                )[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'lienzo';
           }
       )[]
     | null;
@@ -2027,6 +2699,7 @@ export interface PagesSelect<T extends boolean = true> {
   tenant?: T;
   estado?: T;
   imagenSeo?: T;
+  paginaPadre?: T;
   layout?:
     | T
     | {
@@ -2381,6 +3054,28 @@ export interface PagesSelect<T extends boolean = true> {
               textoPosicion?: T;
               imagenDesvanecido?: T;
               imagenAjuste?: T;
+              compartir?:
+                | T
+                | {
+                    texto?: T;
+                    tamano?: T;
+                    negrita?: T;
+                    alineacion?: T;
+                    color?: T;
+                    redes?:
+                      | T
+                      | {
+                          red?: T;
+                          enlace?: T;
+                          id?: T;
+                        };
+                    iconoTamano?: T;
+                    iconoForma?: T;
+                    iconoSeparacion?: T;
+                    iconoColores?: T;
+                    iconoColorFondo?: T;
+                    iconoColorIcono?: T;
+                  };
               items?:
                 | T
                 | {
@@ -2414,6 +3109,11 @@ export interface PagesSelect<T extends boolean = true> {
                             | T
                             | {
                                 texto?: T;
+                                tamano?: T;
+                                negrita?: T;
+                                alineacion?: T;
+                                sangria?: T;
+                                color?: T;
                                 id?: T;
                                 blockName?: T;
                               };
@@ -2477,6 +3177,30 @@ export interface PagesSelect<T extends boolean = true> {
                             | {
                                 icono?: T;
                                 texto?: T;
+                                id?: T;
+                                blockName?: T;
+                              };
+                          'compartir-redes'?:
+                            | T
+                            | {
+                                texto?: T;
+                                tamano?: T;
+                                negrita?: T;
+                                alineacion?: T;
+                                color?: T;
+                                redes?:
+                                  | T
+                                  | {
+                                      red?: T;
+                                      enlace?: T;
+                                      id?: T;
+                                    };
+                                iconoTamano?: T;
+                                iconoForma?: T;
+                                iconoSeparacion?: T;
+                                iconoColores?: T;
+                                iconoColorFondo?: T;
+                                iconoColorIcono?: T;
                                 id?: T;
                                 blockName?: T;
                               };
@@ -2568,6 +3292,11 @@ export interface PagesSelect<T extends boolean = true> {
                                               | T
                                               | {
                                                   texto?: T;
+                                                  tamano?: T;
+                                                  negrita?: T;
+                                                  alineacion?: T;
+                                                  sangria?: T;
+                                                  color?: T;
                                                   id?: T;
                                                   blockName?: T;
                                                 };
@@ -2634,6 +3363,30 @@ export interface PagesSelect<T extends boolean = true> {
                                                   id?: T;
                                                   blockName?: T;
                                                 };
+                                            'compartir-redes'?:
+                                              | T
+                                              | {
+                                                  texto?: T;
+                                                  tamano?: T;
+                                                  negrita?: T;
+                                                  alineacion?: T;
+                                                  color?: T;
+                                                  redes?:
+                                                    | T
+                                                    | {
+                                                        red?: T;
+                                                        enlace?: T;
+                                                        id?: T;
+                                                      };
+                                                  iconoTamano?: T;
+                                                  iconoForma?: T;
+                                                  iconoSeparacion?: T;
+                                                  iconoColores?: T;
+                                                  iconoColorFondo?: T;
+                                                  iconoColorIcono?: T;
+                                                  id?: T;
+                                                  blockName?: T;
+                                                };
                                             galeria?:
                                               | T
                                               | {
@@ -2679,8 +3432,421 @@ export interface PagesSelect<T extends boolean = true> {
                                 id?: T;
                                 blockName?: T;
                               };
+                          'tarjetas-iconos'?:
+                            | T
+                            | {
+                                columnas?: T;
+                                tarjetaTituloTamano?: T;
+                                tarjetaTituloNegrita?: T;
+                                tarjetaTituloAlineacion?: T;
+                                tarjetaTituloColor?: T;
+                                graficoAncho?: T;
+                                graficoAlto?: T;
+                                graficoAlineacion?: T;
+                                graficoColor?: T;
+                                tarjetas?:
+                                  | T
+                                  | {
+                                      titulo?: T;
+                                      tipo?: T;
+                                      imagen?: T;
+                                      icono?: T;
+                                      enlace?: T;
+                                      id?: T;
+                                    };
+                                id?: T;
+                                blockName?: T;
+                              };
                         };
                     id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        lienzo?:
+          | T
+          | {
+              bordeActivo?: T;
+              bordeAncho?: T;
+              bordeColor?: T;
+              bordeRedondeo?: T;
+              ancho?: T;
+              alto?: T;
+              contenido?:
+                | T
+                | {
+                    titulo?:
+                      | T
+                      | {
+                          texto?: T;
+                          tamano?: T;
+                          alineacion?: T;
+                          color?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    subtitulo?:
+                      | T
+                      | {
+                          texto?: T;
+                          tamano?: T;
+                          alineacion?: T;
+                          color?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    parrafo?:
+                      | T
+                      | {
+                          texto?: T;
+                          tamano?: T;
+                          negrita?: T;
+                          alineacion?: T;
+                          sangria?: T;
+                          color?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    vinetas?:
+                      | T
+                      | {
+                          items?:
+                            | T
+                            | {
+                                texto?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    boton?:
+                      | T
+                      | {
+                          texto?: T;
+                          icono?: T;
+                          enlace?: T;
+                          documento?: T;
+                          estilo?: T;
+                          color?: T;
+                          redondeo?: T;
+                          alineacion?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    imagen?:
+                      | T
+                      | {
+                          imagen?: T;
+                          ancho?: T;
+                          enlace?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    enlace?:
+                      | T
+                      | {
+                          etiqueta?: T;
+                          enlace?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'enlace-imagen'?:
+                      | T
+                      | {
+                          imagen?: T;
+                          archivo?: T;
+                          texto?: T;
+                          tamano?: T;
+                          negrita?: T;
+                          color?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'icono-texto'?:
+                      | T
+                      | {
+                          icono?: T;
+                          texto?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'compartir-redes'?:
+                      | T
+                      | {
+                          texto?: T;
+                          tamano?: T;
+                          negrita?: T;
+                          alineacion?: T;
+                          color?: T;
+                          redes?:
+                            | T
+                            | {
+                                red?: T;
+                                enlace?: T;
+                                id?: T;
+                              };
+                          iconoTamano?: T;
+                          iconoForma?: T;
+                          iconoSeparacion?: T;
+                          iconoColores?: T;
+                          iconoColorFondo?: T;
+                          iconoColorIcono?: T;
+                          id?: T;
+                          blockName?: T;
+                        };
+                    galeria?:
+                      | T
+                      | {
+                          imagenes?:
+                            | T
+                            | {
+                                imagen?: T;
+                                enlace?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'galeria-documentos'?:
+                      | T
+                      | {
+                          tituloTamano?: T;
+                          tituloNegrita?: T;
+                          tituloAlineacion?: T;
+                          tituloColor?: T;
+                          imagenTamano?: T;
+                          imagenAlineacion?: T;
+                          tamano?: T;
+                          negrita?: T;
+                          alineacion?: T;
+                          color?: T;
+                          elementos?:
+                            | T
+                            | {
+                                titulo?: T;
+                                imagen?: T;
+                                texto?: T;
+                                enlace?: T;
+                                archivo?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'tarjetas-imagen'?:
+                      | T
+                      | {
+                          tituloTamano?: T;
+                          tituloNegrita?: T;
+                          tituloAlineacion?: T;
+                          tituloColor?: T;
+                          botonIcono?: T;
+                          botonColor?: T;
+                          botonTamano?: T;
+                          botonNegrita?: T;
+                          botonAlineacion?: T;
+                          tarjetas?:
+                            | T
+                            | {
+                                imagen?: T;
+                                titulo?: T;
+                                textoBoton?: T;
+                                accion?: T;
+                                enlace?: T;
+                                modalTitulo?: T;
+                                modalImagen?: T;
+                                modalContenido?:
+                                  | T
+                                  | {
+                                      titulo?:
+                                        | T
+                                        | {
+                                            texto?: T;
+                                            tamano?: T;
+                                            alineacion?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      subtitulo?:
+                                        | T
+                                        | {
+                                            texto?: T;
+                                            tamano?: T;
+                                            alineacion?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      parrafo?:
+                                        | T
+                                        | {
+                                            texto?: T;
+                                            tamano?: T;
+                                            negrita?: T;
+                                            alineacion?: T;
+                                            sangria?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      vinetas?:
+                                        | T
+                                        | {
+                                            items?:
+                                              | T
+                                              | {
+                                                  texto?: T;
+                                                  id?: T;
+                                                };
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      boton?:
+                                        | T
+                                        | {
+                                            texto?: T;
+                                            icono?: T;
+                                            enlace?: T;
+                                            documento?: T;
+                                            estilo?: T;
+                                            color?: T;
+                                            redondeo?: T;
+                                            alineacion?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      imagen?:
+                                        | T
+                                        | {
+                                            imagen?: T;
+                                            ancho?: T;
+                                            enlace?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      enlace?:
+                                        | T
+                                        | {
+                                            etiqueta?: T;
+                                            enlace?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      'enlace-imagen'?:
+                                        | T
+                                        | {
+                                            imagen?: T;
+                                            archivo?: T;
+                                            texto?: T;
+                                            tamano?: T;
+                                            negrita?: T;
+                                            color?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      'icono-texto'?:
+                                        | T
+                                        | {
+                                            icono?: T;
+                                            texto?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      'compartir-redes'?:
+                                        | T
+                                        | {
+                                            texto?: T;
+                                            tamano?: T;
+                                            negrita?: T;
+                                            alineacion?: T;
+                                            color?: T;
+                                            redes?:
+                                              | T
+                                              | {
+                                                  red?: T;
+                                                  enlace?: T;
+                                                  id?: T;
+                                                };
+                                            iconoTamano?: T;
+                                            iconoForma?: T;
+                                            iconoSeparacion?: T;
+                                            iconoColores?: T;
+                                            iconoColorFondo?: T;
+                                            iconoColorIcono?: T;
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      galeria?:
+                                        | T
+                                        | {
+                                            imagenes?:
+                                              | T
+                                              | {
+                                                  imagen?: T;
+                                                  enlace?: T;
+                                                  id?: T;
+                                                };
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                      'galeria-documentos'?:
+                                        | T
+                                        | {
+                                            tituloTamano?: T;
+                                            tituloNegrita?: T;
+                                            tituloAlineacion?: T;
+                                            tituloColor?: T;
+                                            imagenTamano?: T;
+                                            imagenAlineacion?: T;
+                                            tamano?: T;
+                                            negrita?: T;
+                                            alineacion?: T;
+                                            color?: T;
+                                            elementos?:
+                                              | T
+                                              | {
+                                                  titulo?: T;
+                                                  imagen?: T;
+                                                  texto?: T;
+                                                  enlace?: T;
+                                                  archivo?: T;
+                                                  id?: T;
+                                                };
+                                            id?: T;
+                                            blockName?: T;
+                                          };
+                                    };
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
+                    'tarjetas-iconos'?:
+                      | T
+                      | {
+                          columnas?: T;
+                          tarjetaTituloTamano?: T;
+                          tarjetaTituloNegrita?: T;
+                          tarjetaTituloAlineacion?: T;
+                          tarjetaTituloColor?: T;
+                          graficoAncho?: T;
+                          graficoAlto?: T;
+                          graficoAlineacion?: T;
+                          graficoColor?: T;
+                          tarjetas?:
+                            | T
+                            | {
+                                titulo?: T;
+                                tipo?: T;
+                                imagen?: T;
+                                icono?: T;
+                                enlace?: T;
+                                id?: T;
+                              };
+                          id?: T;
+                          blockName?: T;
+                        };
                   };
               id?: T;
               blockName?: T;

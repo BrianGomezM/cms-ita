@@ -1,6 +1,6 @@
 // Cliente para consumir la API REST de Payload CMS
-import { headers } from 'next/headers'
-import type { Tenant, ITAResumen } from './types'
+import { headers, cookies } from 'next/headers'
+import type { Tenant, ITAResumen, Page } from './types'
 
 const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
 const isDev = process.env.NODE_ENV === 'development'
@@ -58,7 +58,25 @@ export async function getCurrentTenant(): Promise<Tenant | null> {
   } catch {
     // headers() no disponible fuera de una petición (build time)
   }
-  return getTenantByHost(tenantHost)
+
+  const tenant = await getTenantByHost(tenantHost)
+  if (tenant) return tenant
+
+  // El host de la petición no coincide con ningún tenant (típicamente
+  // "localhost" pelado en desarrollo). Si el visitante llegó desde la vista
+  // previa del admin, PreviewClient dejó una cookie con el tenant que estaba
+  // previsualizando — se usa como respaldo para que el menú, el footer y los
+  // enlaces internos sigan funcionando al navegar fuera de /preview/[slug]
+  // en vez de romper con "página no encontrada".
+  try {
+    const cookieStore = await cookies()
+    const tenantSlugPreview = cookieStore.get('preview-tenant')?.value
+    if (tenantSlugPreview) return getTenantByHost(tenantSlugPreview)
+  } catch {
+    // cookies() no disponible fuera de una petición (build time)
+  }
+
+  return null
 }
 
 // URL base del sitio para la petición actual (protocolo + host), usada para
@@ -98,6 +116,46 @@ export async function getPageBySlug(slug: string, opts?: { draft?: boolean; tena
   } catch {
     return null
   }
+}
+
+// Obtiene una página por su ID, sin popular relaciones (depth=0) — solo se
+// usa para completar la cadena de "página padre" de las migajas de pan
+// cuando la profundidad de getPageBySlug no alcanzó a poblarla como objeto.
+export async function getPageById(id: number): Promise<Page | null> {
+  try {
+    const res = await fetch(`${CMS_URL}/api/pages/${id}?depth=0`, { cache: 'no-store' })
+    if (!res.ok) return null
+    return await res.json()
+  } catch {
+    return null
+  }
+}
+
+// Arma la ruta de "página padre" de una página, de la raíz hacia abajo (sin
+// incluir la página actual). getPageBySlug ya popula 1-2 niveles de
+// "paginaPadre" como objeto (según su `depth`); esta función solo hace una
+// petición extra por cada nivel adicional que haya quedado sin poblar.
+// El tope de 8 saltos es solo un seguro contra una jerarquía mal armada
+// (ej: una página que termina siendo su propio antepasado).
+//
+// La página de inicio ("inicio") se excluye del tramo intermedio: el
+// componente Breadcrumbs ya pone un "Inicio" fijo al principio, así que
+// marcar "inicio" como página padre no debe repetirlo (Inicio › Inicio ›
+// Nuestra Cámara) — simplemente lo colapsa a Inicio › Nuestra Cámara.
+export async function getBreadcrumbTrail(page: Page): Promise<{ titulo: string; slug: string }[]> {
+  const trail: { titulo: string; slug: string }[] = []
+  let actual = page.paginaPadre
+  let saltos = 0
+
+  while (actual && saltos < 8) {
+    const padre: Page | null = typeof actual === 'object' ? actual : await getPageById(actual)
+    if (!padre) break
+    if (padre.slug !== 'inicio') trail.unshift({ titulo: padre.titulo, slug: padre.slug })
+    actual = padre.paginaPadre
+    saltos++
+  }
+
+  return trail
 }
 
 // Obtiene un tenant por su ID (usado por la vista previa cuando el admin
