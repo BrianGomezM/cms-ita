@@ -1,6 +1,9 @@
 # ─── Backups de base de datos ───────────────────────────
 *.dump
 
+# ─── Proyecto aparte (repo propio, no es parte de este monorepo) ──
+/camara-comercio-2026
+
 # ─── Logs ───────────────────────────────────────────────
 logs
 *.log
