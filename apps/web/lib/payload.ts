@@ -2,7 +2,13 @@
 import { headers, cookies } from 'next/headers'
 import type { Tenant, ITAResumen, Page } from './types'
 
-const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
+// CMS_INTERNAL_URL: para llamadas servidor-a-servidor (dentro de la red de
+// Docker, ej: http://cms:3000). Evita que estas peticiones salgan a internet
+// y vuelvan a entrar por el dominio publico (lento y propenso a fallos con
+// el propio Nginx/Cloudflare). NEXT_PUBLIC_CMS_URL sigue siendo el que ve
+// el navegador (login del admin, links, etc.) y es el fallback si no hay
+// red interna (ej: local sin Docker, donde cms y web corren sueltos).
+const CMS_URL = process.env.CMS_INTERNAL_URL || process.env.NEXT_PUBLIC_CMS_URL || 'http://localhost:3000'
 const isDev = process.env.NODE_ENV === 'development'
 
 // Tenant por defecto cuando no hay contexto de petición (build time) o el host
