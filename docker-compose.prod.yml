@@ -1,0 +1,61 @@
+# Despliegue en la VM (bodecom-central): usa el Postgres nativo del host
+# (no el de docker-compose.yml, ese es solo para desarrollo local).
+#
+# Uso:
+#   docker compose -f docker-compose.prod.yml up -d --build
+#
+# Requiere los archivos apps/cms/.env.production y apps/web/.env.production
+# en el servidor (no se versionan, ver *.env.production.example).
+
+services:
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    restart: always
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    volumes:
+      - minio_data:/data
+    ports:
+      - "127.0.0.1:9000:9000"
+      - "127.0.0.1:9001:9001"
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  cms:
+    build:
+      context: .
+      dockerfile: apps/cms/Dockerfile
+    restart: always
+    # Permite que el contenedor llegue al Postgres nativo del host (VM)
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - apps/cms/.env.production
+    environment:
+      NODE_ENV: production
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - minio
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    restart: always
+    env_file:
+      - apps/web/.env.production
+    environment:
+      NODE_ENV: production
+    ports:
+      - "127.0.0.1:3001:3001"
+    depends_on:
+      - cms
+
+volumes:
+  minio_data:
