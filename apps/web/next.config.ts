@@ -29,6 +29,7 @@ const nextConfig: NextConfig = {
       { protocol: 'http',  hostname: 'localhost',                       port: '4000' },
       { protocol: 'http',  hostname: 'localhost',                       port: '9000' },
       { protocol: 'https', hostname: '*.public.blob.vercel-storage.com'             },
+      { protocol: 'https', hostname: 'cms.bodecom.com'                              },
     ],
   },
 }
