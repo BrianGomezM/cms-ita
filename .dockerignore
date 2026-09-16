@@ -1,0 +1,11 @@
+**/node_modules
+**/.next
+**/.turbo
+**/.git
+**/.env
+**/.env.*
+!**/.env.example
+Documentos_cms
+camara-comercio-2026
+*.xlsx
+README.md

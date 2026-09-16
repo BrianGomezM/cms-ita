@@ -5,6 +5,7 @@ import { securityHeaders, previewFrameHeaders } from '../cms/src/middleware/secu
 const isDev = process.env.NODE_ENV === 'development'
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   turbopack: {
     root: path.resolve(__dirname, '../..'),
   },

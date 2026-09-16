@@ -1,20 +1,24 @@
+# Build desde la RAIZ del monorepo (docker build -f apps/cms/Dockerfile .)
+# Necesario porque pnpm-lock.yaml vive en la raiz del workspace.
 FROM node:20-alpine AS base
 RUN apk add --no-cache libc6-compat
-RUN npm i -g pnpm@10.11.0
+RUN npm i -g pnpm@10.12.4
 
-# Instalar dependencias
+# Instalar dependencias (todo el workspace, para que el lockfile resuelva)
 FROM base AS deps
-WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+WORKDIR /repo
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY apps/cms/package.json apps/cms/package.json
+COPY apps/web/package.json apps/web/package.json
 RUN pnpm install --frozen-lockfile
 
-# Build
+# Build solo del paquete cms
 FROM base AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+WORKDIR /repo
+COPY --from=deps /repo ./
 COPY . .
-RUN pnpm generate:importmap
-RUN pnpm build
+RUN pnpm --filter cms generate:importmap
+RUN pnpm --filter cms build
 
 # Runner
 FROM base AS runner
@@ -22,9 +26,9 @@ WORKDIR /app
 ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /repo/apps/cms/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /repo/apps/cms/.next/static ./apps/cms/.next/static
 USER nextjs
 EXPOSE 3000
-CMD ["node", "server.js"]
+ENV PORT=3000
+CMD ["node", "apps/cms/server.js"]

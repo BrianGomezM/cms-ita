@@ -38,8 +38,8 @@ services:
   cms:
     profiles: ["full"]
     build:
-      context: ./apps/cms
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/cms/Dockerfile
     restart: always
     depends_on:
       postgres:
@@ -60,8 +60,8 @@ services:
   web:
     profiles: ["full"]
     build:
-      context: ./apps/web
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: apps/web/Dockerfile
     restart: always
     depends_on:
       - cms
